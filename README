@@ -1,1 +1,7 @@
-foo
+uvabook.nl is nu onze domain name.
+
+om de site te updaten:
+
+$ cd /path/to/Webprog && git add * && git commit -m 'message' && git push origin master
+$ ssh <scienceaccount>@websec.science.uva.nl
+$ cd /datastore/webdb1249/htdocs && git pull
