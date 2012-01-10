@@ -4,7 +4,7 @@
 
 <html>
   <head>
-    <title>webdb1249</title>
+    <title>UvABook</title>
   </head>
   <body>
     Dit is de <em>Webprogrammeren en Databases</em> pagina voor groep <b>webdb1249</b>.
