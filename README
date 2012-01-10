@@ -5,3 +5,29 @@ om de site te updaten:
 $ cd /path/to/Webprog && git add * && git commit -m 'message' && git push origin master
 $ ssh <scienceaccount>@websec.science.uva.nl
 $ cd /datastore/webdb1249/htdocs && git pull
+
+de eerste keer dat je op websec komt moet je een nieuwe pubkey aanmaken + deze in het systeem zetten, doe hiervoor:
+
+$ ssh-keygen [enter] [enter] [enter]
+$ exec ssh-agent bash
+$ ssh-add ~/.ssh/id_rsa
+$ cat ~/.ssh/id_rsa.pub
+
+en copier en plak de output in github
+
+Laten we allemaal ons emailadres, telnr en studentennr hier ook neerzetten.
+
+Naam:       Joshua Appelman
+ScienceUN:  jappelma
+StudieNR:   6329276
+TelNR:      0651982996
+Email:      joshua@jbna.nl
+
+Verder heb ik nu voor iedereen behalve Mike (wat is je email) forwarding opgezet, dus:
+
+jelta@uvabook.nl
+joshua@uvabook.nl
+freddy@uvabook.nl
+alper@uvabook.nl
+(mike@uvabook.nl)
+admin@uvabook.nl voor iedereen.
