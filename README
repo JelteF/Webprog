@@ -9,11 +9,12 @@ $ cd /datastore/webdb1249/htdocs && git pull
 de eerste keer dat je op websec komt moet je een nieuwe pubkey aanmaken + deze in het systeem zetten, doe hiervoor:
 
 $ ssh-keygen [enter] [enter] [enter]
-$ exec ssh-agent bash
-$ ssh-add ~/.ssh/id_rsa
+$ cd ~/.ssh/
+$ ln -s id_rsa.pub id_rsa2.pub
+$ ln -s id_rsa id_rsa2
 $ cat ~/.ssh/id_rsa.pub
 
-en copier en plak de output in github
+Dit is niet de oplossing van Luuk, maar dit is beter. Als je doet wat Luuk mailde moet je dat namelijk elke sessie herhalen.
 
 Laten we allemaal ons emailadres, telnr en studentennr hier ook neerzetten.
 
