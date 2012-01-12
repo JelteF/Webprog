@@ -1,9 +1,9 @@
-AuthName "site beveiligt met wachtwoord"
-AuthType Basic
-AuthUserFile /home/jappelma/password.txt
-<limit GET POST> 
-require valid-user 
-</limit>
+#AuthName "site beveiligt met wachtwoord"
+#AuthType Basic
+#AuthUserFile /home/jappelma/password.txt
+#<limit GET POST> 
+#require valid-user 
+#</limit>
 
 #ErrorDocument 404 /ErrorPages/error_404.html
 #ErrorDocument 500 /ErrorPages/error_500.html
