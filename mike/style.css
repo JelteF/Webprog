@@ -1,0 +1,169 @@
+body {
+margin: 0;
+padding: 0;
+background-color: #202020 ;
+font-family: Arial;
+font-size: 14px;
+}
+
+ul {
+font-weight:bold;color:#ffffff;
+margin:0;
+padding:0;
+list-style:none
+}
+ul li {
+display:block;
+position:relative;
+float:left
+}
+li ul {
+display:none
+}
+ul li a {
+display:block;
+margin-left:1px;
+text-decoration:none;
+color:#ffffff;
+padding: 5px 15px 5px 15px;
+background:#900000;
+white-space:nowrap
+}
+ul li a:hover {
+background:#000000; color:inherit;
+}
+li:hover ul { 
+display:block; 
+position:absolute
+}
+li:hover li { 
+font-size:90%;
+clear:left;
+width:12em
+}
+li:hover a {
+background:#B00000;color:inherit;
+}
+li:hover li a:hover {
+background:#000000;color:inherit
+}
+.clear_all {
+clear:both;
+}
+
+div.top {
+margin-left: auto;
+margin-right: auto;
+width: 984px;
+background-color: white;
+border: 1px solid black
+}
+
+div.menu {
+margin-left: auto;
+margin-right: auto;
+width: 984px;
+background-color: #900000;
+display: block;
+border-right: 1px solid black;
+border-left: 1px solid black;
+}
+
+div.mainpage {
+padding: 10px;
+background-color: white;
+text-align: left;
+vertical-align: text-top;
+}
+
+div.container {
+margin-left: auto;
+margin-right: auto;
+width: 984px;
+background-color: white;
+border: 1px solid black
+}
+
+div.main {
+width: 645px;
+padding: 10px;
+display: inline-block;
+background-color: white;
+text-align: left;
+vertical-align: text-top;
+}
+
+div.extra {
+margin-top: 40px;
+width: 300px;
+display: inline-block;
+background-color: #ffffff;
+text-align: left;
+vertical-align: text-top;
+}
+
+div.extra2 {
+background-color: #900000;
+text-align: left;
+vertical-align: text-top;
+color: white;
+}
+
+div.commentbox {
+margin-left: auto;
+margin-right: auto;
+margin-top: 10px;
+margin-bottom: 10px;
+width: 900px;
+padding: 10px;
+background-color: #E0E0E0;
+}
+
+div.title {
+width: 100px;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+padding: 10px;
+border: 1px solid black;
+background-color: white;
+}
+
+div.comment {
+margin-top: 10px;
+padding: 10px;
+border: 1px solid black;
+background-color: white;
+text-align: left;
+vertical-align: text-top;
+}
+
+div.filter {
+width: 300px;
+padding: 10px;
+background-color: #E0E0E0;
+display: inline-block;
+text-align: left;
+vertical-align: text-top;
+}
+
+div.search {
+width: 650px;
+display: inline-block;
+text-align: left;
+vertical-align: text-top;
+}
+
+div.search2 {
+width: 650px;
+display: inline-block;
+text-align: left;
+vertical-align: text-top;
+border-bottom: 1px solid black;
+padding: 20px 10px 20px 10px;
+}
+
+div.result {
+width: 650px;
+padding: 20px 10px 20px 10px;
+}

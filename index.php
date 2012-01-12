@@ -7,14 +7,12 @@
     <title>UvABook</title>
   </head>
   <body>
-    Dit is de <em>Webprogrammeren en Databases</em> pagina voor groep <b>webdb1249</b>.
-    <p />
-    Je bent hier gekomen via het domein:<pre>
-    <?php
-    echo getenv("HTTP_HOST");
-    ?>
-    </pre>
-    Als je een zelf geregistreerd domein wilt laten verwijzen naar deze pagina, dan kan dat
-    <a href="http://websec.science.uva.nl/webdb/registerdomain/">hier</a>.
+	Versies:
+	<ul>
+		<li><a href="/alper/index.html">Alper</a></li>
+		<li><a href="/jelte/index.html">Jelte</a></li>
+		<li><a href="/joshua/index.html">Joshua</a></li>
+		<li><a href="/mike/index.html">Mike</a></li>
+	</ul>
   </body>
 </html>
