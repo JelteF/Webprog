@@ -12,6 +12,7 @@
 		<li><a href="/alper/index.html">Alper</a></li>
 		<li><a href="/jelte/index.html">Jelte</a></li>
 		<li><a href="/joshua/index.html">Joshua</a></li>
+		<li><a href="/freddy/index.html">Freddy</a></li>
 		<li><a href="/mike/index.html">Mike</a></li>
 	</ul>
   </body>
