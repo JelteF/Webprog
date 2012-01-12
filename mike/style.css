@@ -29,7 +29,7 @@ background:#900000;
 white-space:nowrap
 }
 ul li a:hover {
-background:#985963;color:inherit
+background:#000000; color:inherit;
 }
 li:hover ul { 
 display:block; 
@@ -37,14 +37,14 @@ position:absolute
 }
 li:hover li { 
 font-size:70%;
-clear:left; 
+clear:left;
 width:12em
 }
 li:hover a {
-background:#985963;color:inherit
+background:#B00000;color:inherit;
 }
 li:hover li a:hover {
-background:#B75963;color:inherit
+background:#000000;color:inherit
 }
 .clear_all {
 clear:both;
@@ -65,19 +65,20 @@ width: 984px;
 background-color: #900000;
 display: block;
 padding: 0px 0px 0px 0px;
-border: 1px solid black
+border-right: 1px solid black
+border-left: 1px solid black
 }
 
 div.container {
 margin-left: auto;
 margin-right: auto;
 width: 984px;
-background-color: gray;
+background-color: white;
 border: 1px solid black
 }
 
 div.main {
-width: 760px;
+width: 755px;
 padding: 5px;
 display: inline-block;
 background-color: white;
@@ -86,10 +87,21 @@ vertical-align: text-top;
 }
 
 div.extra {
+margin-top: 50px;
 width: 200px;
 padding: 5px;
 display: inline-block;
 background-color: gray;
 text-align: left;
 vertical-align: text-top;
+}
+
+div.comment {
+margin-left: auto;
+margin-right: auto;
+margin-top: 10px;
+margin-bottom: 10px;
+width: 900px;
+padding: 10px;
+background-color: #600000;
 }
