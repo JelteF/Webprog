@@ -14,6 +14,7 @@
 		<li><a href="/joshua/index.html">Joshua</a></li>
 		<li><a href="/freddy/index.html">Freddy</a></li>
 		<li><a href="/mike/index.html">Mike</a></li>
+        <li><a href="http://jbna.nl/">awesomeness</a><li>
 	</ul>
   </body>
 </html>
