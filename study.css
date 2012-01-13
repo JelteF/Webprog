@@ -1,0 +1,40 @@
+div.container {
+margin-left: auto;
+margin-right: auto;
+width: 984px;
+}
+
+div.leftblock {
+margin-top: 10px;
+width: 620px;
+background-color: white;
+border: 1px solid black;
+float: left;
+}
+
+div.rightblock {
+margin-top: 10px;
+width: 350px;
+float: right;
+}
+
+div.discriptionblock {
+width: 100%;
+}
+
+div.commentblock {
+width: 100%;
+}
+
+div.infoblock {
+width: 100%;
+background-color: white;
+border: 1px solid black;
+}
+
+div.questionblock {
+margin-top: 10px;
+width: 100%;
+background-color: white;
+border: 1px solid black;
+}
