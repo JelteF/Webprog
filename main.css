@@ -11,23 +11,45 @@ body{
 	border-width:1px;
 	border-color:black;
 }
+.top{
+	float:left;
+	
+}
 .top .logo{
 	display:block;
-	width:984px;
+	width:295px;
 	height:75px;
 	color:black;
 	border-bottom-style:solid;
 	border-width:1px;
-	}
+	float:left;
+}
+.top .search{
+	display:block;
+	width:689px;
+	height:75px;
+	border-bottom-style:solid;
+	border-width:1px;
+	float:left;
+}
+.top .search  form{
+	padding-left:500px;
+	padding-top:15px;
+}
 .top .banner{
 	display:block;
 	width:984px;
 	height:124px;
+	float:left;
 }
 .menu{
 	display:block;
 	width:984px;
 	height:36px;
+	background-color:#202020;
+	margin-bottom:2;
+	font-weight:bold;
+	float:left;
 }
 .menu ul  {
 	color:white;
@@ -40,49 +62,26 @@ body{
 	position:120px;
 	float:left
 }
-.menu li ul{display:none}
 .menu ul li a{
 	display:block;
-	width:100px;
-	margin-right:1px;
-	margin-bottom:2px;
+	border-right-style:solid;
+	border-width:1px;
+	border-color:white;
 	text-decoration:none;
 	color:white;
 	background-color:#202020;
 	text-align:center;
-	padding:8px 0px 8px 0px;
+	padding:8px 20px;
 	white-space:nowrap;
 }
 .menu ul li a:hover,.menu ul li a:active{
 	background-color:#990000
 }
-.menu li:hover ul{ 
-		display:block; 
 
-		position:absolute;
-		width:300px}
-.menu li:hover li{ 
-	clear:left; }
-.menu li:hover ul li a{
-	display:block;
-	width:200px;
-	padding:5px 8px;
-	text-align:left;
-	margin-bottom:0px;
-}
-.menu li:hover li a:hover{background:#990000}
-
-.menu {
-
-}
-
-.menu .filler {
-	margin-right:1px;
-	padding: 0px 0px 36px 177px;
-	background-color:#202020;
-}
-.menu .search {
-	padding: 5px 10px 5px 10px;
-	background-color:#202020;
+.menu ul li .login a {
+	border-right-style:none;
+	border-left-style:solid;
+	position:absolute;
+	margin-left:472px;
 }
 
