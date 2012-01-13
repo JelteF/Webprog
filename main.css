@@ -47,6 +47,7 @@ body{
 .menu{
 	display:block;
 	width:984px;
+	height:31px;
 	background-color:#202020;
 	margin-bottom:2;
 	font-weight:bold;
@@ -83,7 +84,7 @@ body{
 	border-right-style:none;
 	border-left-style:solid;
 	position:absolute;
-	margin-left:505px;
+	margin-left:502px;
 }
 
 .main{
