@@ -74,7 +74,7 @@ body{
 	padding:8px 20px;
 	white-space:nowrap;
 }
-.menu ul li a:hover,.menu ul li a:active{
+.menu ul li a:hover,.menu ul li a:active, .menu ul li .currentpage a{
 	background-color:#990000
 }
 
