@@ -10,6 +10,7 @@ body{
 	border-style:solid;
 	border-width:1px;
 	border-color:black;
+	float:left;
 }
 .top{
 	float:left;
@@ -85,3 +86,8 @@ body{
 	margin-left:472px;
 }
 
+.main{
+	display:block;
+	padding:20px;
+	float:left;
+}
