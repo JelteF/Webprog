@@ -87,8 +87,18 @@ body{
 	margin-left:502px;
 }
 
-.main{
-	display:block;
-	padding:20px;
-	float:left;
+.main {
+	margin-left: auto;
+	margin-right: auto;
+	width: 984px;
+}
+
+.infoblok {
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	border: 1px solid black;
+	background-color: white;
+	float: left;
 }
