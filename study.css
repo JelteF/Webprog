@@ -18,6 +18,9 @@ width: 350px;
 float: right;
 }
 
+/*
+ * right block
+ */
 div.discriptionblock {
 width: 100%;
 padding: 10px;
@@ -25,6 +28,7 @@ text-align: left;
 vertical-align: text-top;
 }
 
+/*comment block*/
 div.commentblock {
 margin-left: auto;
 margin-right: auto;
@@ -37,15 +41,30 @@ text-align: center;
 vertical-align: text-top;
 }
 
+/*comment head*/
+div.commenthead {
+width: 100%;
+text-align: left;
+}
+
 div.commenttitle {
 width: 150px;
 padding: 10px 0px;
 border: 1px solid black;
+display: inline-block;
 font-size: 20px;
 font-weight: bold;
 text-align: center;
 }
 
+div.commentsort {
+margin-left: 220px;
+width: 200px;
+display: inline-block;
+text-align: right;
+}
+
+/*user comment block*/
 div.comment {
 margin-top: 5px;
 width: 100%;
@@ -87,13 +106,24 @@ display: inline-block;
 text-align: left;
 }
 
+/*
+ * left block
+ */
 div.infoblock {
 width: 100%;
-background-color: white;
+background-color:#900000;
 border: 1px solid black;
 text-align: left;
 vertical-align: text-top;
-overflow: auto;
+}
+
+div.info {
+width: 100%;
+padding: 5px 0px;
+background-color: #900000;
+border-top: 1px solid black;
+text-align: left;
+vertical-align: text-top;
 }
 
 div.questionblock {
@@ -103,4 +133,34 @@ background-color: white;
 border: 1px solid black;
 text-align: left;
 vertical-align: text-top;
+}
+
+/*tab style*/
+ul.tab {
+list-style: none;
+margin:0;
+padding:0;
+font-weight:bold;
+color:#ffffff;
+}
+ul.tab li.tab {
+display: inline-block;
+}
+li.tab ul.tab {
+display: none;
+}
+ul.tab li.tab a.tab {
+display: block;
+text-decoration: none;
+color: #ffffff;
+padding: 5px 15px 5px 15px;
+background: #900000;
+white-space: nowrap; 
+}
+ul.tab li.tab a:hover.tab {
+background: #000000;
+color:inherit;
+}
+li.tab {
+display: inline-block;
 }
