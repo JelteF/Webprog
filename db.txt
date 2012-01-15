@@ -1,0 +1,13 @@
+jn suggestie voor hoe de db er uit moet zien. Graag feedback, want ik heb ik ook geen ervaring mee. Alles tussen [] is een table.
+
+[studies]:  [studienr]  naam  description   eisen_CM  eisen_EM  eisen_NG  eisen_NT  graad   [verplichtevakken]  [keywords] [shouts]
+
+[studienr]: postnr  likes [voters]  [UvAnetID]  text  type(img/pdf/url) url datetime
+
+[voters]:   IPnr  [UvAnetID]  vote  datetime
+
+[UvAnetID]: IDnr  naam  opleiding  isMedewerker [posts] CASticket
+
+[posts]:    [studienr]  postnr
+
+[shouts]:   txt   IPnr  [UvAnetID]
