@@ -1,123 +1,198 @@
-<?xml version="1.0"?>
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="icon" type="image/ico" href="images/favicon.ico" />
-<link rel="stylesheet" type="text/css" href="main.css" />
-<link rel="stylesheet" type="text/css" href="study.css" />
-<title>UvAbook</title>
-</head>
+  <head>
+    <title>UvAbook</title>
+    <link rel="icon" type="image/ico" href="images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/layout.css" />
+  </head>
 
-<body>
-<div class="content">
-	<div class="top">
-		<div class="logo">
-			<a href="index.html">
-				<img src="images/logo.jpg" alt="Logo" />
-			</a>
-		</div>
-		<div class="search">
-			<form name="search" action="search.html" method="get">
-				<input onfocus="this.value=''" type="text" name="q" value="Zoek een studie">
-			</form>
-		</div>
-		<div class="banner">
-			<img src="images/banner.jpg" alt="Banner" />
-		</div>
-		</a>
-	</div>
-	<div class="menu">
-	<ul>
-		<li>
-			<a href="index.html">Home</a>
-		</li>
-		<li>
-			<a href="search.html">Opleidingzoeker</a>
-		</li>
-		<li>
-				<a href="faq.html">FAQ</a>
-		</li>
-		<li>
-			<a href="contact.html">Contact</a>
-		</li>
-		<li>
-			<div class="login">
-				<a href="login.html">Login</a>
-			</div>
-		</li>
-	</ul>
-	</div>
-</div>
+  <body>
+    <div class="topbanner">
+      <img src="images/logo.jpg" alt="Universiteit van Amsterdam" />
+    </div>
+    <div class="banner">
+      <img src="images/banner.jpg" alt="UvAbook" />
+    </div>
+    <!---navigatie--->
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="http://www.uvabook.nl/">UvAbook</a>
+          <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="opleidingen.html">Opleidingen</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+          <form action="" class="pull-left">
+          </form>
+          <form action="" class="pull-right">
+            <input class="input-large" type="text" placeholder="Zoek een opleiding">
+            <button class="btn" type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
-<div class="main">
-	<div class="leftblock">
-		<div class="discriptionblock">
-			Dit is een hele leuke study, je kan er alles leren in 1 dag.
-		</div>
-<!---commentblock--->
-		<div class="commentblock">
-			<div class="commenthead">
-				<div class="commenttitle">
-					Comment
-				</div>
-				<div class="commentsort">
-					Sorteer op: tijd likes
-				</div>
-			</div>
-<!---user post--->
-			<div class="comment">
-				<div class="commentuser">
-					6366295 (Mike Trieu)
-				</div>
-				<div class="commentratingstat">
-					1000 likes 0 dislikes
-				</div>
-				<div class="commentcontent">
-					Deze studie was zo cool. Nog nooit zo een leuke studie gezien. Deze studie was zo cool. Nog nooit zo een leuke studie gezien. Deze studie was zo cool. Nog nooit zo een leuke studie gezien.
-				</div>
-				<div class="commentrating">
-					Like Dislike
-				</div>
-			</div>
-<!---user post--->
-			<div class="comment">
-				<div class="commentuser">
-					6366295 (Mike Trieu)
-				</div>
-				<div class="commentratingstat">
-					1000 likes 0 dislikes
-				</div>
-				<div class="commentcontent">
-					Deze studie was zo cool. Nog nooit zo een leuke studie gezien. Deze studie was zo cool. Nog nooit zo een leuke studie gezien. Deze studie was zo cool. Nog nooit zo een leuke studie gezien.
-				</div>
-				<div class="commentrating">
-					Like Dislike
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="rightblock">
-		<div class="infoblock">
-<!---tabs--->
-			<div class="infotab">
-				<ul class="tab">
-					<li class="tab"><a class="tab" href="#tab1">Tab1</a></li>
-					<li class="tab"><a class="tab" href="#tab2">Tab2</a></li>
-					<li class="tab"><a class="tab" href="#tab3">Tab3</a></li>
-					<li class="tab"><a class="tab" href="#tab4">Tab4</a></li>
-				</ul>
-			</div>
-<!---actual info--->
-			<div class="info">
-				Master duurt 1 dag. In 1 dag bezit je kennis van mensen die al 5 jaar dit onderwerp studeren.Master duurt 1 dag. In 1 dag bezit je kennis van mensen die al 5 jaar dit onderwerp studeren.Master duurt 1 dag. In 1 dag bezit je kennis van mensen die al 5 jaar dit onderwerp studeren.Master duurt 1 dag. In 1 dag bezit je kennis van mensen die al 5 jaar dit onderwerp studeren.
-			</div>
-		</div>
-<!---question block, place holder for when we got time--->
-		<div class="questionblock">
-			houdt plaats bezet voor het geval we tijd hebben om een vragenbox te maken houdt plaats bezet voor het geval we tijd hebben om een vragenbox te maken houdt plaats bezet voor het geval we tijd hebben om een vragenbox te maken houdt plaats bezet voor het geval we tijd hebben om een vragenbox te maken
-		</div>
-	</div>
-</div>
-</body>
+    <!---container--->
+    <div class="container">
+      <div class="content">
+        <!---Beschrijvingblok--->
+        <div class="hero-unit">
+          <h1>BSc. Informatica</h1>
+          <p>E-mailen, geld pinnen, computer graphics en beeldbewerkingstechnieken in de gamingindustrie; de computer heeft zich onmisbaar gemaakt. Als je Informatica studeert, leer je als geen ander de uitgebreide mogelijkheden van de computer kennen én ontwikkelen.
+        </div>
+        <!---Heleblok--->
+        <div class="row">
+          <!---Linkerblok--->
+          <div class="span10">
+            <!---Sorteerblok--->
+            <div class="row">
+              <div class="span8 offset2">
+                <p class="pull-right">
+                <b>Sorteer op:</b>
+                <a class="active" href="#">Tijd</a>
+                ,  
+                <a href="#">Waardering</a>
+                </p>
+              </div>
+            </div>
+            <!---Commentblok--->
+            <div class="row" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+              <div class="span2">
+                <p><b>Gepost op:</b></p>
+                <div class="postdate">
+                  <p>17 januari 2012<br />14:59 GMT+1</p>
+                </div>
+                <p><b>Waardering:</b></p>
+                <div class=likes>
+                  <p>100 points</p>
+                </div>
+              </div>
+              <div class="span8">
+                <p><b><a href="#">Joshua Appelman (6529276)</a></b></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis ligula eu tellus porttitor eleifend in in nulla. Donec aliquam vestibulum vulputate. Proin congue convallis velit, sit amet scelerisque magna pretium eu. Pellentesque imperdiet volutpat pharetra. Nunc nec odio in ipsum porta varius. In hac habitasse platea dictumst. In eu magna nisi, lobortis viverra mauris. Ut vel erat lectus. Curabitur sodales volutpat enim, fringilla elementum elit eleifend eu. Quisque condimentum ultricies nunc id faucibus. Morbi id leo elit, vitae lobortis turpis. Morbi vitae dolor enim.</p>
+                <p>Aliquam erat volutpat. Sed cursus molestie mauris, ac interdum nibh rutrum vel. Quisque rhoncus viverra commodo. Vestibulum non tempor velit. Nunc hendrerit erat vitae risus facilisis congue. Sed ac massa libero, ut ultrices mauris. Fusce tincidunt interdum elit ut vulputate. Aliquam vulputate vulputate ante eget dignissim. Curabitur varius commodo euismod. Donec eu accumsan nulla. Aenean ultrices massa nec tellus porttitor quis vehicula ipsum faucibus</p>
+                <iframe width="460" height="260" src="http://www.youtube.com/embed/uSNS4bY6dqM?rel=0" frameborder="0" allowfullscreen></iframe>
+                <ul class="pills">
+                  <li><a href="#">Like</a></li>
+                  <li><a href="#">Dislike</a></li>
+                  <li><a href="#">Share</a></li>
+                </ul>
+              </div>
+            </div>
+            <!---Commentblok--->
+            <!---Commentblok--->
+            <div class="row" style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+              <div class="span2">
+                <p><b>Gepost op:</b></p>
+                <div class="postdate">
+                  <p>17 januari 2012<br />14:59 GMT+1</p>
+                </div>
+                <p><b>Waardering:</b></p>
+                <div class=likes>
+                  <p>100 points</p>
+                </div>
+              </div>
+              <div class="span8">
+                <p><b><a href="#">Joshua Appelman (6529276)</a></b></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis ligula eu tellus porttitor eleifend in in nulla. Donec aliquam vestibulum vulputate. Proin congue convallis velit, sit amet scelerisque magna pretium eu. Pellentesque imperdiet volutpat pharetra. Nunc nec odio in ipsum porta varius. In hac habitasse platea dictumst. In eu magna nisi, lobortis viverra mauris. Ut vel erat lectus. Curabitur sodales volutpat enim, fringilla elementum elit eleifend eu. Quisque condimentum ultricies nunc id faucibus. Morbi id leo elit, vitae lobortis turpis. Morbi vitae dolor enim.</p>
+                <p>Aliquam erat volutpat. Sed cursus molestie mauris, ac interdum nibh rutrum vel. Quisque rhoncus viverra commodo. Vestibulum non tempor velit. Nunc hendrerit erat vitae risus facilisis congue. <img class="postimg" src="images/computer-science-fry.png" align="right" width="210" height="150" class="postphoto"/>Sed ac massa libero, ut ultrices mauris. Fusce tincidunt interdum elit ut vulputate. Aliquam vulputate vulputate ante eget dignissim. Curabitur varius commodo euismod. Donec eu accumsan nulla. Aenean ultrices massa nec tellus porttitor quis vehicula ipsum faucibus</p>
+                <ul class="pills">
+                  <li><a href="#">Like</a></li>
+                  <li><a href="#">Dislike</a></li>
+                  <li><a href="#">Share</a></li>
+                </ul>
+              </div>
+            </div>
+            <!---Commentblok--->
+            <!---Navblok--->
+            <div class="row">
+              <div class="span8 offset2">
+            <div class="pagination">
+              <ul>
+                <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a><li>
+                <li><a href="#">3</a><li>
+                <li ><a href="#">4</a><li>
+                <li class="disabled"><a href="#">5</a><li>
+                <li class="disabled"><a href="#">6</a><li>
+                <li class="disabled"><a href="#">7</a><li>
+                <li class="disabled"><a href="#">8</a><li>
+                <li class="next"><a href="#">Next &rarr;</a></li>
+              </ul>
+            </div>
+          </div>
+            </div>
+            <!---/Navblok--->
+            <!---Interactieblok--->
+            <div class="row">
+              <div class="span8 offset2">
+                <h3>Reageer op deze opleiding!</h3>
+                <div class="input">
+                  <input class="medium disabled" type="text" placeholder="Naam"disabled/>
+                  <p></p>
+                  <textarea class="span8" rows="7" placeholder="No need to register! Just log in with your UvAnetID" disabled></textarea>
+                  <span class="help-block">
+                    Upload een foto/pdf of link naar een foto/video
+                  </span>
+                  <input class="input-file" type="file" disabled/>
+                  <form action="" class="pull-right">
+                    <button class="btn" type="submit"><a href="#">Log in met je UvAnetID</a></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!---Rechterblok--->
+          <div class="span6">
+            <!---Informatieblok--->
+            <div class="infobox-tab">
+              <ul class="tabs">
+                <li class="active"><a href="#">Info</a></li>
+                <li><a href="#">Eisen</a></li>
+                <li><a href="#">Open dagen</a></li>
+                <li><a href="#">Extra info</a></li>
+              </ul>
+            </div>
+            <div class="infobox-study">
+              <p><b>Studielast</b>  180 studiepunten</p>
+              <p><b>Taal</b>  Nederlands</p>
+              <p><b>Studieduur</b>  3 jaar</p>
+              <p><b>Titel</b>   Bachelor of Science (BSc)</p>
+              <p><b>CROHO-code</b>  56978</p>
+            </div>
+            <!---Vragenblok--->
+            <div class="shoutbox">
+              <h3>Want to leave a question?</h3>
+              <div class="input">
+                <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
+              </div>
+              <dl class="shoutbox">
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
+              </dl>
+            </div>
 
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="footer" style="text-align: center">
+      <p>&copy; Universiteit van Amsterdam 2012</p>
+    </div>
+
+  </body>
 </html>
