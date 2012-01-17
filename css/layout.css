@@ -127,6 +127,12 @@ dl.shoutbox {
   padding-top: 20px;
 }
 
+.commentblok {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
 /*opleidingen.html*/
 .filter {
   background-color: #f5f5f5;
@@ -156,4 +162,9 @@ dl.shoutbox {
 
 .result a {
   color: #000000;
+}
+
+.result a:hover {
+  color: #900000;
+  text-decoration: none; 
 }
