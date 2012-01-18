@@ -16,6 +16,10 @@ $ cat ~/.ssh/id_rsa.pub
 
 Dit is niet de oplossing van Luuk, maar dit is beter. Als je doet wat Luuk mailde moet je dat namelijk elke sessie herhalen.
 
+maak ook even een symlink naar de folder (req by Mike) door:
+
+$ ln /datastore/webdb1249/htdocs/ ~/
+
 Laten we allemaal ons emailadres, telnr en studentennr hier ook neerzetten.
 
 Naam:       Joshua Appelman
