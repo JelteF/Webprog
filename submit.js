@@ -1,6 +1,6 @@
 function post(formname)
 {
-	alert("Je probeert dingen te submitten");
+	alert("bla2");
 	if (window.XMLHttpRequest)
 	{// code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp=new XMLHttpRequest();
@@ -20,6 +20,7 @@ function post(formname)
 	}
 	xmlhttp.open("GET","addcomment.php?"+getquerystring(formname),true);
 	xmlhttp.send();
+	return false;
 }
 
 

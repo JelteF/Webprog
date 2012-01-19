@@ -5,7 +5,7 @@
     <link rel="icon" type="image/ico" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/layout.css" />
-	<script src="../submit.js" type="text/javascript"></script>
+	<script src="submit.js" type="text/javascript"></script>
   </head>
 
   <body>
@@ -138,14 +138,14 @@
               <div class="span8 offset2">
                 <h3>Reageer op deze opleiding!</h3>
                 <div class="input">
-                  <form name="postForm" action="" class="pull-right" onsubmit="post('postForm'); return false;">
+                  <form name="postForm" action="" class="pull-right" onsubmit="post(postForm); return false;">
 					  <input name="naam" class="medium" type="text" placeholder="Naam" />
 					  <p></p>
 					  Post: 
-					  <input type="radio" value="image" name="post-type" checked="true" />Image
-					  <input type="radio" value="video" name="post-type" />Video
+					  <input type="radio" value="img" name="post-type" checked="true" />Image
+					  <input type="radio" value="vid" name="post-type" />Video
 					  <input type="radio" value="pdf" name="post-type" />PDF
-					  <input type="radio" value="text" name="post-type" />Text
+					  <input type="radio" value="txt" name="post-type" />Text
 					  <p></p>
 					  <textarea name="content" class="span8" rows="4" type="text" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
 					  <span class="help-block">
