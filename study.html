@@ -5,6 +5,7 @@
     <link rel="icon" type="image/ico" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="css/layout.css" />
+	<script src="../submit.js" type="text/javascript"></script>
   </head>
 
   <body>
@@ -137,21 +138,22 @@
               <div class="span8 offset2">
                 <h3>Reageer op deze opleiding!</h3>
                 <div class="input">
-                  <input class="medium disabled" type="text" placeholder="Naam" disabled />
-                  <p></p>
-                  Post: 
-                  <input type="radio" value="image" name="post-type" checked="true" />Image
-                  <input type="radio" value="video" name="post-type" />Video
-                  <input type="radio" value="pdf" name="post-type" />PDF
-                  <input type="radio" value="text" name="post-type" />Text
-                  <p></p>
-                  <textarea class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" disabled></textarea>
-                  <span class="help-block">
-                    Upload een foto of link naar een foto
-                  </span>
-                  <input class="input-file" type="file" disabled/>
-                  <form action="" class="pull-right">
-                    <button class="btn" type="submit"><a href="#">Log in met je UvAnetID</a></button>
+                  <form name="postForm" action="" class="pull-right" onsubmit="post('postForm'); return false;">
+					  <input name="naam" class="medium" type="text" placeholder="Naam" />
+					  <p></p>
+					  Post: 
+					  <input type="radio" value="image" name="post-type" checked="true" />Image
+					  <input type="radio" value="video" name="post-type" />Video
+					  <input type="radio" value="pdf" name="post-type" />PDF
+					  <input type="radio" value="text" name="post-type" />Text
+					  <p></p>
+					  <textarea name="content" class="span8" rows="4" type="text" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
+					  <span class="help-block">
+						Upload een foto of link naar een foto
+					  </span>
+					  <input class="input-file" type="file" />
+
+					  <button class="btn" type="submit">Submit</button>
                   </form>
                 </div>
               </div>
