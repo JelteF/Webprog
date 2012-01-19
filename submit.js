@@ -1,6 +1,6 @@
 function post(formname)
 {
-	alert("sometext");
+	alert("Je probeert dingen te submitten");
 	if (window.XMLHttpRequest)
 	{// code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp=new XMLHttpRequest();
