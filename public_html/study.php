@@ -14,7 +14,8 @@
     die('could not connect' . mysql.error());
   mysql_select_db("webdb1249", $con);
   
-  $opleidingnaam = mysql_query("SELECT naam FROM studies WHERE studienr='1'"
+  $result = mysql_query("SELECT * FROM studies WHERE studienr='1'");
+  $row = mysql_fetch_row($result);
 ?>
 
     <!---container-->
@@ -22,8 +23,8 @@
       <div class="content">
         <!---Beschrijvingblok-->
         <div class="hero-unit">
-          <h1><?php echo $opleidingnaam ?></h1>
-          <p>E-mailen, geld pinnen, computer graphics en beeldbewerkingstechnieken in de gamingindustrie; de computer heeft zich onmisbaar gemaakt. Als je Informatica studeert, leer je als geen ander de uitgebreide mogelijkheden van de computer kennen én ontwikkelen.
+          <h1><?php echo $row[2]; ?></h1>
+          <p><?php echo $row[4]; ?></p>
         </div>
         <!---Heleblok-->
         <div class="row">
@@ -186,5 +187,6 @@
     </div>
 
 <?php require("templates/footer.php") ?>
+<?php mysql_close($con) ?>
   </body>
 </html>
