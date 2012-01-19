@@ -13,6 +13,8 @@
   if (!$con)
     die('could not connect' . mysql.error());
   mysql_select_db("webdb1249", $con);
+  
+  $opleidingnaam = mysql_query("SELECT naam FROM studies WHERE studienr='1'"
 ?>
 
     <!---container-->
@@ -20,7 +22,7 @@
       <div class="content">
         <!---Beschrijvingblok-->
         <div class="hero-unit">
-          <h1><?php mysql_query("SELECT naam FROM studies WHERE studienr='1'"); ?></h1>
+          <h1><?php echo $opleidingnaam ?></h1>
           <p>E-mailen, geld pinnen, computer graphics en beeldbewerkingstechnieken in de gamingindustrie; de computer heeft zich onmisbaar gemaakt. Als je Informatica studeert, leer je als geen ander de uitgebreide mogelijkheden van de computer kennen én ontwikkelen.
         </div>
         <!---Heleblok-->
