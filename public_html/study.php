@@ -3,7 +3,7 @@
   <head>
     <title>UvAbook</title>
 <?php require("templates/head.php") ?>
-	<script src="submit.js" type="text/javascript"></script>
+    <script src="submit.js" type="text/javascript"></script>
   </head>
 
   <body>
@@ -14,7 +14,7 @@
     die('could not connect' . mysql.error());
   mysql_select_db("webdb1249", $con);
   
-  $result = mysql_query("SELECT * FROM studies WHERE studienr='1'");
+  $result = mysql_query("SELECT * FROM studies WHERE id='1'");
   $row = mysql_fetch_row($result);
 ?>
 
@@ -153,12 +153,13 @@
               </ul>
             </div>
             <div class="infobox-study">
-              <p><b>Studielast</b>  180 studiepunten</p>
-              <p><b>Taal</b>  Nederlands</p>
-              <p><b>Studieduur</b>  3 jaar</p>
-              <p><b>Numerus Fixus</b>  Nee</p>
-              <p><b>Titel</b>   Bachelor of Science (BSc)</p>
-              <p><b>CROHO-code</b>  56978</p>
+              <p><b>Studielast: </b><?php echo $row[5]; echo " studiepunten"; ?></p>
+              <p><b>Taal: </b><?php echo $row[6]; ?></p>
+              <p><b>Studieduur: </b><?php echo $row[8]; echo " maanden"; ?></p>
+              <p><b>Studievorm: </b><?php echo $row[7]; ?></p>
+              <p><b>Titel: </b><?php echo $row[9]; ?></p>
+              <p><b>Faculteit: </b><?php echo $row[11]; ?></p>
+              <p><b>CROHO-code: </b><?php echo $row[10]; ?></p>
             </div>
             <!---Vragenblok-->
             <div class="shoutbox">
