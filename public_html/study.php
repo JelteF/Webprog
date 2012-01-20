@@ -14,7 +14,9 @@
     die('could not connect' . mysql.error());
   mysql_select_db("webdb1249", $con);
   
-  $result = mysql_query("SELECT * FROM studies WHERE id='1'");
+  $studie_id = $_GET["id"];
+  
+  $result = mysql_query("SELECT * FROM studies WHERE id='$studie_id'");
   $row = mysql_fetch_row($result);
 ?>
 
