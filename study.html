@@ -138,7 +138,7 @@
               <div class="span8 offset2">
                 <h3>Reageer op deze opleiding!</h3>
                 <div class="input">
-                  <form name="postForm" action="" class="pull-right" onsubmit="post(postForm); return false;">
+                  <form name="postForm" action="" class="pull-right" onsubmit="return false;">
 					  <input name="naam" class="medium" type="text" placeholder="Naam" />
 					  <p></p>
 					  Post: 
@@ -152,9 +152,8 @@
 						Upload een foto of link naar een foto
 					  </span>
 					  <input class="input-file" type="file" />
-
-					  <button class="btn" type="submit">Submit</button>
-                  </form>
+				  </form>
+				  <button class="btn" type="button" onclick="submit(postForm);">Submit</button>
                 </div>
               </div>
             </div>

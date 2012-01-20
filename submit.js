@@ -1,4 +1,4 @@
-function post(formname)
+function submit(formname)
 {
 	alert("bla2");
 	if (window.XMLHttpRequest)
@@ -9,18 +9,9 @@ function post(formname)
 	{// code for IE6, IE5
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	}
-	xmlhttp.onreadystatechange=function()
-	{
-	    if (self.xmlHttpReq.readyState == 4) {
-            updatepage(self.xmlHttpReq.responseText,responsediv);
-        }
-		else{
-			updatepage(responsemsg,responsediv);
-
-	}
 	xmlhttp.open("GET","addcomment.php?"+getquerystring(formname),true);
 	xmlhttp.send();
-	return false;
+	alert("bla3");
 }
 
 
