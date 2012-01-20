@@ -66,7 +66,13 @@
             <div class="result">
 <?php 
   while($row = mysql_fetch_array($result)) {
-    echo "<a href="study.php?id=" . $row['id'] . "">" . $row['naam'] . "</a>";
+    echo "<a href='study.php?id=";
+    echo $row['id'];
+    echo "'>";
+    echo $row['naam'];
+    echo "</a>";
+    echo "<br />";
+  }
 ?>
             </div>
           </div>
