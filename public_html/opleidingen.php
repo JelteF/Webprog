@@ -2,38 +2,11 @@
 <html>
   <head>
     <title>UvAbook</title>
-    <link rel="icon" type="image/ico" href="images/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/layout.css" />
+<?php require("templates/head.php") ?>
   </head>
 
   <body>
-    <div class="topbanner">
-      <img src="images/logo.jpg" alt="Universiteit van Amsterdam" />
-    </div>
-    <div class="banner">
-      <img src="images/banner.jpg" alt="UvAbook" />
-    </div>
-    <!---navigatie-->
-    <div class="topbar">
-      <div class="fill">
-        <div class="container">
-          <a class="brand" href="http://www.uvabook.nl/">UvAbook</a>
-          <ul class="nav">
-            <li><a href="index.html">Home</a></li>
-            <li class="active"><a href="opleidingen.html">Opleidingen</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-          </ul>
-          <form action="" class="pull-left">
-          </form>
-          <form action="" class="pull-right">
-            <input class="input-large" type="text" placeholder="Zoek een opleiding">
-            <button class="btn" type="submit">Login</button>
-          </form>
-        </div>
-      </div>
-    </div>
+<?php require("templates/topbar.php") ?>
 
     <!---container-->
     <div class="container">
@@ -90,9 +63,6 @@
       </div>
     </div>
 
-    <div class="footer" style="text-align: center">
-      <p>&copy; Universiteit van Amsterdam 2012</p>
-    </div>
-
+<?php require("templates/footer.php") ?>
   </body>
 </html>
