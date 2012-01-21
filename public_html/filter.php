@@ -20,4 +20,6 @@
     echo "</a>";
     echo "<br />";
   }
+
+  mysql_close($con);
 ?>
