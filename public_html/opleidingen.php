@@ -6,7 +6,7 @@
 <script type="text/javascript">
   function result(str) {
     if(str=="") {
-      document.getElementById("filterTaal").innerHTML="";
+      document.getElementById("filterResult").innerHTML="";
       return;
     }
     if(window.XMLHttpRequest) {
@@ -14,7 +14,7 @@
     }
     xmlhttp.onreadystatechange = function() {
       if(xmlhttp.readyState==4 && xmlhttp.status==200) {
-        document.getElementById("filterTaal").innerHTML=xmlhttp.responseText;
+        document.getElementById("filterResult").innerHTML=xmlhttp.responseText;
       }
     }
     xmlhttp.open("GET","filter.php?taal="+str,true);
@@ -41,12 +41,12 @@
           <div class="span6">
             <div class="filter">
               <h3>Verfijn op</h3></b>
-			  <h5>Welke soort opleiding?</h5>
-			  <input type="radio" name="filterSoort" value="Alpha opleidingen" />Alpha
-			  <input type="radio" name="filterSoort" value="Beta opleidingen" />Beta
-			  <input type="radio" name="filterSoort" value="Beide opleidingen" />Beide
+			  <h5>Welke titel?</h5>
+			  <input type="radio" name="BSc" />BSc
+			  <input type="radio" name="MSc" />MSc
+			  <input type="radio" name="Beide" />Beide
 			  <h5>Welke voertaal?</h5>
-			  <input type="radio" name="filterTaal" value="" onclick="result(this.value)" />Beide
+			  <input type="radio" name="filterTaal" value="default" onclick="result(this.value)" />Beide
 			  <input type="radio" name="filterTaal" value="nl" onclick="result(this.value)" />Nederlands
 			  <input type="radio" name="filterTaal" value="en" onclick="result(this.value)" />Engels
 			  <h5>Welk interessegebied?</h5>
@@ -81,7 +81,7 @@
                 <button class="btn" type="submit">Zoeken</button>
               </form>
             </div>
-            <div id="filterTaal" class="result">
+            <div id="filterResult" class="result">
 <?php 
   while($row = mysql_fetch_array($result)) {
     echo "<a href='study.php?id=";
