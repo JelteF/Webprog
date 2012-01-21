@@ -3,6 +3,24 @@
   <head>
     <title>UvAbook</title>
 <?php require("templates/head.php") ?>
+<script type="text/javaschript">
+  function result(str) {
+    if(str=="") {
+      document.getElementById("filterTaal").innerHTML="";
+      return;
+    }
+    if(window.XMLHttpRequest) {
+      xmlhttp = new XMLHttpRequest();
+    }
+    xmlhttp.onreadystatechange = function() {
+      if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+        document.getElementById("filterTaal").innerHTML=xmlhttp.responseText;
+      }
+    }
+    xmlhttp.open("GET","filter.php?taal="+str,true);
+    xmlhttp.send();
+  }
+</script>
   </head>
 
   <body>
@@ -13,7 +31,7 @@
     die('could not connect' . mysql.error());
   mysql_select_db("webdb1249", $con);
   
-  $result = mysql_query("SELECT id,naam FROM studies");
+  $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
 ?>
 
     <!---container-->
@@ -28,9 +46,9 @@
 			  <input type="radio" name="filterSoort" value="Beta opleidingen" />Beta
 			  <input type="radio" name="filterSoort" value="Beide opleidingen" />Beide
 			  <h5>Welke voertaal?</h5>
-			  <input type="radio" name="filterTaal" value="NL" />Nederlands
-			  <input type="radio" name="filterTaal" value="EN" />Engels
-			  <input type="radio" name="filterTaal" value="Beide" />Beide
+			  <input type="radio" name="filterTaal" value="*" onchange="result(this.value)" />Beide
+			  <input type="radio" name="filterTaal" value="nl" onchange="result(this.value)" />Nederlands
+			  <input type="radio" name="filterTaal" value="en" onchange="result(this.value)" />Engels
 			  <h5>Welk interessegebied?</h5>
 			  (meerdere antwoorden zijn mogelijk)<br />
 			  <input type="checkbox" name="filterIntresse" value="Aarde Natuur en Milieu" />Aarde Natuur en Milieu<br />
@@ -63,7 +81,7 @@
                 <button class="btn" type="submit">Zoeken</button>
               </form>
             </div>
-            <div class="result">
+            <div id="filterTaal" class="result">
 <?php 
   while($row = mysql_fetch_array($result)) {
     echo "<a href='study.php?id=";
