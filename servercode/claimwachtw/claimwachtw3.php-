@@ -1,0 +1,138 @@
+<?php print '<?xml version="1.0"?>'; ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta name="Author" content="Wolter Kaper" />
+	<title>Claim je MySQL wachtwoord, resultaat</title>
+<style type="text/css">
+	body { font-family: Arial; }
+	h1 {font-size: 24; }
+	span {color: Red; }
+</style>
+</head>
+
+<body>
+
+	<h1>Claim je MySQL gebruikersnaam en wachtwoord</h1>
+
+	<p>Er zijn totaal 39 MySQL databases aangemaakt voor deze cursus. Elk heeft zijn eigen 'gebruikersnaam' en wachtwoord. Met dit formulier kun je één van deze databases claimen. Ook kun je hier je gebruikersnaam en wachtwoord terugvinden als je het onverhoopt bent kwijtgeraakt. <span>Dit is een testversie, het resultaat telt niet.</span></p>
+
+	<form id="form1" method="get" action="claimwachtw3.php">
+	<table>
+		<tr>
+			<td>Je achternaam: </td>
+			<td><input type="text" name="naam" /></td>
+		</tr>
+		<tr>
+			<td>Je collegekaartnr.: </td>
+			<td><input type="text" name="collegekrt" /></td>
+		</tr>
+	</table>
+	<p><input type="submit" />&nbsp;<input type="reset" /></p>
+	</form>
+	<p>&nbsp;</p>
+
+<?php
+if ( isset($_REQUEST['naam']) && isset($_REQUEST['collegekrt']) )  {
+// Hele script alleen uitvoeren als beide parameters aanwezig
+// Het formulier verschijnt in beide gevallen, zodat alsnog een geldig verzoek gedaan kan worden.
+$gevonden1=FALSE;
+$gevonden2=FALSE;
+$klopt=FALSE;
+
+//Verbinden met database
+$linkID=@mysql_connect("dbm.science.uva.nl", "student39", "DL9O.qdA");
+if (! $linkID) {print "Fout: inloggen op MySQL database server mislukt."; exit();}
+$gelukt=mysql_select_db("student39", $linkID);
+if (! $gelukt) {print "Fout: database niet gevonden."; exit();}
+
+//Alleen voor gebruik in queries! Alle bijzondere tekens escapen
+$naam = mysql_real_escape_string($_REQUEST['naam']) ; 
+$collegekrt = mysql_real_escape_string($_REQUEST['collegekrt']) ;
+
+//Check of collegekaart al bekend is
+$SQL="SELECT name FROM claimwachtw WHERE collegekrt='$collegekrt'";
+$result1=mysql_query($SQL);
+if (! $result1) {print "MySQL foutbericht: ".mysql_error($linkID); exit();}
+if (mysql_num_rows($result1)!=0) {
+	$gevonden1=TRUE;
+	$row=mysql_fetch_assoc($result1);
+	$klopt= ($_REQUEST['naam']==$row["name"]);
+	}
+mysql_free_result($result1);
+
+if (! $gevonden1) {
+	//check of naam al bekend is
+	$SQL="SELECT collegekrt FROM claimwachtw WHERE name='$naam'";
+	$result2=mysql_query($SQL);
+	if (! $result2) {print "MySQL foutbericht: ".mysql_error($linkID); exit();}
+	if (mysql_num_rows($result2)!=0) {$gevonden2=TRUE; }
+	mysql_free_result($result2);
+	}
+
+if (! $gevonden1) {
+if (! $gevonden2) {
+	// Als naam én collekaart beide onbekend: Nieuwe gebruiker
+	// Zoek eerste vrije database
+	$SQL ="SELECT username, passw FROM claimwachtw ";
+	$SQL.="WHERE name IS NULL AND collegekrt IS NULL";
+	$result3=mysql_query($SQL);
+	if (! $result3) {print "MySQL foutbericht: ".mysql_error($linkID); exit();}
+	if (mysql_num_rows($result3)==0) 
+		{ print "Er zijn geen vrije databases meer. Vraag de docent om raad."; exit(); }
+	$row=mysql_fetch_assoc($result3);
+	$username=$row["username"]; 
+	$passw=$row["passw"];
+
+	// Koppel nieuwe gebruiker aan deze database
+	$SQL="UPDATE claimwachtw SET name='$naam', collegekrt='$collegekrt' ";
+	$SQL=$SQL."WHERE username='$username'";
+	$result4=mysql_query($SQL);
+	if (! $result4) {print "MySQL foutbericht: ".mysql_error($linkID); exit();}
+	?>
+	<h1>Resultaat: Nieuwe gebruiker geaccepteerd <span>testversie, resultaat telt niet</span></h1>
+	<table>
+	<tr><td>Achternaam:</td><td><?php print htmlspecialchars($_REQUEST['naam']); ?></td></tr>
+	<tr><td>Collegekaart:</td><td><?php print htmlspecialchars($_REQUEST['collegekrt']); ?></td></tr>
+	<tr><td>MySQL gebruikersnaam:</td><td><?php print htmlspecialchars($username); ?></td></tr>
+	<tr><td>Wachtwoord:</td><td><?php print htmlspecialchars($passw); ?></td></tr>
+	</table>
+	<?php
+	} }
+	
+if ($gevonden1 && $klopt) {
+	// Bekende gebruiker, geef hem z'n naam en wachtwoord
+	$SQL = "SELECT * FROM claimwachtw ";
+	$SQL.= "WHERE name='$naam' AND collegekrt='$collegekrt'";
+	$result5=mysql_query($SQL);
+	if (! $result5) {print "MySQL foutbericht: ".mysql_error($linkID); exit();}
+	if (mysql_num_rows($result5)==0) {print "Onbekende fout."; exit(); }
+	$row=mysql_fetch_assoc($result5);
+	?>
+	<h1>Resultaat: bestaande gebruiker gevonden. <span>testversie, resultaat telt niet</span></h1>
+	<p>U vindt hieronder uw gegevens.</p>
+	<table>
+	<tr><td>Achternaam:</td><td><?php print htmlspecialchars($_REQUEST['naam']); ?></td></tr>
+	<tr><td>Collegekaart:</td><td><?php print htmlspecialchars($_REQUEST['collegekrt']); ?></td></tr>
+	<tr><td>MySQL gebruikersnaam:</td><td><?php print htmlspecialchars($row["username"]); ?></td></tr>
+	<tr><td>Wachtwoord:</td><td><?php print htmlspecialchars($row["passw"]); ?></td></tr>
+	</table>
+
+	<?php
+	}
+
+if (($gevonden1 || $gevonden2) && ! $klopt) {
+	?>
+	<h1>Resultaat: fout. <span>testversie, resultaat telt niet</span></h1>
+	<p>Collegekaart of achternaam conflicteren met eerder ingevoerde gegevens.</p>
+	<p>Als het probleem blijft, neem dan contact op met de docent. 
+		<a href="mailto:kaper@science.uva.nl">kaper@science.uva.nl</a></p>
+	<?php
+	}
+}
+?>
+
+</body>
+
+</html>

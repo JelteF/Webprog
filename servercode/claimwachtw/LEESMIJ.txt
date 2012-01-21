@@ -1,0 +1,12 @@
+Deze map bevat drie versies van "claimwachtwoord"
+
+versie 1: deze versie is beveiligd! Je ziet bijna niks.
+claimform1.html
+claimwachtw1.php
+
+versie 2: hier kun je alles zien
+claimform2.html
+claimwachtw2.php
+
+versie 3: hier zijn formulier en script samengevoegd
+claimwachtw3.php
