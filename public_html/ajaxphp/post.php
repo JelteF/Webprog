@@ -7,11 +7,13 @@
         $type = $_POST['post-type'];
         $content = "";
         $con = mysql_connect("localhost","webdb1249","uvabookdb");
+        echo "voor connect";
         if (!$con)
 	{
             $result = "Could not connect to the database:<br />Please try again.";
 	}
         else{
+            echo "na connect";
             if($type == "pdf" || ($type="img" && $_POST['upload']=="upload")){
                 $destination_path = "uvabook.nl/";
                 $result = "1";
@@ -19,6 +21,7 @@
                 mysql_select_db("webdb1249", $con);
                 mysql_query("INSERT INTO uploads (file) VALUES ('')");
                 $filename = mysql_insert_id().$extension;
+                echo "filename=".$filename;
                 $content = "uploads/" . $filename;
                 echo $_FILES["file"]["type"];
                 if ($type == "img"){

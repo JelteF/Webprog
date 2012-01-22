@@ -1,5 +1,6 @@
 <?php
         $naam = mysql_real_escape_string($_POST['naam']);
+        echo "voor connect";
 	$type = mysql_real_escape_string($_POST['post-type']);
         $content = mysql_real_escape_string($_POST['content']);
 	$beschrijving = mysql_real_escape_string($_POST['beschrijving']); 
@@ -9,7 +10,7 @@
 	{
 		die('Could not connect: ' . mysql_error());
 	}
-       
+        echo "na connect";
 	mysql_select_db("webdb1249", $con2);
 	mysql_query("INSERT INTO posts (studie, content, type, beschrijving)
 	VALUES ('$studie', '$content', '$type', '$beschrijving')");
