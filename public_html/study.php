@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <!--Nieuw Commentblok-->
-                        <div id="newcomment" class="commentblok">blaebuaeurauhaetu
+                        <div id="newcomment" class="commentblok">
                         </div>
                         <!--Commentblok-->
                         <!--Navblok-->
@@ -127,7 +127,7 @@
                             <div class="span8 offset2">
                                 <h3>Reageer op deze opleiding!</h3>
                                 <div class="input">
-                                    <form name="postForm" action="" class="pull-right" onsubmit="return false;">
+                                    <form name="postForm"  action="ajaxphp/post.php" method="post" enctype="multipart/form-data" target="post_target" class="pull-left" onsubmit="startUpload();">
                                         <input name="naam" class="medium" type="text" placeholder="Naam" />
                                         <p></p>
                                         Post: 
@@ -138,15 +138,18 @@
                                         <p></p>
                                         <div id="uploadcontent">
                                             <textarea name="beschrijving" class="span8" rows="4" type="text" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
-                                            <br /> <br />Upload een foto of link naar een foto:<br />
+                                            <br /><br />Upload een foto of link naar een foto:<br />
                                             Link   <input id="link" type="radio" value="link" name="upload" checked="true" onclick="uploadselect('link');" />
                                             Upload   <input id="upload" type="radio" value="upload" name="upload" onclick="uploadselect('upload');" />
                                             <div id="uploadstyle">
                                                 <br /><input name="content" class="large" type="text" />
                                             </div>
                                         </div>
+                                        <br />
+                                        <button class="btn" type="submit" name="submitBtn">Submit</button>
                                     </form>
-                                    <button class="btn" type="button" onclick="submit('postForm');" >Submit</button>
+                                    <div id="uploading"></div>
+                                    <iframe id="post_target" name="post_target" src="#" style="width:50;height:50;border:1px solid #fff;"></iframe>
                                 </div>
                             </div>
                         </div>

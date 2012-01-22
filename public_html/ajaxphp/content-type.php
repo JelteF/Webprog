@@ -2,7 +2,7 @@
     if($_GET['checked']=="pdf"){
         echo "<textarea name='beschrijving' class='span8' rows='4' type='text' 
             placeholder='No need to register! Just log in with your UvAnetID' ></textarea>
-            <br /> <br />Upload pdf <input name='content' type='file' />";
+            <br /> <br />Upload pdf <input name='file' type='file' />";
     }
     elseif($_GET['checked']=="vid")
         echo"<textarea name='beschrijving' class='span8' rows='4' type='text' 

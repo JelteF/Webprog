@@ -1,16 +1,15 @@
 <?php
-
-	$naam = $_POST['naam'];
-	$type = $_POST['post-type'];
-	$content = $_POST['content'];
-	$beschrijving = $_POST['beschrijving']; 
-        $studie = $_POST['studie'];
+        $naam = mysql_real_escape_string($_POST['naam']);
+	$type = mysql_real_escape_string($_POST['post-type']);
+        $content = mysql_real_escape_string($_POST['content']);
+	$beschrijving = mysql_real_escape_string($_POST['beschrijving']); 
+        $studie = mysql_real_escape_string($_POST['studie']);
 	$con2 = mysql_connect("localhost","root","");
 	if (!$con2)
 	{
 		die('Could not connect: ' . mysql_error());
 	}
-	
+       
 	mysql_select_db("webdb1249", $con2);
 	mysql_query("INSERT INTO posts (studie, content, type, beschrijving)
 	VALUES ('$studie', '$content', '$type', '$beschrijving')");
@@ -32,9 +31,9 @@
         if($type=="txt")
             echo $content."</p>";
         elseif ($type=="img")              
-            echo "<img align='right' width='460' src='".$content."' class='postimg' />";
+            echo "</p><a href=".$content."><img align='right' width='460' src='".$content."' class='postimg' /></a>";
         elseif ($type=="pdf")
-            echo "<a href=".$content.">Download pdf</a>";
+            echo "</p><a href=".$content.">Download pdf</a>";
         echo "<ul class='pills'>
                     <li><a href='#'>Like</a></li>
                     <li><a href='#'>Dislike</a></li>
