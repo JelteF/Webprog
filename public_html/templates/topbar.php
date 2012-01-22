@@ -19,8 +19,10 @@
           </form>
           <form action="" class="pull-right">
             <input class="input-large" type="text" placeholder="Zoek een opleiding">
-            <button class="btn" type="submit">Login</button>
           </form>
+          <form action="https://secure.uva.nl/cas/login?service=http://uvabook.nl" method="POST">
+    		<input type="submit" value="inloggen">
+		  </form>
         </div>
       </div>
     </div>

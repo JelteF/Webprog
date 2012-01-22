@@ -3,10 +3,36 @@
   <head>
     <title>UvAbook</title>
 <?php require("templates/head.php") ?>
+<script type="text/javascript">
+  function result(str) {
+    if(str=="") {
+      document.getElementById("filterResult").innerHTML="";
+      return;
+    }
+    if(window.XMLHttpRequest) {
+      xmlhttp = new XMLHttpRequest();
+    }
+    xmlhttp.onreadystatechange = function() {
+      if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+        document.getElementById("filterResult").innerHTML=xmlhttp.responseText;
+      }
+    }
+    xmlhttp.open("GET","filter.php?taal="+str,true);
+    xmlhttp.send();
+  }
+</script>
   </head>
 
   <body>
 <?php require("templates/topbar.php") ?>
+<?php
+  $con = mysql_connect("localhost","webdb1249","uvabookdb");
+  if (!$con)
+    die('could not connect' . mysql.error());
+  mysql_select_db("webdb1249", $con);
+  
+  $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
+?>
 
     <!---container-->
     <div class="container">
@@ -15,14 +41,14 @@
           <div class="span6">
             <div class="filter">
               <h3>Verfijn op</h3></b>
-			  <h5>Welke soort opleiding?</h5>
-			  <input type="radio" name="filterSoort" value="Alpha opleidingen" />Alpha
-			  <input type="radio" name="filterSoort" value="Beta opleidingen" />Beta
-			  <input type="radio" name="filterSoort" value="Beide opleidingen" />Beide
+			  <h5>Welke titel?</h5>
+			  <input type="radio" name="BSc" />BSc
+			  <input type="radio" name="MSc" />MSc
+			  <input type="radio" name="Beide" />Beide
 			  <h5>Welke voertaal?</h5>
-			  <input type="radio" name="filterTaal" value="NL" />Nederlands
-			  <input type="radio" name="filterTaal" value="EN" />Engels
-			  <input type="radio" name="filterTaal" value="Beide" />Beide
+			  <input type="radio" name="filterTaal" value="default" onclick="result(this.value)" />Beide
+			  <input type="radio" name="filterTaal" value="nl" onclick="result(this.value)" />Nederlands
+			  <input type="radio" name="filterTaal" value="en" onclick="result(this.value)" />Engels
 			  <h5>Welk interessegebied?</h5>
 			  (meerdere antwoorden zijn mogelijk)<br />
 			  <input type="checkbox" name="filterIntresse" value="Aarde Natuur en Milieu" />Aarde Natuur en Milieu<br />
@@ -55,8 +81,17 @@
                 <button class="btn" type="submit">Zoeken</button>
               </form>
             </div>
-            <div class="result">
-              <a class="resultlink" href="study.html">Informatica</a>
+            <div id="filterResult" class="result">
+<?php 
+  while($row = mysql_fetch_array($result)) {
+    echo "<a href='study.php?id=";
+    echo $row['id'];
+    echo "'>";
+    echo $row['naam'];
+    echo "</a>";
+    echo "<br />";
+  }
+?>
             </div>
           </div>
         </div>
@@ -64,5 +99,6 @@
     </div>
 
 <?php require("templates/footer.php") ?>
+<?php mysql_close($con) ?>
   </body>
 </html>
