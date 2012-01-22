@@ -32,24 +32,23 @@ function submit(formname, result, content)
         alert(query);
         document.getElementById("newcomment").innerHTML="bloebloebloe"
         xmlhttp.send(query);
-
     }
 }
 
 function getElementValue(formname){
-    var formArray = document.forms[formname].elements;
-    var query = "&studie="+document.getElementById('studie_id').className;
-    for (i=0; i<formArray.length; i++){
-        var element = formArray[i];
-        var elemType = element.type.toLowerCase();
-        if(element.name!="content" && (elemType == "text" || elemType == "textarea"))
-            query += "&" + element.name + "=" + escape(element.value);
-        if(element.name == "post-type" && element.checked){
-            if(element.value=="txt")
-                query += "&post-type=txt&beschrijving=";
-            else
-                query += "&post-type="+element.value;
-        }
+var formArray = document.forms[formname].elements;
+var query = "&studie="+document.getElementById('studie_id').className;
+for (i=0; i<formArray.length; i++){
+    var element = formArray[i];
+    var elemType = element.type.toLowerCase();
+    if(element.name!="content" && (elemType == "text" || elemType == "textarea"))
+        query += "&" + element.name + "=" + escape(element.value);
+    if(element.name == "post-type" && element.checked){
+        if(element.value=="txt")
+            query += "&post-type=txt&beschrijving=";
+        else
+            query += "&post-type="+element.value;
     }
-    return query;
+}
+return query;
 }
