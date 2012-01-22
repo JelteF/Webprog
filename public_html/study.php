@@ -4,6 +4,7 @@
         <title>UvAbook</title>
 <?php require("templates/head.php") ?>
         <script type="text/javascript" src="js/submit.js"></script>
+        <script type="text/javascript" src="js/changeform.js"></script>
     </head>
     
     <body>
@@ -18,6 +19,7 @@
   
   $result = mysql_query("SELECT * FROM studies WHERE id='$studie_id'");
   $row = mysql_fetch_row($result);
+  echo "<div id='studie_id' class=".$studie_id."></div>";
 ?>
         
         <!---container-->
@@ -96,8 +98,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!--Nieuw commentblok-->
-                        <div id="newcomment" class="commentblok">
+                        <!--Nieuw Commentblok-->
+                        <div id="newcomment" class="commentblok">blaebuaeurauhaetu
                         </div>
                         <!--Commentblok-->
                         <!--Navblok-->
@@ -129,15 +131,20 @@
                                         <input name="naam" class="medium" type="text" placeholder="Naam" />
                                         <p></p>
                                         Post: 
-                                        <input id="img" type="radio" value="img" name="post-type" checked="true" />Image
-                                        <input id="vid" type="radio" value="vid" name="post-type" />Video
-                                        <input id="pdf" type="radio" value="pdf" name="post-type" />PDF
-                                        <input id="txt" type="radio" value="txt" name="post-type" />Text
+                                        <input id="img" type="radio" value="img" name="post-type" checked="true" onclick="contentselect('img');"/>Image
+                                        <input id="vid" type="radio" value="vid" name="post-type" onclick="contentselect('vid');"/>Video
+                                        <input id="pdf" type="radio" value="pdf" name="post-type" onclick="contentselect('pdf');"/>PDF
+                                        <input id="txt" type="radio" value="txt" name="post-type" onclick="contentselect('txt');"/>Tekst
                                         <p></p>
-                                        <textarea name="content" class="span8" rows="4" type="text" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
-                                        <span class="help-block">
-                                            Upload een foto of link naar een foto</span>
-                                        <input class="input-file" type="file" />
+                                        <div id="uploadcontent">
+                                            <textarea name="beschrijving" class="span8" rows="4" type="text" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
+                                            <br /> <br />Upload een foto of link naar een foto:<br />
+                                            Link   <input id="link" type="radio" value="link" name="upload" checked="true" onclick="uploadselect('link');" />
+                                            Upload   <input id="upload" type="radio" value="upload" name="upload" onclick="uploadselect('upload');" />
+                                            <div id="uploadstyle">
+                                                <br /><input name="content" class="large" type="text" />
+                                            </div>
+                                        </div>
                                     </form>
                                     <button class="btn" type="button" onclick="submit('postForm');" >Submit</button>
                                 </div>
@@ -182,8 +189,11 @@
                                 <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
                             </dl>
                         </div>
+                        
                     </div>
+                    
                 </div>
+                
             </div>
         </div>
         

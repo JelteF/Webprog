@@ -17,6 +17,7 @@ function submit(formname)
     };
     xmlhttp.open("POST", "../servercode/addcomment.php", true);
     xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    alert("bla")
     var query=getElementValue(formname);
     alert(query);
     xmlhttp.send(query);
@@ -24,29 +25,23 @@ function submit(formname)
 }
 
 function getElementValue(formname){
-var formArray = document.forms[formname].elements;
-var query = "";
-for (i=0; i<formArray.length; i++){
-    var element = formArray[i];
-    var elemType = element.type.toLowerCase();
-    alert(elemType);
-    if(elemType == "text" || elemType == "textarea" 
-        || elemType == "file"){
-        if (query.length > 0)
-            query += "&";
-        query += element.name + "=" + element.value;
-        alert("query= " + query);
+    var formArray = document.forms[formname].elements;
+    var query = "studie="+document.getElementById('studie_id').className;
+    for (i=0; i<formArray.length; i++){
+        var element = formArray[i];
+        var elemType = element.type.toLowerCase();
+        if(elemType == "text" || elemType == "textarea")
+            query += "&" + element.name + "=" + element.value;
     }
-    if(elemType == "radio" && element.checked){
-        if(query.length > 0)
-            query += "&";
+    if(element.name == "post-type" && element.checked){
         if(element.value=="txt")
-            query += "post-type=txt&beschrijving=";
+            query += "&post-type=txt&beschrijving=";
         else
-            query += "type="+element.value;
-        alert("query= " + query);
+            query += "&post-type="+element.value;
     }
-}
-return query;
-
+    if (elemType == "file"){
+        //upload file & add "&content=".link to the query
+    }
+    return query;
+    
 }

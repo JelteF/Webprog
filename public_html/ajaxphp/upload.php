@@ -1,0 +1,7 @@
+<?php 
+    if($_GET['checked']=="upload"){
+        echo "<br /><input name='content' type='file' />";
+    }
+    else
+        echo"<br /><input name='content' class='large' type='text' />"
+?>
