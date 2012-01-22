@@ -59,7 +59,6 @@
             else{
                 $content = $_POST['content'];
                 $result= "1";
-                echo $result;
             }
         }
 ?>

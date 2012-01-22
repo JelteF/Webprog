@@ -149,7 +149,7 @@
                                         <button class="btn" type="submit" name="submitBtn">Submit</button>
                                     </form>
                                     <div id="uploading"></div>
-                                    <iframe id="post_target" name="post_target" src="#" style="width:50;height:50;border:1px solid #fff;"></iframe>
+                                    <iframe id="post_target" name="post_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>
                                 </div>
                             </div>
                         </div>
