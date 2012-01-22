@@ -25,12 +25,9 @@ function submit(formname, result, content)
                 document.getElementById("newcomment").innerHTML+=xmlhttp.responseText;
             }
         }
-        document.getElementById("newcomment").innerHTML="blablabla";
         xmlhttp.open("POST", "addcomment.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         var query="content="+escape(content)+getElementValue(formname);
-        alert(query);
-        document.getElementById("newcomment").innerHTML="bloebloebloe"
         xmlhttp.send(query);
     }
 }
