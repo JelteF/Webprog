@@ -1,17 +1,16 @@
 <?php
-echo "testetethetuhtuheanushaeuthautnsh";
 $con2 = mysql_connect("localhost","webdb1249","uvabookdb");
 if (!$con2)
 {
   die('Could not connect: ' . mysql_error());
 }
+
 $naam = mysql_real_escape_string($_POST['naam']);
 $type = mysql_real_escape_string($_POST['post-type']);
 $content = mysql_real_escape_string($_POST['content']);
 $beschrijving = mysql_real_escape_string($_POST['beschrijving']);
 $studie = mysql_real_escape_string($_POST['studie']);
 
-echo "na connect";
 mysql_select_db("webdb1249", $con2);
 mysql_query("INSERT INTO posts (studie, content, type, beschrijving)
   VALUES ('$studie', '$content', '$type', '$beschrijving')");
