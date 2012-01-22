@@ -5,10 +5,10 @@
 <?php require("templates/head.php") ?>
 <script type="text/javascript">
   function result(str) {
-    if(str=="") {
-      document.getElementById("searchResult").innerHTML="";
-      return;
-    }
+//    if(str=="") {
+//      document.getElementById("searchResult").innerHTML="";
+//      return;
+//    }
     if(window.XMLHttpRequest) {
       xmlhttp = new XMLHttpRequest();
     }
