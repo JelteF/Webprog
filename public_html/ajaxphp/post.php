@@ -71,4 +71,4 @@
     var result = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($result)); ?>";
     var content = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($content)); ?>";
     window.top.window.submit("postForm", result, content);
-</script>   
+</script>
