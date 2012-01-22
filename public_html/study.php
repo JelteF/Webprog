@@ -3,13 +3,13 @@
   <head>
     <title>UvAbook</title>
 <?php require("templates/head.php") ?>
-	<script src="submit.js" type="text/javascript"></script>
+	<script type="text/javascript" src="js/submit.js"></script>
   </head>
 
   <body>
 <?php require("templates/topbar.php") ?>
 <?php
-  $con = mysql_connect("localhost","webdb1249","uvabookdb");
+  $con = mysql_connect("localhost","root","");
   if (!$con)
     die('could not connect' . mysql.error());
   mysql_select_db("webdb1249", $con);
@@ -94,6 +94,8 @@
                 </div>
               </div>
             </div>
+            <div id="newcomment" class="commentblok">
+            </div>
             <!---/Commentblok-->
             <!---Navblok-->
             <div class="row">
@@ -120,23 +122,22 @@
               <div class="span8 offset2">
                 <h3>Reageer op deze opleiding!</h3>
                 <div class="input">
-                  <form name="postForm" action="" class="pull-right" onsubmit="post(postForm); return false;">
+                  <form name="postForm" action="" class="pull-right" onsubmit="return false;">
 					  <input name="naam" class="medium" type="text" placeholder="Naam" />
 					  <p></p>
 					  Post: 
-					  <input type="radio" value="img" name="post-type" checked="true" />Image
-					  <input type="radio" value="vid" name="post-type" />Video
-					  <input type="radio" value="pdf" name="post-type" />PDF
-					  <input type="radio" value="txt" name="post-type" />Text
+					  <input id="img" type="radio" value="img" name="post-type" checked="true" />Image
+					  <input id="vid" type="radio" value="vid" name="post-type" />Video
+					  <input id="pdf" type="radio" value="pdf" name="post-type" />PDF
+					  <input id="txt" type="radio" value="txt" name="post-type" />Text
 					  <p></p>
 					  <textarea name="content" class="span8" rows="4" type="text" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
 					  <span class="help-block">
 						Upload een foto of link naar een foto
 					  </span>
 					  <input class="input-file" type="file" />
-
-					  <button class="btn" type="submit">Submit</button>
-                  </form>
+				  </form>
+				  <button class="btn" type="button" onclick="submit('postForm');" >Submit</button>
                 </div>
               </div>
             </div>
