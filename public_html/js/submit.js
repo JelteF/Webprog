@@ -26,7 +26,7 @@ function submit(formname, result, content)
             }
         }
         document.getElementById("newcomment").innerHTML="blablabla";
-        xmlhttp.open("POST", "../servercode/addcomment.php", true);
+        xmlhttp.open("POST", "addcomment.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         var query="content="+escape(content)+getElementValue(formname);
         alert(query);
