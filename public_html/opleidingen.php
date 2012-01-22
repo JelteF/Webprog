@@ -5,19 +5,19 @@
 <?php require("templates/head.php") ?>
 <script type="text/javascript">
   function result(str) {
-    if(str=="") {
-      document.getElementById("filterResult").innerHTML="";
-      return;
-    }
+//    if(str=="") {
+//      document.getElementById("searchResult").innerHTML="";
+//      return;
+//    }
     if(window.XMLHttpRequest) {
       xmlhttp = new XMLHttpRequest();
     }
     xmlhttp.onreadystatechange = function() {
       if(xmlhttp.readyState==4 && xmlhttp.status==200) {
-        document.getElementById("filterResult").innerHTML=xmlhttp.responseText;
+        document.getElementById("searchResult").innerHTML=xmlhttp.responseText;
       }
     }
-    xmlhttp.open("GET","filter.php?taal="+str,true);
+    xmlhttp.open("GET","search.php?q="+str,true);
     xmlhttp.send();
   }
 </script>
@@ -42,13 +42,13 @@
             <div class="filter">
               <h3>Verfijn op</h3></b>
 			  <h5>Welke titel?</h5>
-			  <input type="radio" name="BSc" />BSc
-			  <input type="radio" name="MSc" />MSc
-			  <input type="radio" name="Beide" />Beide
+			  <input type="radio" name="titel" />BSc
+			  <input type="radio" name="titel" />MSc
+			  <input type="radio" name="titel" />Beide
 			  <h5>Welke voertaal?</h5>
-			  <input type="radio" name="filterTaal" value="default" onclick="result(this.value)" />Beide
-			  <input type="radio" name="filterTaal" value="nl" onclick="result(this.value)" />Nederlands
-			  <input type="radio" name="filterTaal" value="en" onclick="result(this.value)" />Engels
+			  <input type="radio" name="filterTaal" value="default" />Beide
+			  <input type="radio" name="filterTaal" value="nl" />Nederlands
+			  <input type="radio" name="filterTaal" value="en" />Engels
 			  <h5>Welk interessegebied?</h5>
 			  (meerdere antwoorden zijn mogelijk)<br />
 			  <input type="checkbox" name="filterIntresse" value="Aarde Natuur en Milieu" />Aarde Natuur en Milieu<br />
@@ -76,12 +76,11 @@
           </div>
           <div class="span10">
             <div class="search">
-              <form action="">
-                <input class="input-xlarge" type="text" placeholder="Zoek een opleiding">
-                <button class="btn" type="submit">Zoeken</button>
+              <form>
+                <input class="input-xxlarge" type="text" placeholder="Zoek een opleiding" onkeyup="result(this.value)" />
               </form>
             </div>
-            <div id="filterResult" class="result">
+            <div id="searchResult" class="result">
 <?php 
   while($row = mysql_fetch_array($result)) {
     echo "<a href='study.php?id=";
