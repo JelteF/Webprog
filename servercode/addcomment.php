@@ -4,7 +4,7 @@
         $content = mysql_real_escape_string($_POST['content']);
 	$beschrijving = mysql_real_escape_string($_POST['beschrijving']); 
         $studie = mysql_real_escape_string($_POST['studie']);
-	$con2 = mysql_connect("localhost","root","");
+        $con2 = mysql_connect("websec.science.uva.nl","webdb1249","uvabookdb");
 	if (!$con2)
 	{
 		die('Could not connect: ' . mysql_error());

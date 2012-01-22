@@ -10,7 +10,7 @@
     <body>
 <?php require("templates/topbar.php") ?>
 <?php
-  $con = mysql_connect("localhost","root","");
+  $con = mysql_connect("websec.science.uva.nl","webdb1249","uvabookdb");
   if (!$con)
     die('could not connect' . mysql.error());
   mysql_select_db("webdb1249", $con);
