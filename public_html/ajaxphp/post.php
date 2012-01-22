@@ -6,7 +6,7 @@
         }
         $type = $_POST['post-type'];
         $content = "";
-        $con = mysql_connect("websec.science.uva.nl","webdb1249","uvabookdb");
+        $con = mysql_connect("localhost","webdb1249","uvabookdb");
         if (!$con)
 	{
             $result = "Could not connect to the database:<br />Please try again.";
