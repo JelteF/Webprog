@@ -14,7 +14,7 @@ $user_id = "10183159";
 mysql_select_db("webdb1249", $con);
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
 $row = mysql_query("SELECT * FROM posts WHERE ID='$post_id'");
-echo $row['tijd'];
+echo $row['content'];
 
 echo" <div class='row'>
   <div class='span2'>
