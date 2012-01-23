@@ -85,5 +85,6 @@
 <script language="javascript" type="text/javascript">
     var result = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($result)); ?>";
     var content = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($content)); ?>";
-    window.top.window.submit("postForm", result, content);
+    var post_id= "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($post_id)); ?>";
+    window.top.window.submit("postForm", result ,content, post_id);
 </script>
