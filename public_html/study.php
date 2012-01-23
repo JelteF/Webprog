@@ -29,6 +29,12 @@
                 <div class="hero-unit">
                     <h1><?php echo $row[2]; ?></h1>
                     <p><?php echo $row[4]; ?></p>
+					<form name="meer">
+						<input type="button" value="Meer" />
+					</form>
+					<div style="display:none;">
+						<p><?php echo $row[1]; ?></p>
+					</div>
                 </div>
                 <!---Heleblok-->
                 <div class="row">
