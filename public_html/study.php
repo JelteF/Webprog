@@ -29,11 +29,23 @@
                 <div class="hero-unit">
                     <h1><?php echo $row[2]; ?></h1>
                     <p><?php echo $row[4]; ?></p>
-					<form name="meer">
-						<input type="button" value="Meer" />
-					</form>
-					<div style="display:none;">
+					<script language=javascript type='text/javascript'>
+						function showHide(){
+							if(document.getElementById('meer').style.display == 'block'){
+								document.getElementById('meer').style.display = 'none';
+								document.getElementById('minder').style.display = 'block';
+							}
+							if(document.getElementById('meer').style.display == 'none'){
+								document.getElementById('meer').style.display = 'block';
+								document.getElementById('minder').style.display = 'none';
+							}
+					</script>
+					<div id="meer">
+						<input type="button" onclick="showHide()" value="Meer" />
+					</div>
+					<div id="minder"style="display:none;">
 						<p><?php echo $row[3]; ?></p>
+						<input type="button" onclick="showHide()" value="Minder" />
 					</div>
                 </div>
                 <!---Heleblok-->
