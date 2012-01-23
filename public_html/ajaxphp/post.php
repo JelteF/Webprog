@@ -22,7 +22,6 @@
         $type = $_POST['post-type'];
         $content = "";
         $con = mysql_connect("localhost","webdb1249","uvabookdb");
-        echo "voor connect";
         if (!$con)
 	{
             $result = "Could not connect to the database:<br />Please try again.";
@@ -52,7 +51,7 @@
                         $extension = ".".file_extension($extension);
                         $post_id=upload_post($con);
                         $content=$post_id.$extension;
-                        
+                        mysql_query
                         move_uploaded_file($_FILES["file"]["tmp_name"], $destination_path.$content);
                     }
                 }
@@ -78,9 +77,9 @@
             else{
                 $post_id=upload_post($con);
                 $content = $_POST['content'];
-                mysql_query("UPDATE posts SET content='$content' WHERE ID='$post_id'");
                 $result= "1";
             }
+            mysql_query("UPDATE posts SET content='$content' WHERE ID='$post_id'");
         }
 ?>
 
