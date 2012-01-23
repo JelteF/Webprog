@@ -27,7 +27,7 @@ function submit(formname, result, content, post_id)
         }
         xmlhttp.open("POST", "addcomment.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        var query="content="+escape(content)+"post_id="+escape(post_id)+getElementValue(formname);
+        var query="content="+escape(content)+"&post_id="+escape(post_id)+getElementValue(formname);
         xmlhttp.send(query);
     }
 }
