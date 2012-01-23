@@ -13,7 +13,7 @@ $post_id = mysql_real_escape_string($_POST['post_id']);
 $user_id = "10183159";
 mysql_select_db("webdb1249", $con);
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
-$row = mysql_query("SELECT * FROM posts WHERE ID='$post_id'");
+$row = mysql_query("SELECT * FROM posts WHERE ID=$post_id");
 echo "beaubentaunatutanh.untha.utnhs";
 
 echo" <div class='row'>
