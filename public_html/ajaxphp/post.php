@@ -15,8 +15,8 @@
             $user_id = get_user_id();
             $naam = mysql_real_escape_string($_POST['naam']);
             mysql_select_db("webdb1249", $con);
-            mysql_query("INSERT INTO posts (studie, type, beschrijving)
-                VALUES ('$studie', '$type', '$beschrijving')");
+            mysql_query("INSERT INTO posts (studie, type, beschrijving, score)
+                VALUES ('$studie', '$type', '$beschrijving', '1')");
             return mysql_insert_id();
         }
         $type = $_POST['post-type'];
