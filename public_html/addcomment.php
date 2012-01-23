@@ -10,6 +10,7 @@ $content = mysql_real_escape_string($_POST['content']);
 $beschrijving = mysql_real_escape_string($_POST['beschrijving']);
 $studie = mysql_real_escape_string($_POST['studie']);
 $post_id = mysql_real_escape_string($_POST['post_id']);
+$score = 1;
 $user_id = "10183159";
 mysql_select_db("webdb1249", $con);
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
@@ -25,7 +26,7 @@ echo" <div class='row'>
   </div>
   <p><b>Waardering:</b></p>
   <div class=likes>
-  <p>1 points</p>
+  <p>".$score." points</p>
   </div>
   </div>
   <div class='span8'>
