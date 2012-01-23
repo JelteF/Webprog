@@ -1,6 +1,6 @@
 <?php
 $con2 = mysql_connect("localhost","webdb1249","uvabookdb");
-if (!$con2)
+if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
@@ -41,6 +41,6 @@ echo "<ul class='pills'>
   </ul>
   </div>
   </div>";
-mysql_close($con2);
+mysql_close($con);
 
 ?>
