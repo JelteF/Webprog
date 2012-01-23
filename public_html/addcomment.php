@@ -9,7 +9,10 @@ $type = mysql_real_escape_string($_POST['post-type']);
 $content = mysql_real_escape_string($_POST['content']);
 $beschrijving = mysql_real_escape_string($_POST['beschrijving']);
 $studie = mysql_real_escape_string($_POST['studie']);
+$post_id = mysql_real_escape_string($_POST['post_id']);
 $user_id = "10183159";
+mysql_select_db("webdb1249", $con);
+mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
 
 echo" <div class='row'>
   <div class='span2'>
