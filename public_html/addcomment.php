@@ -14,13 +14,14 @@ $user_id = "10183159";
 mysql_select_db("webdb1249", $con);
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
 $row = mysql_fetch_array(mysql_query("SELECT tijd FROM posts WHERE ID=$post_id"));
-echo strtotime($row['tijd']);
+$date = date("d-m-Y",strtotime($row['tijd']));
+$time = date("h:i:s",strtotime($row['tijd']));
 
 echo" <div class='row'>
   <div class='span2'>
   <p><b>Gepost op:</b></p>
   <div class='postdate'>
-  <p>17 januari 2012<br />14:59 GMT+1</p>
+  <p>".$date."<br />".$time."</p>
   </div>
   <p><b>Waardering:</b></p>
   <div class=likes>
