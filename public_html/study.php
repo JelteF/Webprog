@@ -39,6 +39,7 @@
 								document.getElementById('meer').style.display = 'block';
 								document.getElementById('minder').style.display = 'none';
 							}
+						}
 					</script>
 					<div id="meer" style="display:block">
 						<input type="button" onclick="showHide()" value="Meer" />
