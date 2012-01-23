@@ -50,8 +50,7 @@
                         $extension = basename($_FILES['file']['name']);
                         $extension = ".".file_extension($extension);
                         $post_id=upload_post($con);
-                        $content=$post_id.$extension;
-                        mysql_query
+                        $content="uploads/".$post_id.$extension;
                         move_uploaded_file($_FILES["file"]["tmp_name"], $destination_path.$content);
                     }
                 }
@@ -69,7 +68,7 @@
                         $extension = basename($_FILES['file']['name']);
                         $extension = ".".file_extension($extension);
                         $post_id=upload_post($con);
-                        $content=$post_id.$extension;
+                        $content="uploads/".$post_id.$extension;
                         move_uploaded_file($_FILES['file']['tmp_name'], $destination_path.$content);
                     }
                 }
