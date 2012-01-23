@@ -18,7 +18,7 @@
                 $destination_path = "/datastore/webdb1249/Webprog/public_html/";
                 $result = "1";
                 $extension = basename($_FILES['file']['name']);
-                $extension = file_extension($extension);
+                $extension = ".".file_extension($extension);
                 mysql_select_db("webdb1249", $con);
                 mysql_query("INSERT INTO uploads (file) VALUES ('')");
                 $filename = mysql_insert_id().$extension;
