@@ -35,15 +35,15 @@
 								document.getElementById('meer').style.display = 'none';
 								document.getElementById('minder').style.display = 'block';
 							}
-							if(document.getElementById('meer').style.display == 'none'){
+							else if(document.getElementById('meer').style.display == 'none'){
 								document.getElementById('meer').style.display = 'block';
 								document.getElementById('minder').style.display = 'none';
 							}
 					</script>
 					<div id="meer">
-						<input type="button" onclick="showHide()" value="Meer" />
+						<input type="button" onclick="showHide()" style="display:block" value="Meer" />
 					</div>
-					<div id="minder"style="display:none;">
+					<div id="minder" style="display:none;">
 						<p><?php echo $row[3]; ?></p>
 						<input type="button" onclick="showHide()" value="Minder" />
 					</div>
