@@ -1,6 +1,6 @@
 <?php
-$con2 = mysql_connect("localhost","webdb1249","uvabookdb");
-if (!$con2)
+$con = mysql_connect("localhost","webdb1249","uvabookdb");
+if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
@@ -9,24 +9,28 @@ $type = mysql_real_escape_string($_POST['post-type']);
 $content = mysql_real_escape_string($_POST['content']);
 $beschrijving = mysql_real_escape_string($_POST['beschrijving']);
 $studie = mysql_real_escape_string($_POST['studie']);
+$post_id = mysql_real_escape_string($_POST['post_id']);
+$score = 1;
+$user_id = "10183159";
+mysql_select_db("webdb1249", $con);
+mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
+$row = mysql_fetch_array(mysql_query("SELECT tijd FROM posts WHERE ID=$post_id"));
+$date = date("d-m-Y",strtotime($row['tijd']));
+$time = date("h:i:s",strtotime($row['tijd']));
 
-mysql_select_db("webdb1249", $con2);
-mysql_query("INSERT INTO posts (studie, content, type, beschrijving)
-  VALUES ('$studie', '$content', '$type', '$beschrijving')");
-$post_id = mysql_insert_id();
 echo" <div class='row'>
   <div class='span2'>
   <p><b>Gepost op:</b></p>
   <div class='postdate'>
-  <p>17 januari 2012<br />14:59 GMT+1</p>
+  <p>".$date."<br />".$time."</p>
   </div>
   <p><b>Waardering:</b></p>
   <div class=likes>
-  <p>1 points</p>
+  <p>".$score." points</p>
   </div>
   </div>
   <div class='span8'>
-  <p><b><a href='#'>".$naam." (10183159)</a></b></p>
+  <p><b><a href='#'>".$naam." (".$user_id.")</a></b></p>
   <p>".$beschrijving;
 if($type=="txt")
   echo $content."</p>";
@@ -41,6 +45,6 @@ echo "<ul class='pills'>
   </ul>
   </div>
   </div>";
-mysql_close($con2);
+mysql_close($con);
 
 ?>

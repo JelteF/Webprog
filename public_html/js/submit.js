@@ -3,7 +3,7 @@ function startUpload(){
     return true;
 }
 
-function submit(formname, result, content)
+function submit(formname, result, content, post_id)
 {
     if(result!="1"){
         document.getElementById('uploading').innerHTML="<p><br />"+result+"</p>";
@@ -27,7 +27,7 @@ function submit(formname, result, content)
         }
         xmlhttp.open("POST", "addcomment.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        var query="content="+escape(content)+getElementValue(formname);
+        var query="content="+escape(content)+"&post_id="+escape(post_id)+getElementValue(formname);
         xmlhttp.send(query);
     }
 }

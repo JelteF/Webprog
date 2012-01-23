@@ -4,27 +4,33 @@
         {
             return end(explode(".", $filename));
         }
+        function get_user_id(){
+            
+            return "10183159";
+        }
+        function upload_post($con){
+            $type = mysql_real_escape_string($_POST['post-type']);
+            $beschrijving = mysql_real_escape_string($_POST['beschrijving']);
+            $studie = mysql_real_escape_string($_POST['studie']);
+            $user_id = get_user_id();
+            $naam = mysql_real_escape_string($_POST['naam']);
+            mysql_select_db("webdb1249", $con);
+            mysql_query("INSERT INTO posts (studie, type, beschrijving, score)
+                VALUES ('$studie', '$type', '$beschrijving', '1')");
+            return mysql_insert_id();
+        }
         $type = $_POST['post-type'];
         $content = "";
         $con = mysql_connect("localhost","webdb1249","uvabookdb");
-        echo "voor connect";
         if (!$con)
 	{
             $result = "Could not connect to the database:<br />Please try again.";
 	}
         else{
-            echo "na connect";
+            mysql_select_db("webdb1249", $con);
             if($type == "pdf" || ($type="img" && $_POST['upload']=="upload")){
                 $destination_path = "/datastore/webdb1249/Webprog/public_html/";
                 $result = "1";
-                $extension = basename($_FILES['file']['name']);
-                $extension = ".".file_extension($extension);
-                mysql_select_db("webdb1249", $con);
-                mysql_query("INSERT INTO uploads (file) VALUES ('')");
-                $filename = mysql_insert_id().$extension;
-                echo "filename=".$filename;
-                $content = "uploads/" . $filename;
-                echo $_FILES["file"]["type"];
                 if ($type == "img"){
                     if (($_FILES["file"]["type"] != "image/gif")
                         && ($_FILES["file"]["type"] != "image/jpeg")
@@ -41,6 +47,10 @@
                         $result = "Return Code: " . $_FILES["file"]["error"];
                     }
                     else{
+                        $extension = basename($_FILES['file']['name']);
+                        $extension = ".".file_extension($extension);
+                        $post_id=upload_post($con);
+                        $content="uploads/".$post_id.$extension;
                         move_uploaded_file($_FILES["file"]["tmp_name"], $destination_path.$content);
                     }
                 }
@@ -55,20 +65,26 @@
                         $result = "Return Code: " . $_FILES["file"]["error"];
                     }
                     else{
+                        $extension = basename($_FILES['file']['name']);
+                        $extension = ".".file_extension($extension);
+                        $post_id=upload_post($con);
+                        $content="uploads/".$post_id.$extension;
                         move_uploaded_file($_FILES['file']['tmp_name'], $destination_path.$content);
-                        $content="uploads/". basename($_FILES['file']['name']);
                     }
                 }
             }
             else{
+                $post_id=upload_post($con);
                 $content = $_POST['content'];
                 $result= "1";
             }
+            mysql_query("UPDATE posts SET content='$content' WHERE ID='$post_id'");
         }
 ?>
 
 <script language="javascript" type="text/javascript">
     var result = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($result)); ?>";
     var content = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($content)); ?>";
-    window.top.window.submit("postForm", result, content);
+    var post_id= "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($post_id)); ?>";
+    window.top.window.submit("postForm", result ,content, post_id);
 </script>
