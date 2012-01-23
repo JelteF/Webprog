@@ -40,8 +40,8 @@
 								document.getElementById('minder').style.display = 'none';
 							}
 					</script>
-					<div id="meer">
-						<input type="button" onclick="showHide()" style="display:block" value="Meer" />
+					<div id="meer" style="display:block">
+						<input type="button" onclick="showHide()" value="Meer" />
 					</div>
 					<div id="minder" style="display:none;">
 						<p><?php echo $row[3]; ?></p>
