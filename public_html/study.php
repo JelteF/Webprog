@@ -33,7 +33,7 @@
 						<input type="button" value="Meer" />
 					</form>
 					<div style="display:none;">
-						<p><?php echo $row[1]; ?></p>
+						<p><?php echo $row['beschrijving']; ?></p>
 					</div>
                 </div>
                 <!---Heleblok-->
