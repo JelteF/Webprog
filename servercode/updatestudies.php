@@ -7,10 +7,9 @@ $start = time();
 
 foreach ($xml->children() as $child) {
   //first three fields are empty
-  if ($i++ < 4) continue;
+  if ($i++ < 265) continue;
 
   update($child->hodexResourceURL);
-  break;
 }
 
 echo "\nUpdate took " . (time() - $start) . " seconds to complete.\n";
@@ -27,6 +26,7 @@ function update($url) {
   $result = mysql_query("SELECT * FROM studies where studienr='$studienr'")
     or die("can not query: " . mysql_error());
   $row = mysql_fetch_array($result);
+  $id = $row['id'];
 
   $naam = mysql_real_escape_string($xml->programDescriptions->programName);
   if ($row['last_edited'] != $lastEdited) {
@@ -71,13 +71,13 @@ function update($url) {
     if (empty($row["last_edited"])) {
       echo "entry didn't exist yet, creating " . $naam . "\n";
       $fields = "id, studienr, naam, beschrijving, samenvatting, studielast, taal, vorm, duur, titel, croho, faculteit, cluster, zoekwoorden, timestamp, last_edited, vakken, eisen_CM, eisen_EM, eisen_NG, eisen_NT";
-      $values = "NULL,`$studienr`,`$naam`,`$beschrijving`,`$samenvatting`,`$studielast`,`$cursustaal`,`$studievorm`,`$studieduur`,`$titel`,`$croho`,`$faculteit`,`$pcString`,`$swString`,CURRENT_TIMESTAMP,`$lastEdited`,`$vkString`,`$cmExtra`,`$emExtra`,`$ngExtra`,`$ntExtra`";
+      $values = "NULL,'$studienr','$naam','$beschrijving','$samenvatting','$studielast','$cursustaal','$studievorm','$studieduur','$titel','$croho','$faculteit','$pcString','$swString',CURRENT_TIMESTAMP,'$lastEdited','$vkString','$cmExtra','$emExtra','$ngExtra','$ntExtra'";
       mysql_query("INSERT INTO webdb1249.studies ($fields) VALUES ($values)");
     }
     else {
       echo "found old entries for: " . $naam . ", updating fields\n";
-      echo $values = "naam='test', beschrijving=`$beschrijving`, samenvatting=`$samenvatting`, studielast=`$studielast`, taal=`$cursustaal`, vorm=`$studievorm`, duur=`$studieduur`, titel=`$titel`, croho=`$croho`, faculteit=`$faculteit`, cluster=`$pcString`, zoekwoorden=`$swString`, last_edited=`$lastEdited`, vakken=`$vkString`, eisen_CM=`$cmExtra`, eisen_EM=`$emExtra`, eisen_NG=`$ngExtra`, eisen_NT=`$ntExtra`";
-      mysql_query("UPDATE webdb1249.studies SET $values WHERE studienr=`$studienr`");
+      $values = "naam='$naam', beschrijving='$beschrijving', samenvatting='$samenvatting', studielast='$studielast', taal='$cursustaal', vorm='$studievorm', duur='$studieduur', titel='$titel', croho='$croho', faculteit='$faculteit', cluster='$pcString', zoekwoorden='$swString', last_edited='$lastEdited', vakken='$vkString', eisen_CM='$cmExtra', eisen_EM='$emExtra', eisen_NG='$ngExtra', eisen_NT='$ntExtra'";
+      mysql_query("UPDATE studies SET $values WHERE id='$id'");
     }
     mysql_close($con);
   }
