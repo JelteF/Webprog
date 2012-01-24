@@ -1,3 +1,24 @@
+<script type="text/javascript">
+  function topresult(str) {
+    if(str.length<4) {
+      document.getElementById("topbarsearch").innerHTML="";
+      document.getElementById("topbarsearch").style.border="0px";
+      return;
+    }
+    if(window.XMLHttpRequest) {
+      xmlhttp = new XMLHttpRequest();
+    }
+    xmlhttp.onreadystatechange = function() {
+      if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+        document.getElementById("topbarsearch").innerHTML=xmlhttp.responseText;
+        document.getElementById("topbarsearch").style.border="1px solid #A5ACB2";
+        document.getElementById("topbarsearch").style.position="absolute";
+      }
+    }
+    xmlhttp.open("GET","topbarsearch.php?q="+str,true);
+    xmlhttp.send();
+  }
+</script>
 <?php $page_name = $_SERVER['PHP_SELF']; ?>
     <div class="topbanner">
       <img src="images/logo.jpg" alt="Universiteit van Amsterdam" />
@@ -15,12 +36,11 @@
             <li class="<?php if($page_name=="/contact.php") echo "active"; ?>"><a href="contact.php">Contact</a></li>
             <li class="<?php if($page_name=="/faq.php") echo "active"; ?>"><a href="faq.php">FAQ</a></li>
           </ul>
-          <form action="" class="pull-left">
+          <form class="pull-left" action="opleidingen.php" method="GET">
+            <input class="input-large" type="text" name="search" placeholder="Zoek een opleiding" onkeyup="stopresult(this.value)>
+            <div id="topbarsearch"></div>
           </form>
-          <form action="" class="pull-right">
-            <input class="input-large" type="text" placeholder="Zoek een opleiding">
-          </form>
-          <form action="https://secure.uva.nl/cas/login?service=http://uvabook.nl" method="POST">
+          <form class="pull-right" action="https://secure.uva.nl/cas/login?service=http://uvabook.nl" method="POST">
     		<input type="submit" value="inloggen">
 		  </form>
         </div>
