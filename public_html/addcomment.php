@@ -18,7 +18,8 @@ $row = mysql_fetch_array(mysql_query("SELECT tijd FROM posts WHERE ID=$post_id")
 $date = date("d-m-Y",strtotime($row['tijd']));
 $time = date("h:i:s",strtotime($row['tijd']));
 
-echo" <div class='row'>
+echo" <div class='commentblok'>
+    <div class='row'>
   <div class='span2'>
   <p><b>Gepost op:</b></p>
   <div class='postdate'>
@@ -43,6 +44,7 @@ echo "<ul class='pills'>
   <li><a href='#'>Dislike</a></li>
   <li><a href='#'>Share</a></li>
   </ul>
+  </div>
   </div>
   </div>";
 mysql_close($con);

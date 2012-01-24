@@ -118,7 +118,7 @@
                             </div>
                         </div>
                         <!--Nieuw Commentblok-->
-                        <div id="newcomment" class="commentblok">
+                        <div id="newcomment" >
                         </div>
                         <!--Commentblok-->
                         <!--Navblok-->
