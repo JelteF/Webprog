@@ -204,9 +204,9 @@
 </script>
                         <div class="infobox-tab">
                             <ul class="tabs">
-                                <li id="tab1" class="active"><a href="" onclick="tab1()">Info</a></li>
-                                <li id="tab2"><a href="" onclick="tab2()">Vakken</a></li>
-                                <li id="tab3"><a href="" onclick="tab3()">Vooropleiding</a></li>
+                                <li id="tab1" class="active"><a onclick="tab1()">Info</a></li>
+                                <li id="tab2"><a onclick="tab2()">Vakken</a></li>
+                                <li id="tab3"><a onclick="tab3()">Vooropleiding</a></li>
                             </ul>
                         </div>
                         <div id="info1" class="infobox-study">
