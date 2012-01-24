@@ -82,7 +82,7 @@
                                 <div class="span8">
                                     <p><b><a href="#">Joshua Appelman (6529276)</a></b></p>
                                     <p>Aliquam erat volutpat. Sed cursus molestie mauris, ac interdum nibh rutrum vel. Quisque rhoncus viverra commodo. Vestibulum non tempor velit. Nunc hendrerit erat vitae risus facilisis congue. Sed ac massa libero, ut ultrices mauris.</p>
-                                    <iframe width="460" height="260" src="http://www.youtube.com/embed/uSNS4bY6dqM?rel=0" frameborder="0" allowfullscreen></iframe>
+                                    <iframe width="460" height="260" src="http://www.youtube.com/embed/0NesSYWODmM" frameborder="0" allowfullscreen></iframe>
                                     <ul class="pills">
                                         <li><a href="#">Like</a></li>
                                         <li><a href="#">Dislike</a></li>
