@@ -1,6 +1,6 @@
 <script type="text/javascript">
   function topresult(str) {
-    if(str.length<4) {
+    if(str.length<=3) {
       document.getElementById("topbarsearch").innerHTML="";
       document.getElementById("topbarsearch").style.border="0px";
       return;
@@ -12,6 +12,9 @@
       if(xmlhttp.readyState==4 && xmlhttp.status==200) {
         document.getElementById("topbarsearch").innerHTML=xmlhttp.responseText;
         document.getElementById("topbarsearch").style.border="1px solid #A5ACB2";
+	document.getElementById("topbarsearch").style.background="#000000";
+        document.getElementById("topbarsearch").style.padding="5px";
+        document.getElementById("topbarsearch").style.width="400px";
         document.getElementById("topbarsearch").style.position="absolute";
       }
     }
@@ -37,12 +40,12 @@
             <li class="<?php if($page_name=="/faq.php") echo "active"; ?>"><a href="faq.php">FAQ</a></li>
           </ul>
           <form class="pull-left" action="opleidingen.php" method="GET">
-            <input class="input-large" type="text" name="search" placeholder="Zoek een opleiding" onkeyup="stopresult(this.value)>
-            <div id="topbarsearch"></div>
+            <input class="input-large" type="text" name="search" placeholder="Zoek een opleiding" onkeyup="topresult(this.value)">
+            <div id="topbarsearch" style="z-index:10"></div>
           </form>
           <form class="pull-right" action="https://secure.uva.nl/cas/login?service=http://uvabook.nl" method="POST">
-    		<input type="submit" value="inloggen">
-		  </form>
+    	    <input type="submit" value="inloggen">
+	  </form>
         </div>
       </div>
     </div>
