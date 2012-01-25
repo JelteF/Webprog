@@ -3,6 +3,7 @@
     if(str.length<=3) {
       document.getElementById("topbarsearch").innerHTML="";
       document.getElementById("topbarsearch").style.border="0px";
+      document.getElementById("topbarsearch").style.background="";
       return;
     }
     if(window.XMLHttpRequest) {
@@ -40,7 +41,7 @@
             <li class="<?php if($page_name=="/faq.php") echo "active"; ?>"><a href="faq.php">FAQ</a></li>
           </ul>
           <form class="pull-left" action="opleidingen.php" method="GET">
-            <input class="input-large" type="text" name="search" placeholder="Zoek een opleiding" onkeyup="topresult(this.value)">
+            <input class="input-large" type="text" name="search" placeholder="Zoek een opleiding" onkeyup="topresult(this.value)" autocomplete="off">
             <div id="topbarsearch" style="z-index:10"></div>
           </form>
           <form class="pull-right" action="https://secure.uva.nl/cas/login?service=http://uvabook.nl" method="POST">
