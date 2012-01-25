@@ -8,7 +8,21 @@ mysql_select_db("webdb1249", $con);
 $studie_id=$_GET['id'];
 $result = mysql_query("SELECT * FROM posts WHERE studie='$studie_id'");
 while($row=mysql_fetch_array($result)){
-    
+    $score= $row['score'];
+    $beschrijving = $row['beschrijving'];
+    $content = $row['content'];
+    $type = $row['type'];
+    $date = date("d-m-Y",strtotime($row['tijd']));
+    $time = date("h:i:s",strtotime($row['tijd']));
+    $user = $row['auteur'];
+    $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID='$user'"));
+    $user_id = $auteur['UvAnetID'];
+    if($auteur['naam'].length > 0){
+        $naam = $auteur['naam'];
+    }
+    else {
+        $naam = "Anoniem";
+    }
     echo" <div class='commentblok'>
         <div class='row'>
     <div class='span2'>
