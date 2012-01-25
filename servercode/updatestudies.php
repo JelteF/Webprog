@@ -7,19 +7,25 @@ $start = time();
 
 foreach ($xml->children() as $child) {
   //first three fields are empty
-  if ($i++ < 265) continue;
+  if ($i++ < 4) continue;
 
   update($child->hodexResourceURL);
 }
 
 echo "\nUpdate took " . (time() - $start) . " seconds to complete.\n";
 
-
 function update($url) {
   $xml = simplexml_load_file($url);
   $con = mysql_connect("localhost","webdb1249","uvabookdb")
     or die("could not connect: " . mysql_error());
-  $studienr = mysql_real_escape_string($xml->programClassification->programId);
+  $studienr = explode("_", mysql_real_escape_string($xml->programClassification->programId));
+  $type = "";
+  if (!empty($studienr[1])) {
+    echo $type = $studienr[1];
+    echo "\n\n";
+    return;
+  }
+  $studienr = $studienr[0];
   $lastEdited = mysql_real_escape_string($xml->lastEdited);
   mysql_select_db("webdb1249")
     or die("can not select: " . mysql_error());
