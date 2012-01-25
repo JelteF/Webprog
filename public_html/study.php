@@ -22,34 +22,50 @@
   echo "<div id='studie_id' class=".$studie_id."></div>";
 ?>
 
-        <!---container-->
-        <div class="container">
-            <div class="content">
-                <!---Beschrijvingblok-->
-                <div class="hero-unit">
-                    <h1><?php echo $row[2]; ?></h1>
-                    <p><?php echo $row[4]; ?></p>
-					<script language=javascript type='text/javascript'>
-						function showHide(){
-							if(document.getElementById('meer').style.display == 'block'){
-								document.getElementById('meer').style.display = 'none';
-								document.getElementById('minder').style.display = 'block';
-							}
-							else if(document.getElementById('meer').style.display == 'none'){
-								document.getElementById('meer').style.display = 'block';
-								document.getElementById('minder').style.display = 'none';
-							}
-						}
-					</script>
-					<div id="meer" style="display:block">
-						<input type="button" onclick="showHide()" value="Meer" />
-					</div>
-					<div id="minder" style="display:none;">
-						<?php
-              $paragraphs = explode("\n", $row[3]);
-              foreach ($paragraphs as $paragraph)
-                echo "<p>" . $paragraph . "</p>";
-            ?>
+<!---container-->
+<div class="container">
+<div class="content">
+<!---Beschrijvingblok-->
+<div class="hero-unit">
+<h1><?php echo $row[2]; ?></h1>
+<p><?php echo $row[4]; ?></p>
+<script language=javascript type='text/javascript'>
+function showHide(){
+  if(document.getElementById('meer').style.display == 'block'){
+    document.getElementById('meer').style.display = 'none';
+    document.getElementById('minder').style.display = 'block';
+  }
+  else if(document.getElementById('meer').style.display == 'none'){
+    document.getElementById('meer').style.display = 'block';
+    document.getElementById('minder').style.display = 'none';
+  }
+}
+</script>
+<div id="meer" style="display:block">
+<input type="button" onclick="showHide()" value="Meer" />
+</div>
+<div id="minder" style="display:none;">
+<?php
+$paragraphs = explode("\n", $row[3]);
+$isList = false;
+foreach ($paragraphs as $paragraph) {
+  if (empty($paragraph)) continue;
+  else if ($paragraph[0] == "*" ) {
+    if (!$isList) {
+      echo "<ul>";
+      $isList = true;
+    }
+    echo "<li>" . substr($paragraph, 1) . "</li>";
+  }
+  else if ($isList) {
+    $isList = false;
+    echo "</ul>";
+    echo "<p>" . $paragraph . "</p>";
+  }
+  else
+    echo "<p>" . $paragraph . "</p>";
+}
+?>
           <input type="button" onclick="showHide()" value="Minder" />
 					</div>
                 </div>
@@ -206,6 +222,6 @@
         </div>
 
 <?php require("templates/footer.php") ?>
-<?php mysql_close($con) ?>
+<!--<?php mysql_close($con) ?>I-->
     </body>
 </html>
