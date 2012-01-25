@@ -10,7 +10,7 @@ function get_user_id(){
 }
 function upload_post($con){
   $type = mysql_real_escape_string($_POST['post-type']);
-  $beschrijving = mysql_real_escape_string($_POST['beschrijving']);
+  $beschrijving = mysql_real_escape_string(nl2br($_POST['beschrijving']));
   $studie = mysql_real_escape_string($_POST['studie']);
   $user_id = get_user_id();
   $naam = mysql_real_escape_string($_POST['naam']);

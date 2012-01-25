@@ -4,19 +4,28 @@ if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
-$naam = mysql_real_escape_string($_POST['naam']);
-$type = mysql_real_escape_string($_POST['post-type']);
-$content = mysql_real_escape_string($_POST['content']);
-$beschrijving = mysql_real_escape_string($_POST['beschrijving']);
 $studie = mysql_real_escape_string($_POST['studie']);
 $post_id = mysql_real_escape_string($_POST['post_id']);
-$score = 1;
-$user_id = "10183159";
 mysql_select_db("webdb1249", $con);
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
-$row = mysql_fetch_array(mysql_query("SELECT tijd FROM posts WHERE ID=$post_id"));
+$row = mysql_fetch_array(mysql_query("SELECT * FROM posts WHERE ID=$post_id"));
 $date = date("d-m-Y",strtotime($row['tijd']));
 $time = date("h:i:s",strtotime($row['tijd']));
+$score= $row['score'];
+$beschrijving = nl2br($row['beschrijving']);
+$content = nl2br($row['content']);
+$type = $row['type'];
+$date = date("d-m-Y",strtotime($row['tijd']));
+$time = date("h:i:s",strtotime($row['tijd']));
+$user = $row['auteur'];
+$auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID='$user'"));
+$user_id = $auteur['UvAnetID'];
+if(!empty($auteur['naam'])){
+    $naam = $auteur['naam'];
+}
+else {
+    $naam = "Anoniem";
+}
 
 echo" <div class='commentblok'>
     <div class='row'>

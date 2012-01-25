@@ -9,8 +9,8 @@ $studie_id=$_GET['id'];
 $result = mysql_query("SELECT * FROM posts WHERE studie='$studie_id'");
 while($row=mysql_fetch_array($result)){
   $score= $row['score'];
-  $beschrijving = $row['beschrijving'];
-  $content = $row['content'];
+  $beschrijving = nl2br($row['beschrijving']);
+  $content = nl2br($row['content']);
   $type = $row['type'];
   $date = date("d-m-Y",strtotime($row['tijd']));
   $time = date("h:i:s",strtotime($row['tijd']));
