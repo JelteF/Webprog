@@ -222,9 +222,6 @@ foreach ($paragraphs as $paragraph) {
         </div>
 
 <?php require("templates/footer.php") ?>
-<<<<<<< HEAD
-<!--<?php mysql_close($con) ?>I-->
-=======
->>>>>>> a69cd1b62884deaf32e6f7c2af0edc51c4af9906
+
     </body>
 </html>
