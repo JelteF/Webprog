@@ -6,7 +6,7 @@
         <script type="text/javascript" src="js/submit.js"></script>
         <script type="text/javascript" src="js/changeform.js"></script>
     </head>
-    
+
     <body>
 <?php require("templates/topbar.php") ?>
 <?php
@@ -14,14 +14,14 @@
   if (!$con)
     die('could not connect' . mysql.error());
   mysql_select_db("webdb1249", $con);
-  
+
   $studie_id = $_GET["id"];
-  
+
   $result = mysql_query("SELECT * FROM studies WHERE id='$studie_id'");
   $row = mysql_fetch_row($result);
   echo "<div id='studie_id' class=".$studie_id."></div>";
 ?>
-        
+
         <!---container-->
         <div class="container">
             <div class="content">
@@ -45,8 +45,12 @@
 						<input type="button" onclick="showHide()" value="Meer" />
 					</div>
 					<div id="minder" style="display:none;">
-						<p><?php echo $row[3]; ?></p>
-						<input type="button" onclick="showHide()" value="Minder" />
+						<?php
+              $paragraphs = explode("\n", $row[3]);
+              foreach ($paragraphs as $paragraph)
+                echo "<p>" . $paragraph . "</p>";
+            ?>
+          <input type="button" onclick="showHide()" value="Minder" />
 					</div>
                 </div>
                 <!---Heleblok-->
@@ -100,7 +104,7 @@
                                     <form name="postForm"  action="ajaxphp/post.php" method="post" enctype="multipart/form-data" target="post_target" class="pull-left" onsubmit="startUpload();">
                                         <input name="naam" class="medium" type="text" placeholder="Naam" />
                                         <p></p>
-                                        Post: 
+                                        Post:
                                         <input id="img" type="radio" value="img" name="post-type" checked="true" onclick="contentselect('img');"/>Image
                                         <input id="vid" type="radio" value="vid" name="post-type" onclick="contentselect('vid');"/>Video
                                         <input id="pdf" type="radio" value="pdf" name="post-type" onclick="contentselect('pdf');"/>PDF
@@ -193,14 +197,14 @@
                                 <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
                             </dl>
                         </div>
-                        
+
                     </div>
-                    
+
                 </div>
-                
+
             </div>
         </div>
-        
+
 <?php require("templates/footer.php") ?>
 <?php mysql_close($con) ?>
     </body>
