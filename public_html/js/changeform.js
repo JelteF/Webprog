@@ -12,6 +12,7 @@ function contentselect(button){
     }
     else if(button=="txt"){
         document.getElementById("textarea").name = "content";
+        document.getElementById("uploadcontent").innerHTML="";
     }
     else {
         document.getElementById("textarea").name = "beschrijving";
