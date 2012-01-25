@@ -66,57 +66,8 @@
                                 </p>
                             </div>
                         </div>
-                        <!---Commentblok-->
-                        <div class="commentblok">
-                            <div class="row">
-                                <div class="span2">
-                                    <p><b>Gepost op:</b></p>
-                                    <div class="postdate">
-                                        <p>17 januari 2012<br />14:59 GMT+1</p>
-                                    </div>
-                                    <p><b>Waardering:</b></p>
-                                    <div class=likes>
-                                        <p>100 points</p>
-                                    </div>
-                                </div>
-                                <div class="span8">
-                                    <p><b><a href="#">Joshua Appelman (6529276)</a></b></p>
-                                    <p>Aliquam erat volutpat. Sed cursus molestie mauris, ac interdum nibh rutrum vel. Quisque rhoncus viverra commodo. Vestibulum non tempor velit. Nunc hendrerit erat vitae risus facilisis congue. Sed ac massa libero, ut ultrices mauris.</p>
-                                    <iframe width="460" height="260" src="http://www.youtube.com/embed/0NesSYWODmM" frameborder="0" allowfullscreen></iframe>
-                                    <ul class="pills">
-                                        <li><a href="#">Like</a></li>
-                                        <li><a href="#">Dislike</a></li>
-                                        <li><a href="#">Share</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!---/Commentblok-->
-                        <!---Commentblok-->
-                        <div class="commentblok">
-                            <div class="row">
-                                <div class="span2">
-                                    <p><b>Gepost op:</b></p>
-                                    <div class="postdate">
-                                        <p>17 januari 2012<br />14:59 GMT+1</p>
-                                    </div>
-                                    <p><b>Waardering:</b></p>
-                                    <div class=likes>
-                                        <p>100 points</p>
-                                    </div>
-                                </div>
-                                <div class="span8">
-                                    <p><b><a href="#">Joshua Appelman (6529276)</a></b></p>
-                                    <p>Aliquam erat volutpat. Sed cursus molestie mauris, ac interdum nibh rutrum vel. Quisque rhoncus viverra commodo. Vestibulum non tempor velit. Nunc hendrerit erat vitae risus facilisis congue. Sed ac massa libero, ut ultrices mauris.</p>
-                                    <img align="right" width="460" src="images/computer-science-fry.png" class="postimg" />
-                                    <ul class="pills">
-                                        <li><a href="#">Like</a></li>
-                                        <li><a href="#">Dislike</a></li>
-                                        <li><a href="#">Share</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        <!--Comments-->
+                        <?php require("getposts.php") ?>
                         <!--Nieuw Commentblok-->
                         <div id="newcomment" >
                         </div>
@@ -156,7 +107,7 @@
                                         <input id="txt" type="radio" value="txt" name="post-type" onclick="contentselect('txt');"/>Tekst
                                         <p></p>
                                         <div id="uploadcontent">
-                                            <textarea name="beschrijving" class="span8" rows="4" type="text" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
+                                            <textarea name="beschrijving" class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
                                             <br /><br />Upload een foto of link naar een foto:<br />
                                             Link   <input id="link" type="radio" value="link" name="upload" checked="true" onclick="uploadselect('link');" />
                                             Upload   <input id="upload" type="radio" value="upload" name="upload" onclick="uploadselect('upload');" />
