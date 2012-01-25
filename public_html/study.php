@@ -221,7 +221,7 @@ foreach ($paragraphs as $paragraph) {
             </div>
         </div>
 
-<?php require("templates/footer.php") ?>
-
+<?php require("templates/footer.php"); ?>
+<?php mysql_close($con); ?>
     </body>
 </html>

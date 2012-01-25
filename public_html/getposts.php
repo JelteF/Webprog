@@ -1,10 +1,4 @@
 <?php
-$con = mysql_connect("localhost","webdb1249","uvabookdb");
-if (!$con)
-{
-  die('Could not connect: ' . mysql_error());
-}
-mysql_select_db("webdb1249", $con);
 $studie_id=$_GET['id'];
 $result = mysql_query("SELECT * FROM posts WHERE studie='$studie_id'");
 while($row=mysql_fetch_array($result)){
@@ -55,5 +49,4 @@ while($row=mysql_fetch_array($result)){
     </div>
     </div>";
 }
-mysql_close($con);
 ?>
