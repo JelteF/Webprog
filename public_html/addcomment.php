@@ -4,8 +4,8 @@ if (!$con)
 {
   die('Could not connect: ' . mysql_error());
 }
-$studie = mysql_real_escape_string($_POST['studie']);
-$post_id = mysql_real_escape_string($_POST['post_id']);
+$studie = mysql_real_escape_string(strip_tags($_POST['studie']));
+$post_id = mysql_real_escape_string(strip_tags($_POST['post_id']));
 mysql_select_db("webdb1249", $con);
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
 $row = mysql_fetch_array(mysql_query("SELECT * FROM posts WHERE ID=$post_id"));

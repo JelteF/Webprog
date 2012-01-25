@@ -128,7 +128,7 @@ foreach ($paragraphs as $paragraph) {
                                         <p></p>
                                         <textarea id="textarea" name="beschrijving" class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
                                         <div id="uploadcontent">
-                                            <br /><br />Upload een foto of link naar een foto:<br />
+                                            <br />Upload een foto of link naar een foto:<br />
                                             Link   <input id="link" type="radio" value="link" name="upload" checked="true" onclick="uploadselect('link');" />
                                             Upload   <input id="upload" type="radio" value="upload" name="upload" onclick="uploadselect('upload');" />
                                             <div id="uploadstyle">
