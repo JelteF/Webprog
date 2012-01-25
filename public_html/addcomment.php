@@ -34,11 +34,13 @@ echo" <div class='commentblok'>
   <p><b><a href='#'>".$naam." (".$user_id.")</a></b></p>
   <p>".$beschrijving;
 if($type=="txt")
-  echo $content."</p>";
+    echo $content."</p>";
 elseif ($type=="img")
-  echo "</p><a href=".$content."><img align='right' width='460' src='".$content."' class='postimg' /></a>";
+    echo "</p><a href=".$content."><img align='right' width='460' src='".$content."' class='postimg' /></a>";
 elseif ($type=="pdf")
-  echo "</p><a href=".$content.">Download pdf</a>";
+    echo "</p><a href=".$content.">Download pdf</a>";
+else
+    echo "<iframe width='460' height='260' src='".$content."' frameborder='0' allowfullscreen></iframe>";
 echo "<ul class='pills'>
   <li><a href='#'>Like</a></li>
   <li><a href='#'>Dislike</a></li>
