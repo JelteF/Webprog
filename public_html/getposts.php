@@ -17,7 +17,7 @@ while($row=mysql_fetch_array($result)){
   $user = $row['auteur'];
   $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID='$user'"));
   $user_id = $auteur['UvAnetID'];
-  if($auteur['naam'].length > 0){
+  if(empty($auteur['naam'])){
     $naam = $auteur['naam'];
   }
   else {
