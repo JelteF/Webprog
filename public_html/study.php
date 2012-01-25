@@ -110,8 +110,8 @@
                                         <input id="pdf" type="radio" value="pdf" name="post-type" onclick="contentselect('pdf');"/>PDF
                                         <input id="txt" type="radio" value="txt" name="post-type" onclick="contentselect('txt');"/>Tekst
                                         <p></p>
+                                        <textarea id="textarea" name="beschrijving" class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
                                         <div id="uploadcontent">
-                                            <textarea name="beschrijving" class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
                                             <br /><br />Upload een foto of link naar een foto:<br />
                                             Link   <input id="link" type="radio" value="link" name="upload" checked="true" onclick="uploadselect('link');" />
                                             Upload   <input id="upload" type="radio" value="upload" name="upload" onclick="uploadselect('upload');" />
@@ -206,6 +206,5 @@
         </div>
 
 <?php require("templates/footer.php") ?>
-<?php mysql_close($con) ?>
     </body>
 </html>

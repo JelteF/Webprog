@@ -1,37 +1,36 @@
 function contentselect(button){
-    xmlhttp = genXmlHttp();
-    xmlhttp.onreadystatechange=function()
-    {
-        onreadystate("uploadcontent");
+    
+    if(button=="pdf"){
+        document.getElementById("textarea").name = "beschrijving";
+        document.getElementById("uploadcontent").innerHTML=
+            "<br /> <br />Upload pdf <input name='file' type='file' />";
     }
-    xmlhttp.open("GET", "ajaxphp/content-type.php?checked="+button, true);
-    xmlhttp.send(null);
+    else if(button=="vid"){
+        document.getElementById("textarea").name = "beschrijving";
+        document.getElementById("uploadcontent").innerHTML=
+            "<br /> <br />Youtube link: <input name='content' class='large' type='text' />";
+    }
+    else if(button=="txt"){
+        document.getElementById("textarea").name = "content";
+    }
+    else {
+        document.getElementById("textarea").name = "beschrijving";
+        document.getElementById("uploadcontent").innerHTML=
+            "<br /> <br />Upload een foto of link naar een foto:<br />"+
+            "Link   <input id='link' type='radio' value='link' name='upload' checked='true' onclick=\"uploadselect('link');\" />"+
+            "Upload   <input id='upload' type='radio' value='upload' name='upload' onclick=\"uploadselect('upload');\" /> <br />"+
+            "<div id='uploadstyle'>"+
+            "<br /><input name='content' class='large' type='text' />"+
+            "</div>";
+    }
 }
 
 function uploadselect(button){
-    xmlhttp = genXmlHttp();
-    xmlhttp.onreadystatechange=function()
-    {
-        onreadystate("uploadstyle");
-    }
-    xmlhttp.open("GET", "ajaxphp/upload.php?checked="+button, true);
-    xmlhttp.send(null);
-    
-}
-
-function genXmlHttp(){
-    if (window.XMLHttpRequest)
-    {// code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp=new XMLHttpRequest();
+    if(button=="upload"){
+        document.getElementById("uploadstyle").innerHTML=
+            "<br /><input name='file' type='file' />";
     }
     else
-    {// code for IE6, IE5
-        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    return xmlhttp;
-}
-
-function onreadystate(id){
-    if (xmlhttp.readyState==4 && xmlhttp.status==200)
-            document.getElementById(id).innerHTML=xmlhttp.responseText;
+        document.getElementById("uploadstyle").innerHTML=
+            "<br /><input name='content' class='large' type='text' />";
 }
