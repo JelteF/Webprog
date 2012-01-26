@@ -1,9 +1,10 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
   <head>
     <title>UvAbook</title>
 <?php require("templates/head.php"); ?>
-    <script type="text/javascript" src="js/search.js" />
+    <script type="text/javascript" src="js/search.js"></script>
   </head>
 
   <body>

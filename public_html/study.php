@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +6,7 @@
 <?php require("templates/head.php") ?>
 <script type="text/javascript" src="js/submit.js"></script>
 <script type="text/javascript" src="js/changeform.js"></script>
+<script type="text/javascript" src="js/like.js"></script>
 </head>
 
 <body>

@@ -1,6 +1,6 @@
 <?php
 $id = $_GET['id'];
-$nrOfPosts = 3;
+$nrOfPosts = 5;
 $query = mysql_query("SELECT COUNT(id) FROM posts WHERE studie='$id'");
 while ($row =  mysql_fetch_array($query))
   $count = $row['COUNT(id)'];

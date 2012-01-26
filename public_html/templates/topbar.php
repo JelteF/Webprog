@@ -44,9 +44,8 @@
             <input class="input-large" type="text" name="search" placeholder="Zoek een opleiding" onkeyup="topresult(this.value)" autocomplete="off">
             <div id="topbarsearch" style="z-index:10"></div>
           </form>
-          <?php
-          echo "<a class="brand" href="https://secure.uva.nl/cas/login?service=http://$page_name">Inloggen</a>";
-          ?>
+          <?php require("ajaxphp/login.php")?>
+          </div>
         </div>
       </div>
     </div>
