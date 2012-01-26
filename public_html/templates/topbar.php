@@ -19,7 +19,7 @@
         document.getElementById("topbarsearch").style.position="absolute";
       }
     }
-    xmlhttp.open("GET","topbarsearch.php?q="+str,true);
+    xmlhttp.open("GET","ajaxphp/topbarsearch.php?q="+str,true);
     xmlhttp.send();
   }
 </script>

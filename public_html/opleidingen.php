@@ -17,7 +17,7 @@ function result(str) {
       document.getElementById("searchResult").innerHTML=xmlhttp.responseText;
     }
   }
-  xmlhttp.open("GET","search.php?q="+str,true);
+  xmlhttp.open("GET","ajaxphp/search.php?q="+str,true);
   xmlhttp.send();
 }
 </script>

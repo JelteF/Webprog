@@ -25,7 +25,7 @@ function submit(formname, result, content, post_id)
                 document.getElementById("newcomment").innerHTML+=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("POST", "addcomment.php", true);
+        xmlhttp.open("POST", "ajaxphp/addcomment.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         var query="content="+escape(content)+"&post_id="+escape(post_id)+"&studie="+document.getElementById('studie_id').className;
         xmlhttp.send(query);
