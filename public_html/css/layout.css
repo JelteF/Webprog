@@ -42,6 +42,14 @@ a.active {
   position: static;
 }
 
+#minder {
+  padding-left:30px;
+}
+
+#minder p {
+  font-size:15px;
+}
+
 .content {
   background-color: #fff;
   padding: 20px;
@@ -166,5 +174,5 @@ dl.shoutbox {
 
 .result a:hover {
   color: #900000;
-  text-decoration: none; 
+  text-decoration: none;
 }
