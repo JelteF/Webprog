@@ -45,7 +45,7 @@ else{
   }
   echo $user;
   if(!$user){
-    echo 'c'
+    echo 'c';
     $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
   }
   elseif($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
