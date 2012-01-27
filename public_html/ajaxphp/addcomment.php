@@ -1,23 +1,23 @@
 <?php
-$con = mysql_connect("localhost","webdb1249","uvabookdb");
-if (!$con)
+$con3 = mysql_connect("localhost","webdb1249","uvabookdb");
+if (!$con3)
 {
   die('Could not connect: ' . mysql_error());
 }
 $studie = mysql_real_escape_string(strip_tags($_POST['studie']));
 $post_id = mysql_real_escape_string(strip_tags($_POST['post_id']));
-mysql_select_db("webdb1249", $con);
+mysql_select_db("webdb1249", $con3);
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
-$row = mysql_fetch_array(mysql_query("SELECT * FROM posts WHERE ID=$post_id"));
-$date = date("d-m-Y",strtotime($row['tijd']));
-$time = date("h:i:s",strtotime($row['tijd']));
-$score= $row['score'];
-$beschrijving = nl2br($row['beschrijving']);
-$content = nl2br($row['content']);
-$type = $row['type'];
-$date = date("d-m-Y",strtotime($row['tijd']));
-$time = date("h:i:s",strtotime($row['tijd']));
-$user = $row['auteur'];
+$row3 = mysql_fetch_array(mysql_query("SELECT * FROM posts WHERE ID=$post_id"));
+$date = date("d-m-Y",strtotime($row3['tijd']));
+$time = date("h:i:s",strtotime($row3['tijd']));
+$score= $row3['score'];
+$beschrijving = nl2br($row3['beschrijving']);
+$content = nl2br($row3['content']);
+$type = $row3['type'];
+$date = date("d-m-Y",strtotime($row3['tijd']));
+$time = date("h:i:s",strtotime($row3['tijd']));
+$user = $row3['auteur'];
 $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID='$user'"));
 $user_id = $auteur['UvAnetID'];
 if(!empty($auteur['naam'])){
