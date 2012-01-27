@@ -25,8 +25,8 @@ function upload_post($con, $user){
 session_start();
 $type = $_POST['post-type'];
 $result = "1";
-$content = "";
-$post_id = "";
+$content = "0";
+$post_id = "0";
 $con = mysql_connect("localhost","webdb1249","uvabookdb");
 if (!isset($_SESSION['ticket'])){
    $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
@@ -148,11 +148,11 @@ else{
   }
   if ($result == "1")
       mysql_query("UPDATE posts SET content='$content' WHERE ID='$post_id'");
-  echo $result;
 }
 ?>
-
-<script language="javascript" type="text/javascript">
-    alert('cehunetha');
-    
+<script type="text/javascript">
+var result = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($result)); ?>";
+var content = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($content)); ?>";
+var post_id= "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($post_id)); ?>";
+window.top.window.submit("postForm", result ,content, post_id);
 </script>
