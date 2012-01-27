@@ -10,7 +10,10 @@ function check_vid_validity(){
 function upload_post($con, $user){
     mysql_select_db("webdb1249", $con);  
     $type = mysql_real_escape_string(strip_tags($_POST['post-type']));
-    $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
+    if (isset($_POST['beschrijving']))
+        $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
+    else
+        $beschrijving = "";
     $user_id = $user['id'];
     $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
     mysql_query("INSERT INTO posts (auteur, type, beschrijving, score)
@@ -18,16 +21,7 @@ function upload_post($con, $user){
     mysql_query("INSERT INTO users (naam) VALUES ('$naam')");
     return mysql_insert_id();
 }
-function logged_in(){
-  if (isset($_SESSION['ticket'])) {
-    //user is logged in
-    $ticket = $_SESSION['ticket'];
-    $query = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
-    $row = mysql_fetch_array($query);
-    return $row;
-  }
-  return false;
-}
+
 $type = $_POST['post-type'];
 $result = "";
 $content = "";
@@ -39,11 +33,19 @@ if (!$con)
 }
 else{
   mysql_select_db("webdb1249", $con);
-  $user = logged_in();
-  if(true){
-  $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
+  $user = false;
+  if (isset($_SESSION['ticket'])) {
+    //user is logged in
+    $ticket = $_SESSION['ticket'];
+    echo $ticket;
+    $query = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
+    $user = mysql_fetch_array($query);
   }
-  if($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
+  echo $user;
+  if($user){
+    $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
+  }
+  elseif($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
     $destination_path = "/datastore/webdb1249/Webprog/public_html/";
     $result = "1";
     if ($type == "img"){
