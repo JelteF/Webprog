@@ -1,7 +1,7 @@
 <?php
 $studie_id = $_GET['id'];
 
-$nrOfPosts = 3;
+$nrOfPosts = 5;
 $page = 1;
 if (isset($_GET['page'])) $page = $_GET['page'];
 $order = 'populair';
@@ -17,14 +17,16 @@ elseif ($order == 'waardering')
 else
   $result2 = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY tijd DESC LIMIT $offset, $nrOfPosts");
 
-while($row2 = mysql_fetch_array($result2)){
-  $score = $row2['score'];
-  $beschrijving = nl2br($row2['beschrijving']);
-  $content = nl2br($row2['content']);
-  $type = $row2['type'];
-  $date = date("d-m-Y",strtotime($row2['tijd']));
-  $time = date("h:i:s",strtotime($row2['tijd']));
-  $user = $row2['auteur'];
+
+while($row = mysql_fetch_array($result)){
+  $post_id = $row['ID'];
+  $score = $row['score'];
+  $beschrijving = nl2br($row['beschrijving']);
+  $content = nl2br($row['content']);
+  $type = $row['type'];
+  $date = date("d-m-Y",strtotime($row['tijd']));
+  $time = date("h:i:s",strtotime($row['tijd']));
+  $user = $row['auteur'];
   $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   $user_id = $auteur['UvAnetID'];
   if (!empty($auteur['naam'])){
@@ -41,7 +43,7 @@ while($row2 = mysql_fetch_array($result2)){
     <p>".$date."<br />".$time."</p>
     </div>
     <p><b>Waardering:</b></p>
-    <div class = likes>
+    <div id='likes_$post_id'>
     <p>".$score." points</p>
     </div>
     </div>
@@ -57,10 +59,9 @@ while($row2 = mysql_fetch_array($result2)){
   else
     echo "<iframe width ='460' height ='260' src ='http://www.youtube.com/embed/".$content."' frameborder ='0' allowfullscreen></iframe>";
   echo "<ul class ='pills'>
-    <li><a href ='#'>Like</a></li>
-    <li><a href ='#'>Dislike</a></li>
-    <li><a href ='#'>Share</a></li>
-    </ul>
+    <li><button name='like' onclick='like($post_id, true, $score)'>Like</button></li>
+    <li><button name='like' onclick='like($post_id, false, $score)'>Dislike</button></li>
+    <li><button name='like' type='submit'>Share</button></li>
     </div>
     </div>
     </div>";
