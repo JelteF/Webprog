@@ -14,7 +14,8 @@ function upload_post($con, $user){
         $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
     else
         $beschrijving = "";
-    $user_id = $user['id'];
+    $user_id = mysql_fetch_array($user);
+    $user_id = $user_id['id'];
     $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
     mysql_query("INSERT INTO posts (auteur, type, beschrijving, score)
         VALUES ('$user_id','$type', '$beschrijving', '1')");
@@ -23,7 +24,7 @@ function upload_post($con, $user){
 }
 
 $type = $_POST['post-type'];
-$result = "";
+$result = "1";
 $content = "";
 $post_id = "";
 $con = mysql_connect("localhost","webdb1249","uvabookdb");
@@ -33,13 +34,13 @@ if (!$con)
 }
 else{
   mysql_select_db("webdb1249", $con);
-  $user = false;
+  echo 'bla';
+  $user = "0";
   if (isset($_SESSION['ticket'])) {
     //user is logged in
     $ticket = $_SESSION['ticket'];
     echo $ticket;
-    $query = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
-    $user = mysql_fetch_array($query);
+    $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
   }
   echo $user;
   if(!$user){

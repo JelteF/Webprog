@@ -29,7 +29,7 @@ if(isset($_GET["ticket"])) {
   if ($result) $rows = mysql_num_rows($result);
 
   if (!isset($rows) || $rows == 0)
-    mysql_query("INSERT INTO users (id, UvAnetID, ticket) VALUES (NULL, '$uvanetid', '$ticket')");
+    mysql_query("INSERT INTO users (UvAnetID, ticket) VALUES ('$uvanetid', '$ticket')");
   else
     mysql_query("UPDATE users SET ticket='$ticket' WHERE UvAnetID=$uvanetid");
 }
