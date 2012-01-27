@@ -13,7 +13,7 @@ $con = mysql_connect("localhost","webdb1249","uvabookdb") or die(mysql_error());
 mysql_select_db("webdb1249", $con) or die("Database not available");
 
 $validated = false;
-
+session_start();
 if(isset($_GET["ticket"])) {
   //user just logged in, validate and store
   $ticket= $_GET["ticket"];

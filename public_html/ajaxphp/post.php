@@ -22,6 +22,7 @@ function upload_post($con, $user){
     mysql_query("INSERT INTO users (naam) VALUES ('$naam')");
     return mysql_insert_id();
 }
+session_start();
 echo $_SESSION['ticket'];
 $type = $_POST['post-type'];
 $result = "1";
