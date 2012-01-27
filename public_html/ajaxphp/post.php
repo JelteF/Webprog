@@ -4,22 +4,29 @@ function file_extension($filename)
 {
   return "." . end(explode(".", $filename));
 }
-function get_user_id(){
-
-  return "10183159";
-}
 function check_vid_validity(){
 
 }
-function upload_post($con){
+function upload_post($con, $user){
     mysql_select_db("webdb1249", $con);  
     $type = mysql_real_escape_string(strip_tags($_POST['post-type']));
     $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
-    $user_id = get_user_id();
+    $user_id = $user['id'];
     $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
-    mysql_query("INSERT INTO posts (type, beschrijving, score)
-        VALUES ($type', '$beschrijving', '1')");
+    mysql_query("INSERT INTO posts (auteur, type, beschrijving, score)
+        VALUES ('$user_id','$type', '$beschrijving', '1')");
+    mysql_query("INSERT INTO users (naam) VALUES ('$naam')");
     return mysql_insert_id();
+}
+function logged_in(){
+  if (isset($_SESSION['ticket'])) {
+    //user is logged in
+    $ticket = $_SESSION['ticket'];
+    $query = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
+    $row = mysql_fetch_array($query);
+    return $row;
+  }
+  return false;
 }
 $type = $_POST['post-type'];
 $result = "";
@@ -32,12 +39,16 @@ if (!$con)
 }
 else{
   mysql_select_db("webdb1249", $con);
+  $user = logged_in();
+  if(true){
+  $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
+  }
   if($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
     $destination_path = "/datastore/webdb1249/Webprog/public_html/";
     $result = "1";
     if ($type == "img"){
       if($_FILES["file"]["size"] == 0){
-          $result = "Er werd geen bestand upgeload.";
+          $result = "Er is geen bestand aangegeven.";
       }
       elseif (($_FILES["file"]["type"] != "image/gif")
           && ($_FILES["file"]["type"] != "image/jpeg")
@@ -55,7 +66,7 @@ else{
       }
       else{
         $extension = file_extension($_FILES['file']['name']);
-        $post_id=upload_post($con);
+        $post_id=upload_post($con, $user);
         $content="uploads/".$post_id.$extension;
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination_path.$content);
       }
@@ -81,7 +92,7 @@ else{
       }
       else{
         $extension = file_extension($_FILES['file']['name']);
-        $post_id=upload_post($con);
+        $post_id=upload_post($con, $user);
         $content="uploads/".$post_id.$extension;
         move_uploaded_file($_FILES['file']['tmp_name'], $destination_path.$content);
       }
@@ -115,7 +126,7 @@ else{
             echo $flag;
             echo $content."<br />";
             if($flag){
-                $post_id = upload_post($con);
+                $post_id = upload_post($con, $user);
                 $result = "1";
             }
          }
@@ -131,7 +142,7 @@ else{
     elseif(empty($content))
         $result = "Er is geen link naar een foto ingevoerd.";
     else{
-        $post_id=upload_post($con);
+        $post_id=upload_post($con, $user);
         $result= "1";
     }
   }

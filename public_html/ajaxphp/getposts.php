@@ -18,15 +18,15 @@ else
   $result2 = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY tijd DESC LIMIT $offset, $nrOfPosts");
 
 
-while($row = mysql_fetch_array($result)){
-  $post_id = $row['ID'];
-  $score = $row['score'];
-  $beschrijving = nl2br($row['beschrijving']);
-  $content = nl2br($row['content']);
-  $type = $row['type'];
-  $date = date("d-m-Y",strtotime($row['tijd']));
-  $time = date("h:i:s",strtotime($row['tijd']));
-  $user = $row['auteur'];
+while($row2 = mysql_fetch_array($result2)){
+  $post_id = $row2['ID'];
+  $score = $row2['score'];
+  $beschrijving = nl2br($row2['beschrijving']);
+  $content = nl2br($row2['content']);
+  $type = $row2['type'];
+  $date = date("d-m-Y",strtotime($row2['tijd']));
+  $time = date("h:i:s",strtotime($row2['tijd']));
+  $user = $row2['auteur'];
   $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   $user_id = $auteur['UvAnetID'];
   if (!empty($auteur['naam'])){
