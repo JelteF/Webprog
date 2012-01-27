@@ -42,7 +42,7 @@ else{
     $user = mysql_fetch_array($query);
   }
   echo $user;
-  if($user){
+  if(!$user){
     $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
   }
   elseif($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
