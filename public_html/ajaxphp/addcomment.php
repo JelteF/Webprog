@@ -15,7 +15,6 @@ $score= $row3['score'];
 $beschrijving = nl2br($row3['beschrijving']);
 $content = nl2br($row3['content']);
 $type = $row3['type'];
-echo "type=".$type;
 $date = date("d-m-Y",strtotime($row3['tijd']));
 $time = date("h:i:s",strtotime($row3['tijd']));
 $user = $row3['auteur'];
