@@ -20,7 +20,7 @@ function result() {
           break;
   }
   
-  str = srch.srchblok.value;
+  strs = srch.srchblok.value;
 
   if(window.XMLHttpRequest) {
     xmlhttp = new XMLHttpRequest();
@@ -30,7 +30,7 @@ function result() {
       document.getElementById("searchResult").innerHTML=xmlhttp.responseText;
     }
   }
-  xmlhttp.open("GET","ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac,true);
+  xmlhttp.open("GET","ajaxphp/search.php?q="+strs+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac,true);
   xmlhttp.send();
   alert ("ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac);
 }
