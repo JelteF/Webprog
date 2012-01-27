@@ -57,11 +57,12 @@ while($row2 = mysql_fetch_array($result2)){
   elseif ($type == "pdf")
     echo "</p><a href = ".$content.">Download pdf</a>";
   else
-    echo "<iframe width ='460' height ='260' src ='http://www.youtube.com/embed/".$content."' frameborder ='0' allowfullscreen></iframe>";
+    echo "<iframe width ='460' height ='260' src ='http://www.youtube.com/embed/".$content."' allowfullscreen></iframe>";
   echo "<ul class ='pills'>
     <li><button name='like' onclick='like($post_id, true, $score)'>Like</button></li>
     <li><button name='like' onclick='like($post_id, false, $score)'>Dislike</button></li>
     <li><button name='like' type='submit'>Share</button></li>
+    </ul>
     </div>
     </div>
     </div>";

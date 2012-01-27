@@ -30,8 +30,8 @@ if (!$con)
                 <!---Beschrijvingblok-->
                 <div class="hero-unit">
                     <h1><?php echo $row[2]; ?></h1>
-                    <p></br><?php echo $row[4]; ?></p>
-                    <script language=javascript type='text/javascript'>
+                    <p><br /><?php echo $row[4]; ?></p>
+                    <script type='text/javascript'>
                     function showHide(){
                       if(document.getElementById('meer').style.display == 'block'){
                         document.getElementById('meer').style.display = 'none';

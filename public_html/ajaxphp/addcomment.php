@@ -49,7 +49,7 @@ elseif ($type=="img")
 elseif ($type=="pdf")
     echo "</p><a href=".$content.">Download pdf</a>";
 else
-    echo "<iframe width='460' height='260' src='http://www.youtube.com/embed/".$content."' frameborder='0' allowfullscreen></iframe>";
+    echo "<iframe width='460' height='260' src='http://www.youtube.com/embed/".$content."' allowfullscreen></iframe>";
 echo "<ul class='pills'>
   <li><a href='#'>Like</a></li>
   <li><a href='#'>Dislike</a></li>
