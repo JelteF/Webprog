@@ -29,7 +29,7 @@ $result = "1";
 $content = "";
 $post_id = "";
 $con = mysql_connect("localhost","webdb1249","uvabookdb");
-if (isset($_SESSION['ticket'])){
+if (!isset($_SESSION['ticket'])){
    $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
 }
 elseif (!$con)
