@@ -1,26 +1,33 @@
 function result() {
+fTaal = document.getElementsByName("fTaal");
+fTitel = document.getElementsByName("fTitel");
+fVorm = document.getElementsByName("fVorm");
+fInt = document.getElementsByName("fInt");
+fFac = document.getElementsByName("fFac");
+srchblok = document.getElementsByName("srchblok");
+
   for(taal = 0; taal < 3; taal++) {
-      if (filterTaal.fTaal[taal].checked)
+      if (fTaal[taal].checked)
           break;
   }
   for(titel = 0; titel < 10; titel++) {
-      if (filterTitel.fTitel[titel].checked)
+      if (fTitel[titel].checked)
           break;
   }
   for(studievorm = 0; studievorm < 4; studievorm++) {
-      if (filterVorm.fVorm[studievorm].checked)
+      if (fVorm[studievorm].checked)
           break;
   }
   for(intr = 0; intr < 14; intr++) {
-      if (filterInt.fInt[intr].checked)
+      if (fInt[intr].checked)
           break;
   }
   for(fac = 0; fac < 8; fac++) {
-      if (filterFac.fFac[fac].checked)
+      if (fFac[fac].checked)
           break;
   }
   
-  strs = srch.srchblok.value;
+  str = srchblok.value;
 
   if(window.XMLHttpRequest) {
     xmlhttp = new XMLHttpRequest();
@@ -30,7 +37,6 @@ function result() {
       document.getElementById("searchResult").innerHTML=xmlhttp.responseText;
     }
   }
-  xmlhttp.open("GET","ajaxphp/search.php?q="+strs+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac,true);
+  xmlhttp.open("GET","ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac,true);
   xmlhttp.send();
-  alert ("ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac);
 }
