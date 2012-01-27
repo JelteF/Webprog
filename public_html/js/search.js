@@ -1,8 +1,4 @@
 function result() {
-  //    if(str=="") {
-  //      document.getElementById("searchResult").innerHTML="";
-  //      return;
-  //    }
   for(taal = 0; taal < 3; taal++) {
       if (filterTaal.fTaal[taal].checked)
           break;
@@ -23,6 +19,18 @@ function result() {
       if (filterFac.fFac[fac].checked)
           break;
   }
-  alert ("Button " + taal + " is selected" + titel + studievorm + intr + fac);  
+  
+  str = srch.srchblok.value;
 
+  if(window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  }
+  xmlhttp.onreadystatechange = function() {
+    if(xmlhttp.readyState==4 && xmlhttp.status==200) {
+      document.getElementById("searchResult").innerHTML=xmlhttp.responseText;
+    }
+  }
+  xmlhttp.open("GET","ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac,true);
+  xmlhttp.send();
+  alert ("ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac);
 }
