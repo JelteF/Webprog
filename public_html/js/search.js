@@ -1,4 +1,4 @@
-function result(str) {
+function result() {
   //    if(str=="") {
   //      document.getElementById("searchResult").innerHTML="";
   //      return;
@@ -23,6 +23,8 @@ function result(str) {
       if (filterFac.fFac[fac].checked)
           break;
   }
+  
+  str = srch.srchblok.value;
 
   if(window.XMLHttpRequest) {
     xmlhttp = new XMLHttpRequest();

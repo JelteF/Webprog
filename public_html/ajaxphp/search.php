@@ -95,7 +95,7 @@ if(!$con)
   mysql_select_db("webdb1249", $con);
 
   if($q=="")
-    $result = mysql_query("SELECT id,naam FROM studies $taal $titel $studievorm $cluster $faculteit ORDER BY naam");
+    $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam");
   else
     $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$q%' OR cluster LIKE '%$q%' OR zoekwoorden LIKE '%$q%' $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 
