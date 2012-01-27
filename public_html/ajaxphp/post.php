@@ -7,7 +7,7 @@ function file_extension($filename)
 function check_vid_validity(){
 
 }
-function upload_post($con, $user){
+function upload_post($user){
     $type = mysql_real_escape_string(strip_tags($_POST['post-type']));
     if (isset($_POST['beschrijving']))
         $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
@@ -66,7 +66,7 @@ else{
       }
       else{
         $extension = file_extension($_FILES['file']['name']);
-        $post_id=upload_post($con, $user);
+        $post_id=upload_post($user);
         $content="uploads/".$post_id.$extension;
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination_path.$content);
       }
@@ -92,7 +92,7 @@ else{
       }
       else{
         $extension = file_extension($_FILES['file']['name']);
-        $post_id=upload_post($con, $user);
+        $post_id=upload_post($user);
         $content="uploads/".$post_id.$extension;
         move_uploaded_file($_FILES['file']['tmp_name'], $destination_path.$content);
       }
@@ -126,7 +126,7 @@ else{
             echo $flag;
             echo $content."<br />";
             if($flag){
-                $post_id = upload_post($con, $user);
+                $post_id = upload_post($user);
                 $result = "1";
             }
          }
@@ -142,7 +142,7 @@ else{
     elseif(empty($content))
         $result = "Er is geen link naar een foto ingevoerd.";
     else{
-        $post_id=upload_post($con, $user);
+        $post_id=upload_post($user);
         $result= "1";
     }
   }
