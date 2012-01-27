@@ -18,7 +18,7 @@ if($tt=="1")
 elseif($tt=="2")
   $titel="AND titel='BSc'";
 elseif($tt=="3")
-  $titel="AND titel='Certificaat'";
+  $titel="AND titel='certificate'";
 elseif($tt=="4")
   $titel="AND titel='LLB'";
 elseif($tt=="5")

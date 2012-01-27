@@ -28,57 +28,57 @@ $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
         <h3>Verfijn op</h3></b>
         <h5>Welke voertaal?</h5>
         <form name="filterTaal">
-          <input type="radio" name="fTaal" checked="yes" onchange="result()" />Beide
-          <input type="radio" name="fTaal" onchange="result()" />Nederlands
-          <input type="radio" name="fTaal" onchange="result()" />Engels
+          <input type="radio" name="fTaal" checked="yes" element.onchange="result()" />Beide
+          <input type="radio" name="fTaal" element.onchange="result()" />Nederlands
+          <input type="radio" name="fTaal" element.onchange="result()" />Engels
         </form>
         <h5>Welke titel?</h5>
         <form name="filterTitel">
-          <input type="radio" name="fTitel" checked="yes" onchange="result()" />Alles<br />
-          <input type="radio" name="fTitel" onchange="result()" />BA<br />
-          <input type="radio" name="fTitel" onchange="result()" />BSc<br />
-          <input type="radio" name="fTitel" onchange="result()" />Certificaat<br />
-          <input type="radio" name="fTitel" onchange="result()" />LLB<br />
-          <input type="radio" name="fTitel" onchange="result()" />LLM<br />
-          <input type="radio" name="fTitel" onchange="result()" />MA<br />
-          <input type="radio" name="fTitel" onchange="result()" />MBA<br />
-          <input type="radio" name="fTitel" onchange="result()" />MSc<br />
-          <input type="radio" name="fTitel" onchange="result()" />PhD<br />
+          <input type="radio" name="fTitel" checked="yes" element.onchange="result()" />Alles<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />Bachelor of Arts (BA)<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />Bachelor of Science (BSc)<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />Certificaat<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />Bachelor of Laws (LLB)<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />Master of Laws (LLM)<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />Master of Arts (MA)<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />MBA<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />Master of Science (MSc)<br />
+          <input type="radio" name="fTitel" element.onchange="result()" />PhD<br />
         </form>
         <h5>Welke studievorm?</h5>
         <form name="filterVorm">
-          <input type="radio" name="fVorm" checked="yes" onchange="result()" />Alles<br />
-          <input type="radio" name="fVorm" onchange="result()" />Voltijd<br />
-          <input type="radio" name="fVorm" onchange="result()" />Deeltijd<br />
-          <input type="radio" name="fVorm" onchange="result()" />Dual<br />
+          <input type="radio" name="fVorm" checked="yes" element.onchange="result()" />Alles
+          <input type="radio" name="fVorm" element.onchange="result()" />Voltijd
+          <input type="radio" name="fVorm" element.onchange="result()" />Deeltijd
+          <input type="radio" name="fVorm" element.onchange="result()" />Duaal
         </form>
         <h5>Welk interessegebied?</h5>
         <form name="filterInt">
-          <input type="radio" name="fInt" checked="yes" onchange="result()" />Alles<br />
-          <input type="radio" name="fInt" onchange="result()" />Aarde Natuur en Milieu<br />
-          <input type="radio" name="fInt" onchange="result()" />Beta<br />
-          <input type="radio" name="fInt" onchange="result()" />Communicatie Media en ICT<br />
-          <input type="radio" name="fInt" onchange="result()" />Economie en Ondernemen<br />
-          <input type="radio" name="fInt" onchange="result()" />Filosofie en Religie<br />
-          <input type="radio" name="fInt" onchange="result()" />Geschiedenis en Politiek<br />
-          <input type="radio" name="fInt" onchange="result()" />Gezondheid en Welzijn<br />
-          <input type="radio" name="fInt" onchange="result()" />Kunst en Cultuur<br />
-          <input type="radio" name="fInt" onchange="result()" />Maatschappij en Recht<br />
-          <input type="radio" name="fInt" onchange="result()" />Mens en Gedrag<br />
-          <input type="radio" name="fInt" onchange="result()" />Opvoeding en Onderwijs<br />
-          <input type="radio" name="fInt" onchange="result()" />Talen en Culturen<br />
-          <input type="radio" name="fInt" onchange="result()" />Techniek Ontwerp en Innovatie<br />
+          <input type="radio" name="fInt" checked="yes" element.onchange="result()" />Alles<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Aarde Natuur en Milieu<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Beta<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Communicatie Media en ICT<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Economie en Ondernemen<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Filosofie en Religie<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Geschiedenis en Politiek<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Gezondheid en Welzijn<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Kunst en Cultuur<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Maatschappij en Recht<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Mens en Gedrag<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Opvoeding en Onderwijs<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Talen en Culturen<br />
+          <input type="radio" name="fInt" element.onchange="result()" />Techniek Ontwerp en Innovatie<br />
         </form>
         <h5>Welke faculteit?</h5>
         <form name="filterFac">
-          <input type="radio" name="fFac" checked="yes" onchange="result()" />Alles<br />
-          <input type="radio" name="fFac" onchange="result()" />Economie en Bedrijfskunde<br />
-          <input type="radio" name="fFac" onchange="result()" />Geesteswetenschappen<br />
-          <input type="radio" name="fFac" onchange="result()" />Geneeskunde<br />
-          <input type="radio" name="fFac" onchange="result()" />Maatschappij- en Gedragswetenschappen<br />
-          <input type="radio" name="fFac" onchange="result()" />Natuurkunde, Wiskunde en Informatica<br />
-          <input type="radio" name="fFac" onchange="result()" />Rechtsgeleerdheid<br />
-          <input type="radio" name="fFac" onchange="result()" />Tandheelkunde<br />
+          <input type="radio" name="fFac" checked="yes" element.onchange="result()" />Alles<br />
+          <input type="radio" name="fFac" element.onchange="result()" />Economie en Bedrijfskunde<br />
+          <input type="radio" name="fFac" element.onchange="result()" />Geesteswetenschappen<br />
+          <input type="radio" name="fFac" element.onchange="result()" />Geneeskunde<br />
+          <input type="radio" name="fFac" element.onchange="result()" />Maatschappij- en Gedragswetenschappen<br />
+          <input type="radio" name="fFac" element.onchange="result()" />Natuurkunde, Wiskunde en Informatica<br />
+          <input type="radio" name="fFac" element.onchange="result()" />Rechtsgeleerdheid<br />
+          <input type="radio" name="fFac" element.onchange="result()" />Tandheelkunde<br />
         </form>
             </div>
           </div>
