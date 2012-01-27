@@ -68,6 +68,7 @@ $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
           <input type="radio" name="fInt" onchange="result()" />Opvoeding en Onderwijs<br />
           <input type="radio" name="fInt" onchange="result()" />Talen en Culturen<br />
           <input type="radio" name="fInt" onchange="result()" />Techniek Ontwerp en Innovatie<br />
+        </form>
         <h5>Welke faculteit?</h5>
         <form name="filterFac">
           <input type="radio" name="fFac" checked="yes" onchange="result()" />Alles<br />
@@ -78,6 +79,7 @@ $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
           <input type="radio" name="fFac" onchange="result()" />Natuurkunde, Wiskunde en Informatica<br />
           <input type="radio" name="fFac" onchange="result()" />Rechtsgeleerdheid<br />
           <input type="radio" name="fFac" onchange="result()" />Tandheelkunde<br />
+        </form>
             </div>
           </div>
           <div class="span10">
