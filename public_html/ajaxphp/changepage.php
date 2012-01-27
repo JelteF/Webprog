@@ -2,8 +2,8 @@
 $id = $_GET['id'];
 $nrOfPosts = 5;
 $query = mysql_query("SELECT COUNT(id) FROM posts WHERE studie='$id'");
-while ($row =  mysql_fetch_array($query))
-  $count = $row['COUNT(id)'];
+while ($row4 =  mysql_fetch_array($query))
+  $count = $row4['COUNT(id)'];
 
 $page = 1;
 if (isset($_GET['page'])) $page = $_GET['page'];
