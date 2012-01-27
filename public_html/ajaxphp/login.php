@@ -37,8 +37,12 @@ if (isset($_SESSION['ticket']) || $validated) {
   //user is logged in
   $ticket = $_SESSION['ticket'];
   $result = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
-  $row = mysql_fetch_array($result);
-  echo "<a class='brand' href='#'>".$row['UvAnetID']."</a>";
+  if ($result) $rows = mysql_num_rows($result);
+  if (isset($rows) && $rows != 0){
+    $row = mysql_fetch_array($result);
+    echo "<a class='brand' href='#'>".$row['UvAnetID']."</a>";
+    $validated = false;
+  }
 }
 else {
   //user is not logged in

@@ -95,25 +95,25 @@ foreach ($paragraphs as $paragraph) {
                                 <h3>Reageer op deze opleiding!</h3>
                                 <div class="input">
                                     <form name="postForm"  action="ajaxphp/post.php" method="post" enctype="multipart/form-data" target="post_target" class="pull-left" onsubmit="startUpload();">
-                                        <input name="naam" class="medium" type="text" placeholder="Naam" />
+                                        <input name="naam" class="medium" type="text" placeholder="Naam" <?php if(!$validated) echo "disabled";?> />
                                         <p></p>
                                         Post:
-                                        <input id="img" type="radio" value="img" name="post-type" checked onclick="contentselect('img');"/>Image
-                                        <input id="vid" type="radio" value="vid" name="post-type" onclick="contentselect('vid');"/>Video
-                                        <input id="pdf" type="radio" value="pdf" name="post-type" onclick="contentselect('pdf');"/>PDF
-                                        <input id="txt" type="radio" value="txt" name="post-type" onclick="contentselect('txt');"/>Tekst
+                                        <input id="img" type="radio" value="img" name="post-type" checked <?php if(!$validated) echo "disabled";?> onclick="contentselect('img') ;"/>Image
+                                        <input id="vid" type="radio" value="vid" name="post-type" <?php if(!$validated) echo "disabled";?> onclick="contentselect('vid');"/>Video
+                                        <input id="pdf" type="radio" value="pdf" name="post-type" <?php if(!$validated) echo "disabled";?> onclick="contentselect('pdf');"/>PDF
+                                        <input id="txt" type="radio" value="txt" name="post-type" <?php if(!$validated) echo "disabled";?> onclick="contentselect('txt');"/>Tekst
                                         <p></p>
-                                        <textarea id="textarea" name="beschrijving" class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
+                                        <textarea id="textarea" <?php if(!$validated) echo "disabled";?> name="beschrijving" class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
                                         <div id="uploadcontent">
                                             <br />Upload een foto of link naar een foto:<br />
-                                            Link   <input id="link" type="radio" value="link" name="upload" checked onclick="uploadselect('link');" />
-                                            Upload   <input id="upload" type="radio" value="upload" name="upload" onclick="uploadselect('upload');" />
+                                            Link   <input id="link" type="radio" value="link" <?php if(!$validated) echo "disabled";?> name="upload" checked onclick="uploadselect('link');" />
+                                            Upload   <input id="upload" type="radio" <?php if(!$validated) echo "disabled";?> value="upload" name="upload" onclick="uploadselect('upload');" />
                                             <div id="uploadstyle">
-                                                <br /><input name="content" class="large" type="text" />
+                                                <br /><input name="content" <?php if(!$validated) echo "disabled";?> class="large" type="text" />
                                             </div>
                                         </div>
                                         <br />
-                                        <button class="btn" type="submit" name="submitBtn">Submit</button>
+                                        <button class="btn" type="submit" <?php if(!$validated) echo "disabled";?> name="submitBtn">Submit</button>
                                     </form>
                                     <div id="uploading"></div>
                                     <iframe id="post_target" name="post_target" src="" style="width:110;height:110;border:1px solid #fff;"></iframe>
