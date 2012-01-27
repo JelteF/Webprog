@@ -153,7 +153,7 @@ else{
   }
   if ($result == "1")
       mysql_query("UPDATE posts SET content='$content' WHERE ID='$post_id'");
-  echo result;
+  echo $result;
 }
 ?>
 
