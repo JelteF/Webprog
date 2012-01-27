@@ -81,7 +81,7 @@ elseif($fc=="3")
 elseif($fc=="4")
   $faculteit="AND faculteit LIKE '%maatschappij%'";
 elseif($fc=="5")
-  $faculteit="AND faculteit LIKE '%natuurkunde%'";
+  $faculteit="AND faculteit LIKE '%natuur%'";
 elseif($fc=="6")
   $faculteit="AND faculteit LIKE '%rechtsgeleerdheid%'";
 elseif($fc=="7")
@@ -97,7 +97,7 @@ if(!$con)
   if($q=="")
     $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam");
   else
-    $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$q%' OR cluster LIKE '%$q%' OR zoekwoorden LIKE '%$q%' $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
+    $result = mysql_query("SELECT id,naam FROM studies WHERE (naam LIKE '%$q%' OR cluster LIKE '%$q%' OR zoekwoorden LIKE '%$q%') $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 
   while($row = mysql_fetch_array($result)) {
     echo "<a href='study.php?id=";
