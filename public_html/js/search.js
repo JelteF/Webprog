@@ -26,14 +26,5 @@ function result() {
   
   str = srch.srchblok.value;
 
-  if(window.XMLHttpRequest) {
-    xmlhttp = new XMLHttpRequest();
-  }
-  xmlhttp.onreadystatechange = function() {
-    if(xmlhttp.readyState==4 && xmlhttp.status==200) {
-      document.getElementById("searchResult").innerHTML=xmlhttp.responseText;
-    }
-  }
-  xmlhttp.open("GET","ajaxphp/search.php?q="+str,true);
-  xmlhttp.send();
+  alert (taal + titel + studievorm + intr + fac + str);
 }
