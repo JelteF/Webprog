@@ -34,16 +34,18 @@ if (!$con)
 }
 else{
   mysql_select_db("webdb1249", $con);
-  echo 'bla';
+  echo 'a';
   $user = "0";
   if (isset($_SESSION['ticket'])) {
     //user is logged in
+    echo 'b';
     $ticket = $_SESSION['ticket'];
     echo $ticket;
     $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
   }
   echo $user;
   if(!$user){
+    echo 'c'
     $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
   }
   elseif($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
