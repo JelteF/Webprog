@@ -95,7 +95,7 @@ foreach ($paragraphs as $paragraph) {
                                 <h3>Reageer op deze opleiding!</h3>
                                 <div class="input">
                                     <form name="postForm"  action="ajaxphp/post.php" method="post" enctype="multipart/form-data" target="post_target" class="pull-left" onsubmit="startUpload();">
-                                        <input name="naam" class="medium" type="text" placeholder="Naam" <?php if(!$validated) echo "disabled"; else echo "value='".$user['naam']."'";?> />
+                                        <input name="naam" class="medium" type="text" placeholder="Naam" <?php if(!$validated) echo "disabled"; else echo "value='".$user1['naam']."'";?> />
                                         <p></p>
                                         Post:
                                         <input id="img" type="radio" value="img" name="post-type" checked <?php if(!$validated) echo "disabled";?> onclick="contentselect('img') ;"/>Image
