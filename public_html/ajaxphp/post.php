@@ -158,9 +158,13 @@ else{
 ?>
 
 <script language="javascript" type="text/javascript">
+    alert("cehunetha");
+alert("bla");
 var result = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($result)); ?>";
+alert(result);
 var content = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($content)); ?>";
+alert(contet);
 var post_id= "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($post_id)); ?>";
-alert(content);
+alert(post_id);
 window.top.window.submit("postForm", result ,content, post_id);
 </script>
