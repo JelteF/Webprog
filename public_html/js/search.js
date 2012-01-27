@@ -34,6 +34,6 @@ function result() {
       document.getElementById("searchResult").innerHTML=xmlhttp.responseText;
     }
   }
-  xmlhttp.open("GET","ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac,true);
+  xmlhttp.open("GET","ajaxphp/search.php?q="+str,true);
   xmlhttp.send();
 }
