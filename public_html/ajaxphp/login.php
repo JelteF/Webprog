@@ -17,7 +17,7 @@ $validated = false;
 if(isset($_GET["ticket"])) {
   //user just logged in, validate and store
   $ticket= $_GET["ticket"];
-  $file = file_get_contents("https://secure.uva.nl/cas/serviceValidate?ticket=$ticket&service=$pageURL");
+  $file = file_get_contents("https://bt-lap.ic.uva.nl/cas/serviceValidate?ticket=$ticket&service=$pageURL");
   $_SESSION['ticket'] = $ticket;
   $validated = true;
   $startUser = stripos($file,"<cas:user>") + 10;
@@ -43,7 +43,7 @@ if (isset($_SESSION['ticket']) || $validated) {
 }
 else {
   //user is not logged in
-  echo "<a class='brand' href='https://secure.uva.nl/cas/login?service=$pageURL'>Log In</a>";
+  echo "<a class='brand' href='https://bt-lap.ic.uva.nl/cas/login?service=$pageURL'>Log In</a>";
 }
 
 echo "</div>";
