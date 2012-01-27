@@ -58,6 +58,6 @@ echo "<ul class='pills'>
   </div>
   </div>
   </div>";
-mysql_close($con);
+mysql_close($con3);
 
 ?>
