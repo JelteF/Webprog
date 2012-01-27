@@ -41,7 +41,7 @@ if (isset($_SESSION['ticket']) || $validated) {
   if (isset($rows) && $rows != 0){
     $row = mysql_fetch_array($result);
     echo "<a class='brand' href='#'>".$row['UvAnetID']."</a>";
-    $validated = false;
+    $validated = true;
   }
 }
 else {
