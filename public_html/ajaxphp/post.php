@@ -1,5 +1,5 @@
 <?php
-
+set_include_path("../Zend");
 function file_extension($filename)
 {
   return "." . end(explode(".", $filename));
@@ -8,19 +8,21 @@ function get_user_id(){
 
   return "10183159";
 }
+function check_vid_validity(){
+
+}
 function upload_post($con){
-  
+    mysql_select_db("webdb1249", $con);  
     $type = mysql_real_escape_string(strip_tags($_POST['post-type']));
     $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
-    $studie = mysql_real_escape_string(strip_tags($_POST['studie']));
     $user_id = get_user_id();
     $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
-    mysql_select_db("webdb1249", $con);
-    mysql_query("INSERT INTO posts (studie, type, beschrijving, score)
-        VALUES ('$studie', '$type', '$beschrijving', '1')");
+    mysql_query("INSERT INTO posts (type, beschrijving, score)
+        VALUES ($type', '$beschrijving', '1')");
     return mysql_insert_id();
 }
 $type = $_POST['post-type'];
+$result = "";
 $content = "";
 $post_id = "";
 $con = mysql_connect("localhost","webdb1249","uvabookdb");
@@ -52,8 +54,7 @@ else{
         $result = "Error bij het uploaden: " . $_FILES["file"]["error"];
       }
       else{
-        $extension = basename($_FILES['file']['name']);
-        $extension = ".".file_extension($extension);
+        $extension = file_extension($_FILES['file']['name']);
         $post_id=upload_post($con);
         $content="uploads/".$post_id.$extension;
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination_path.$content);
@@ -86,14 +87,49 @@ else{
       }
     }
   }
+  elseif($type == "vid"){
+     $content = $_POST['content'];
+     echo $content."<br />";
+     if(empty($content))
+        $result = "Er is geen youtube link ingevoerd.";
+     else{
+         try{
+
+            $flag = false;
+            $pos1=strpos($content,"youtube.com/watch?v=");
+            $pos2=strpos($content, "youtube.com/v/");
+            $pos3=strpos($content, "youtu.be/");
+            //echo $pos1." ".$pos." ".$pos3."<br />";
+            if($pos1 !== false){
+                $content=substr($content, $pos1+20, 11);
+                $flag = true;
+            }
+            elseif($pos2 !== false){
+                $content=substr($content, $pos2+14, 11);
+                $flag = true;
+            }
+            elseif($pos3 !== false){
+                $content=substr($content, $pos3+9, 11);
+                $flag = true;
+            }
+            echo $flag;
+            echo $content."<br />";
+            if($flag){
+                $post_id = upload_post($con);
+                $result = "1";
+            }
+         }
+         catch(Exception $e){
+             $result= "De video bestaat niet of het is geen goede youtube link.";
+         }
+     }
+  }
   else{
     $content = $_POST['content'];
     if($type == "txt" && empty($content))
         $result = "Er is geen tekst ingevoerd.";
-    elseif($type == "img" && empty($content))
+    elseif(empty($content))
         $result = "Er is geen link naar een foto ingevoerd.";
-    elseif($type == empty($content))
-        $result = "Er is geen youtube link ingevoerd.";
     else{
         $post_id=upload_post($con);
         $result= "1";
@@ -108,5 +144,6 @@ else{
 var result = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($result)); ?>";
 var content = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($content)); ?>";
 var post_id= "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($post_id)); ?>";
+alert(content);
 window.top.window.submit("postForm", result ,content, post_id);
 </script>
