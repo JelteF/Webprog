@@ -23,17 +23,6 @@ function result() {
       if (filterFac.fFac[fac].checked)
           break;
   }
-  
-  str = srch.srchblok.value;
+  alert ("Button " + taal + " is selected" + titel + studievorm + intr + fac);  
 
-  if(window.XMLHttpRequest) {
-    xmlhttp = new XMLHttpRequest();
-  }
-  xmlhttp.onreadystatechange = function() {
-    if(xmlhttp.readyState==4 && xmlhttp.status==200) {
-      document.getElementById("searchResult").innerHTML=xmlhttp.responseText;
-    }
-  }
-  xmlhttp.open("GET","ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac,true);
-  xmlhttp.send();
 }
