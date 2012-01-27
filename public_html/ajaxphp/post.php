@@ -8,7 +8,6 @@ function check_vid_validity(){
 
 }
 function upload_post($con, $user){
-    mysql_select_db("webdb1249", $con);  
     $type = mysql_real_escape_string(strip_tags($_POST['post-type']));
     if (isset($_POST['beschrijving']))
         $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
