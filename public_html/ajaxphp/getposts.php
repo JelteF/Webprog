@@ -10,14 +10,14 @@ $order = $_GET['order'];
 $offset = ($page-1) * $nrOfPosts;
 
 if ($order == 'populair')
-  $result = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY (score/(TIMESTAMPDIFF(MINUTE,TIMESTAMP(tijd),TIMESTAMP(NOW())
+  $result2 = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY (score/(TIMESTAMPDIFF(MINUTE,TIMESTAMP(tijd),TIMESTAMP(NOW())
   ))) DESC LIMIT $offset, $nrOfPosts");
 elseif ($order == 'waardering')
-  $result = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY score DESC, tijd DESC LIMIT $offset, $nrOfPosts");
+  $result2 = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY score DESC, tijd DESC LIMIT $offset, $nrOfPosts");
 else
-  $result = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY tijd DESC LIMIT $offset, $nrOfPosts");
+  $result2 = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY tijd DESC LIMIT $offset, $nrOfPosts");
 
-while($row2 = mysql_fetch_array($result)){
+while($row2 = mysql_fetch_array($result2)){
   $score = $row2['score'];
   $beschrijving = nl2br($row2['beschrijving']);
   $content = nl2br($row2['content']);
@@ -55,7 +55,7 @@ while($row2 = mysql_fetch_array($result)){
   elseif ($type == "pdf")
     echo "</p><a href = ".$content.">Download pdf</a>";
   else
-    echo "<iframe width ='460' height ='260' src ='".$content."' frameborder ='0' allowfullscreen></iframe>";
+    echo "<iframe width ='460' height ='260' src ='http://www.youtube.com/embed/".$content."' frameborder ='0' allowfullscreen></iframe>";
   echo "<ul class ='pills'>
     <li><a href ='#'>Like</a></li>
     <li><a href ='#'>Dislike</a></li>
