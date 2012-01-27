@@ -19,7 +19,7 @@ function upload_post($con, $user){
     $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
     mysql_query("INSERT INTO posts (auteur, type, beschrijving, score)
         VALUES ('$user_id','$type', '$beschrijving', '1')");
-    mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
+    mysql_query("INSERT INTO users (naam) VALUES ('$naam')");
     return mysql_insert_id();
 }
 session_start();
