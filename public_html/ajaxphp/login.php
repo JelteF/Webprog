@@ -38,7 +38,7 @@ if (isset($_SESSION['ticket']) || $validated) {
   $ticket = $_SESSION['ticket'];
   $result = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
   if ($result) $rows = mysql_num_rows($result);
-  if (isset($rows) && $user1 != 0){
+  if (isset($rows) && $rows != 0){
     $user1 = mysql_fetch_array($result);
     echo "<a class='brand' href='#'>".$user1['UvAnetID']."</a>";
     $validated = true;
