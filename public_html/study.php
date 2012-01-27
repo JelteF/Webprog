@@ -116,6 +116,7 @@ foreach ($paragraphs as $paragraph) {
   <button class="btn" type="submit" name="submitBtn">Submit</button>
   </form>
   <div id="uploading"></div>
+  <?php echo $_SESSION['ticket'] ?>
   <iframe id="post_target" name="post_target" src="#" style="width:110;height:110;border:1px solid #fff;"></iframe>
   </div>
   </div>

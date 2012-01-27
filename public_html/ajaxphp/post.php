@@ -22,13 +22,16 @@ function upload_post($con, $user){
     mysql_query("INSERT INTO users (naam) VALUES ('$naam')");
     return mysql_insert_id();
 }
-
+echo $_SESSION['ticket'];
 $type = $_POST['post-type'];
 $result = "1";
 $content = "";
 $post_id = "";
 $con = mysql_connect("localhost","webdb1249","uvabookdb");
-if (!$con)
+if (isset($_SESSION['ticket'])){
+   $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
+}
+elseif (!$con)
 {
   $result = "Could not connect to the database:<br />Please try again.";
 }
@@ -36,19 +39,11 @@ else{
   mysql_select_db("webdb1249", $con);
   echo 'a';
   $user = "0";
-  if (isset($_SESSION['ticket'])) {
-    //user is logged in
-    echo 'b';
-    $ticket = $_SESSION['ticket'];
-    echo $ticket;
-    $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
-  }
-  echo $user;
-  if(!$user){
-    echo 'c';
-    $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
-  }
-  elseif($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
+  $ticket = $_SESSION['ticket'];
+  echo $ticket;
+  $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
+  
+  if($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
     $destination_path = "/datastore/webdb1249/Webprog/public_html/";
     $result = "1";
     if ($type == "img"){
