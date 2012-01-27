@@ -28,6 +28,7 @@ function submit(formname, result, content, post_id)
         xmlhttp.open("POST", "ajaxphp/addcomment.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         var query="content="+escape(content)+"&post_id="+escape(post_id)+"&studie="+document.getElementById('studie_id').className;
+        alert(query);
         xmlhttp.send(query);
     }
 }
