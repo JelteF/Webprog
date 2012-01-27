@@ -1,7 +1,13 @@
 <?php
 echo "<div class='pull-right'>";
 
-$url = "http://www.uvabook.nl/".$_SERVER['SCRIPT_NAME'];
+$pageURL = 'http';
+$pageURL .= "://";
+if ($_SERVER["SERVER_PORT"] != "80") {
+  $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+} else {
+  $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+}
 
 $con = mysql_connect("localhost","webdb1249","uvabookdb") or die(mysql_error());
 mysql_select_db("webdb1249", $con) or die("Database not available");
@@ -11,7 +17,7 @@ $validated = false;
 if(isset($_GET["ticket"])) {
   //user just logged in, validate and store
   $ticket= $_GET["ticket"];
-  $file = file_get_contents("https://secure.uva.nl/cas/serviceValidate?ticket=$ticket&service=$url");
+  $file = file_get_contents("https://secure.uva.nl/cas/serviceValidate?ticket=$ticket&service=$pageURL");
   $_SESSION['ticket'] = $ticket;
   $validated = true;
   $startUser = stripos($file,"<cas:user>") + 10;
@@ -23,7 +29,7 @@ if(isset($_GET["ticket"])) {
   if ($result) $rows = mysql_num_rows($result);
 
   if (!isset($rows) || $rows == 0)
-    mysql_query("INSERT INTO users (UvAnetID, ticket) VALUES ('$uvanetid', '$ticket')");
+    mysql_query("INSERT INTO users (id, UvAnetID, ticket) VALUES (NULL, '$uvanetid', '$ticket')");
   else
     mysql_query("UPDATE users SET ticket='$ticket' WHERE UvAnetID=$uvanetid");
 }
@@ -37,7 +43,7 @@ if (isset($_SESSION['ticket']) || $validated) {
 }
 else {
   //user is not logged in
-  echo "<a class='brand' href='https://secure.uva.nl/cas/login?service=$url'>Log In</a>";
+  echo "<a class='brand' href='https://secure.uva.nl/cas/login?service=$pageURL'>Log In</a>";
 }
 
 echo "</div>";
