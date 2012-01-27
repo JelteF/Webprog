@@ -98,7 +98,7 @@ foreach ($paragraphs as $paragraph) {
                                         <input name="naam" class="medium" type="text" placeholder="Naam" />
                                         <p></p>
                                         Post:
-                                        <input id="img" type="radio" value="img" name="post-type" checked="true" onclick="contentselect('img');"/>Image
+                                        <input id="img" type="radio" value="img" name="post-type" checked onclick="contentselect('img');"/>Image
                                         <input id="vid" type="radio" value="vid" name="post-type" onclick="contentselect('vid');"/>Video
                                         <input id="pdf" type="radio" value="pdf" name="post-type" onclick="contentselect('pdf');"/>PDF
                                         <input id="txt" type="radio" value="txt" name="post-type" onclick="contentselect('txt');"/>Tekst
@@ -106,7 +106,7 @@ foreach ($paragraphs as $paragraph) {
                                         <textarea id="textarea" name="beschrijving" class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
                                         <div id="uploadcontent">
                                             <br />Upload een foto of link naar een foto:<br />
-                                            Link   <input id="link" type="radio" value="link" name="upload" checked="true" onclick="uploadselect('link');" />
+                                            Link   <input id="link" type="radio" value="link" name="upload" checked onclick="uploadselect('link');" />
                                             Upload   <input id="upload" type="radio" value="upload" name="upload" onclick="uploadselect('upload');" />
                                             <div id="uploadstyle">
                                                 <br /><input name="content" class="large" type="text" />
@@ -116,7 +116,7 @@ foreach ($paragraphs as $paragraph) {
                                         <button class="btn" type="submit" name="submitBtn">Submit</button>
                                     </form>
                                     <div id="uploading"></div>
-                                    <iframe id="post_target" name="post_target" src="#" style="width:110;height:110;border:1px solid #fff;"></iframe>
+                                    <iframe id="post_target" name="post_target" src="" style="width:110;height:110;border:1px solid #fff;"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ foreach ($paragraphs as $paragraph) {
                     <!---Rechterblok-->
                     <div class="span6">
                         <!---Informatieblok-->
-                        <script language=javascript type='text/javascript'>
+                        <script type='text/javascript'>
                         function tab1() {
                           document.getElementById('tab1').setAttribute("class","active");
                           document.getElementById('tab2').setAttribute("class","");
