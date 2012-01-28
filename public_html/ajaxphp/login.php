@@ -19,7 +19,6 @@ if(isset($_GET["ticket"])) {
   $file = file_get_contents("https://bt-lap.ic.uva.nl/cas/serviceValidate?ticket=$ticket&service=$pageURL");
   if(stripos($file, "<cas:authenticationFailure") === false){
       $_SESSION['ticket'] = $ticket;
-      echo $file;
       $startUser = stripos($file,"<cas:user>") + 10;
       $endUser = stripos($file,"</cas:user>");
       $length = $endUser - $startUser;
