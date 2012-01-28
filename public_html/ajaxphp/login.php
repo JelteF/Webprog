@@ -14,13 +14,12 @@ mysql_select_db("webdb1249", $con) or die("Database not available");
 
 $validated = false;
 if(isset($_GET["ticket"])) {
-  session_start();
   //user just logged in, validate and store
   $ticket= $_GET["ticket"];
   $file = file_get_contents("https://bt-lap.ic.uva.nl/cas/serviceValidate?ticket=$ticket&service=$pageURL");
   $_SESSION['ticket'] = $ticket;
   $validated = true;
-  echo file;
+  echo $file;
   $startUser = stripos($file,"<cas:user>") + 10;
   $endUser = stripos($file,"</cas:user>");
   $length = $endUser - $startUser;
