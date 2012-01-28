@@ -32,7 +32,7 @@ if(isset($_GET["ticket"])) {
         mysql_query("UPDATE users SET ticket='$ticket' WHERE UvAnetID=$uvanetid");
   }
 }
-if (isset($_SESSION['ticket'])) {
+if (isset($_SESSION['ticket'])&& isset($_GET["do"]) && $_GET["do"]=="logoff") {
   //user is logged in
   $ticket = $_SESSION['ticket'];
   $result = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
