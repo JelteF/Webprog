@@ -78,7 +78,7 @@ foreach ($paragraphs as $paragraph) {
                         <!--Comments-->
   <?php require("ajaxphp/getposts.php") ?>
                         <!--Nieuw Commentblok-->
-                        <div id="newcomment" >
+                        <div class="newcomment" id="newcomment" >
                         </div>
                         <!--Commentblok-->
                         <!--Navblok-->
