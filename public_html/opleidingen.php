@@ -10,9 +10,6 @@
   <body>
 <?php require("templates/topbar.php"); ?>
 <?php
-$con = mysql_connect("localhost","webdb1249","uvabookdb");
-if (!$con)
-  die('could not connect' . mysql.error());
 
 mysql_select_db("webdb1249", $con);
 
