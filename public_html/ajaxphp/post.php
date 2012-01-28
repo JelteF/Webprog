@@ -21,7 +21,7 @@ function upload_post($user){
     mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
     return $post_id;
 }
-set_include_path("/datastore/webdb1249/htdocs/Zend/");
+set_include_path("/datastore/webdb1249/htdocs/Zend");
 session_start();
 $type = $_POST['post-type'];
 $result = "1";
