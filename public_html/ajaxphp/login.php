@@ -18,20 +18,21 @@ if(isset($_GET["ticket"])) {
   $ticket= $_GET["ticket"];
   $file = file_get_contents("https://bt-lap.ic.uva.nl/cas/serviceValidate?ticket=$ticket&service=$pageURL");
   $_SESSION['ticket'] = $ticket;
-  $validated = true;
-  echo $file;
-  $startUser = stripos($file,"<cas:user>") + 10;
-  $endUser = stripos($file,"</cas:user>");
-  $length = $endUser - $startUser;
-  $uvanetid = substr($file,$startUser,$length);
+  if(stripos($file, "<cas:authenticationFailure") === false){
+      $validated = true;
+      echo $file;
+      $startUser = stripos($file,"<cas:user>") + 10;
+      $endUser = stripos($file,"</cas:user>");
+      $length = $endUser - $startUser;
+      $uvanetid = substr($file,$startUser,$length);
+      $result = mysql_query("SELECT * FROM users WHERE UvAnetID = '$uvanetid'");
+      if ($result) $rows = mysql_num_rows($result);
 
-  $result = mysql_query("SELECT * FROM users WHERE UvAnetID = '$uvanetid'");
-  if ($result) $rows = mysql_num_rows($result);
-
-  if (!isset($rows) || $rows == 0)
-    mysql_query("INSERT INTO users (UvAnetID, ticket) VALUES ('$uvanetid', '$ticket')");
-  else
-    mysql_query("UPDATE users SET ticket='$ticket' WHERE UvAnetID=$uvanetid");
+      if (!isset($rows) || $rows == 0)
+        mysql_query("INSERT INTO users (UvAnetID, ticket) VALUES ('$uvanetid', '$ticket')");
+      else
+        mysql_query("UPDATE users SET ticket='$ticket' WHERE UvAnetID=$uvanetid");
+  }
 }
 
 if (isset($_SESSION['ticket']) || $validated) {
@@ -41,7 +42,7 @@ if (isset($_SESSION['ticket']) || $validated) {
   if ($result) $rows = mysql_num_rows($result);
   if (isset($rows) && $rows != 0){
     $user1 = mysql_fetch_array($result);
-    echo "<a class='brand' href='#'>".$user1['UvAnetID']."</a>";
+    echo "<a class='brand' href=''>".$user1['UvAnetID']."</a>";
     $validated = true;
   }
 }
