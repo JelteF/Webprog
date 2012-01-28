@@ -1,5 +1,4 @@
 <?php
-set_include_path("../Zend");
 function file_extension($filename)
 {
   return "." . end(explode(".", $filename));
@@ -22,6 +21,7 @@ function upload_post($user){
     mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
     return $post_id;
 }
+set_include_path("../Zend/");
 session_start();
 $type = $_POST['post-type'];
 $result = "1";
