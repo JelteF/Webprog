@@ -49,7 +49,7 @@ else {
   echo "<a class='brand' href='https://bt-lap.ic.uva.nl/cas/login?service=$pageURL'>Log In</a>";
 }
 
-if(isset($_GET["do"]) && $_GET["do"]==logoff){
+if(isset($_GET["do"]) && $_GET["do"]=="logoff"){
     unset($_SESSION["ticket"]);
     session_unset();
     session_destroy();
