@@ -53,6 +53,9 @@ a.active {
 iframe {
   border:none;
 }
+.newcomment{
+    background-color: #99FF99;
+}
 .content {
   background-color: #fff;
   padding: 20px;
