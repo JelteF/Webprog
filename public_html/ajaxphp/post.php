@@ -142,9 +142,15 @@ else{
         $result = "Er is geen tekst ingevoerd.";
     elseif(empty($content))
         $result = "Er is geen link naar een foto ingevoerd.";
-    else{
+    elseif($type == "img"){
+        $ext = file_extension($content);
+        if ($ext != ".gif" && $ext != ".jpg" && $ext != ".jpeg" && $ext != ".png"
+                && $ext != ".bmp"){
+            $result = "Er is geen link naar een foto ingevoerd.";
+        }
+    }
+    if ($result == "1"){
         $post_id=upload_post($user);
-        $result= "1";
     }
   }
   if ($result == "1")

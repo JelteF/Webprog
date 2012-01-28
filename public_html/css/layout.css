@@ -50,6 +50,9 @@ a.active {
   font-size:15px;
 }
 
+iframe {
+  border:none;
+}
 .content {
   background-color: #fff;
   padding: 20px;
