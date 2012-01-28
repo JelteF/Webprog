@@ -21,7 +21,7 @@ function upload_post($user){
     mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
     return $post_id;
 }
-set_include_path("/datastore/webdb1249/htdocs/Zend");
+set_include_path("/datastore/webdb1249/htdocs/Youtube");
 session_start();
 $type = $_POST['post-type'];
 $result = "1";
@@ -123,7 +123,7 @@ else{
                 $result= "Dit is geen goede Youtube link.";
             }
             if($flag){
-                require_once 'Loader.php'; // the Zend dir must be in your include_path
+                require_once 'Zend/Loader.php'; // the Zend dir must be in your include_path
                 Zend_Loader::loadClass('Zend_Gdata_YouTube');
                 $yt = new Zend_Gdata_YouTube();
                 $videoEntry = $yt->getVideoEntry($content);
