@@ -37,10 +37,8 @@ elseif (!$con)
 }
 else{
   mysql_select_db("webdb1249", $con);
-  echo 'a';
   $user = "0";
   $ticket = $_SESSION['ticket'];
-  echo $ticket;
   $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
   
   if($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
@@ -100,7 +98,6 @@ else{
   }
   elseif($type == "vid"){
      $content = $_POST['content'];
-     echo $content."<br />";
      if(empty($content))
         $result = "Er is geen youtube link ingevoerd.";
      else{
@@ -110,7 +107,6 @@ else{
             $pos1=strpos($content,"youtube.com/watch?v=");
             $pos2=strpos($content, "youtube.com/v/");
             $pos3=strpos($content, "youtu.be/");
-            //echo $pos1." ".$pos." ".$pos3."<br />";
             if($pos1 !== false){
                 $content=substr($content, $pos1+20, 11);
                 $flag = true;
@@ -123,15 +119,20 @@ else{
                 $content=substr($content, $pos3+9, 11);
                 $flag = true;
             }
-            echo $flag;
-            echo $content."<br />";
+            else{
+                $result= "Dit is geen goede Youtube link.";
+            }
             if($flag){
+                require_once 'Zend/Loader.php'; // the Zend dir must be in your include_path
+                Zend_Loader::loadClass('Zend_Gdata_YouTube');
+                $yt = new Zend_Gdata_YouTube();
+                $videoEntry = $yt->getVideoEntry($content);
                 $post_id = upload_post($user);
                 $result = "1";
             }
          }
          catch(Exception $e){
-             $result= "De video bestaat niet of het is geen goede youtube link.";
+             $result= "De video bestaat niet of het is geen goede Youtube link.";
          }
      }
   }
