@@ -11,8 +11,6 @@
 <?php require("templates/topbar.php"); ?>
 <?php
 
-mysql_select_db("webdb1249", $con);
-
 $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
 ?>
 
