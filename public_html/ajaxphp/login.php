@@ -33,7 +33,6 @@ if(isset($_GET["ticket"])) {
         mysql_query("UPDATE users SET ticket='$ticket' WHERE UvAnetID=$uvanetid");
   }
 }
-
 if (isset($_SESSION['ticket'])) {
   //user is logged in
   $ticket = $_SESSION['ticket'];
@@ -41,7 +40,7 @@ if (isset($_SESSION['ticket'])) {
   if ($result) $rows = mysql_num_rows($result);
   if (isset($rows) && $rows != 0){
     $user1 = mysql_fetch_array($result);
-    echo "<a class='brand' href=''>".$user1['UvAnetID']."</a>";
+    echo "<a class='brand' href='".$pageURL."&do=logoff'>".$user1['UvAnetID']." (Log uit)</a>";
     $validated = true;
   }
 }
@@ -50,5 +49,10 @@ else {
   echo "<a class='brand' href='https://bt-lap.ic.uva.nl/cas/login?service=$pageURL'>Log In</a>";
 }
 
+if(isset($_GET["do"]) && $_GET["do"]==logoff){
+    unset($_SESSION["ticket"]);
+    session_unset();
+    session_destroy();
+}
 echo "</div>";
 ?>
