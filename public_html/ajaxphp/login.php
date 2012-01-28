@@ -39,7 +39,7 @@ if (isset($_SESSION['ticket'])&& (!isset($_GET["do"]) || !$_GET["do"]=="logoff")
   if ($result) $rows = mysql_num_rows($result);
   if (isset($rows) && $rows != 0){
     $user1 = mysql_fetch_array($result);
-    echo "<a class='brand' href='".$pageURL."&do=logoff'>".$user1['UvAnetID']." (Log uit)</a>";
+    echo "<a class='brand' href='".$pageURL."&do=logoff'>Log uit (".$user1['UvAnetID'].")</a>";
     $validated = true;
   }
 }
