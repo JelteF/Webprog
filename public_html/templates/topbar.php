@@ -23,7 +23,10 @@
     xmlhttp.send();
   }
 </script>
-<?php $page_name = $_SERVER['PHP_SELF']; ?>
+<?php $page_name = $_SERVER['PHP_SELF']; 
+require("connect.php");
+?>
+
     <div class="topbanner">
       <img src="images/logo.jpg" alt="Universiteit van Amsterdam" />
     </div>
