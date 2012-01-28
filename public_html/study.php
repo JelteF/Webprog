@@ -12,9 +12,6 @@
     <body>
 <?php require("templates/topbar.php") ?>
 <?php
-
-  mysql_select_db("webdb1249", $con);
-
   $studie_id = $_GET["id"];
 
   $result = mysql_query("SELECT * FROM studies WHERE id='$studie_id'");
