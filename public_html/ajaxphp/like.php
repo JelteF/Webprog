@@ -18,14 +18,13 @@ if ($up == 'true')
 else
   $newvalue = -1;
 
-$result = mysql_query("SELECT * FROM votes WHERE voter='$user_id', post='$post'");
+$result = mysql_query("SELECT * FROM votes WHERE voter='$user_id' and  'post=$post'");
+echo mysql_error();
 if ($result && $array  = mysql_fetch_array($result)) {
   $value = $array['vote'];
 
   if ($value == $newvalue)
     $newvalue = 0;
-  else
-    $newvalue *= -1;
 
   mysql_query("UPDATE votes SET vote='$newvalue' WHERE voter='$user_id', post='$post'");
 }
