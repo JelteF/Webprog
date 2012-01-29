@@ -23,8 +23,8 @@
     xmlhttp.send();
   }
 </script>
-<?php $page_name = $_SERVER['PHP_SELF']; 
-require("connect.php");
+<?php $page_name = $_SERVER['PHP_SELF'];
+require("../../servercode/connect.php");
 ?>
 
     <div class="topbanner">
