@@ -18,7 +18,7 @@ if ($up == 'true')
 else
   $newvalue = -1;
 
-$result = mysql_query("SELECT * FROM votes WHERE voter='$user_id' and  'post=$post'");
+$result = mysql_query("SELECT * FROM votes WHERE voter='$user_id' and  post='$post'");
 if ($array  = mysql_fetch_array($result)) {
   $value = $array['vote'];
 
