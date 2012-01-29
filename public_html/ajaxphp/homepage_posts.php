@@ -26,7 +26,8 @@ echo "<div class ='commentblok'>
     <div class ='row'>
     <div class ='span2'>
     <div class ='studie'>
-    <p><b><a href ='www.uvabook.nl/study.php?id=$study_id'>".$study."</a></b></p>
+    <p><b><a href ='study.php?id=$study_id'>".$study."</a></b></p>
+    </div>
     <p><b>Gepost op:</b></p>
     <div class ='postdate'>
     <p>".$date."<br />".$time."</p>
