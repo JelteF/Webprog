@@ -1,6 +1,10 @@
 <?php
+$logged_in_user = 0;
+if (!isset($_SESSION['ticket'])){
+    $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='".$_SESSION['ticket']."'"));
+    $logged_in_user = $logged_in_user['id'];
+}
 $studie_id = $_GET['id'];
-
 $nrOfPosts = 5;
 $page = 1;
 if (isset($_GET['page'])) $page = $_GET['page'];
@@ -29,6 +33,8 @@ while($row2 = mysql_fetch_array($result2)){
   $user = $row2['auteur'];
   $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   $user_id = $auteur['UvAnetID'];
+  $like = mysql_fetch_array(mysql_query("SELECT * FROM votes WHERE post ='$post_id' AND voter='$logged_in_user'"));
+  $like = $like['vote'];
   if (!empty($auteur['naam'])){
     $naam = $auteur['naam'];
   }
@@ -58,10 +64,18 @@ while($row2 = mysql_fetch_array($result2)){
     echo "</p><a href = ".$content.">Download pdf</a>";
   else
     echo "<iframe width ='460' height ='260' src ='http://www.youtube.com/embed/".$content."' allowfullscreen></iframe>";
-  echo "<ul class ='pills'>
-    <li><button name='like' onclick='like($post_id, true, $score)'>Like</button></li>
-    <li><button name='like' onclick='like($post_id, false, $score)'>Dislike</button></li>
-    <li><button name='like' type='submit'>Share</button></li>
+  echo "<ul class ='pills'>";
+  if($logged_in_user){
+    echo"<li";
+    if ($like == 1)
+      echo " class ='active'";
+    echo"><button name='like' onclick='like($post_id, true, $score)'>Like</button></li>
+    <li";
+    if ($like == -1)
+      echo " class ='active'";
+    echo "><button name='like' onclick='like($post_id, false, $score)'>Dislike</button></li>";
+  }
+  echo "<li><button name='like' type='submit'>Share</button></li>
     </ul>
     </div>
     </div>
