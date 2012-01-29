@@ -11,7 +11,7 @@
 <?php require("templates/topbar.php"); ?>
 <?php
 if(isset($_GET["search"])) {
-  $srchquery = $_GET["search"];
+  $srchquery = mysql_real_escape_string($_GET["search"];)
   $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$srchquery%' OR cluster LIKE '%$srchquery%' OR zoekwoorden LIKE '%$srchquery%' ORDER BY naam ASC");
 } else {
   $srchquery = "";
