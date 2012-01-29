@@ -24,7 +24,7 @@
   }
 </script>
 <?php $page_name = $_SERVER['PHP_SELF'];
-require("../../servercode/connect.php");
+require("../servercode/connect.php");
 ?>
 
     <div class="topbanner">

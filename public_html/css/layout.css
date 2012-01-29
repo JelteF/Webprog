@@ -53,7 +53,7 @@ a.active {
 iframe {
   border:none;
 }
-.newcomment{
+.newcomment .comment{
     background-color: #99FF99;
 }
 .content {

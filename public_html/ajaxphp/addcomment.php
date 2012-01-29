@@ -41,6 +41,7 @@ echo" <div class='commentblok'>
   </div>
   <div class='span8'>
   <p><b><a href='#'>".$naam." (".$user_id.")</a></b></p>
+  <div class='comment'>
   <p>".$beschrijving;
 if($type=="txt")
     echo $content."</p>";
@@ -50,7 +51,7 @@ elseif ($type=="pdf")
     echo "</p><a href=".$content.">Download pdf</a>";
 else
     echo "<iframe width='460' height='260' src='http://www.youtube.com/embed/".$content."' allowfullscreen></iframe>";
-echo "<ul class='pills'>
+echo "</div><ul class='pills'>
   <li><a href='#'>Like</a></li>
   <li><a href='#'>Dislike</a></li>
   <li><a href='#'>Share</a></li>
