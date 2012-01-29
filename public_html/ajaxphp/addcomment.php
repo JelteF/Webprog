@@ -52,7 +52,7 @@ elseif ($type=="pdf")
 else
     echo "<iframe width='460' height='260' src='http://www.youtube.com/embed/".$content."' allowfullscreen></iframe>";
 echo "</div><ul class='pills'>
-  <li><a href='#'>Like</a></li>
+  <li class='active'><a href='#'>Like</a></li>
   <li><a href='#'>Dislike</a></li>
   <li><a href='#'>Share</a></li>
   </ul>
