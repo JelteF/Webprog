@@ -124,7 +124,7 @@
                 document.getElementById('tab1').setAttribute("class","active");
                 document.getElementById('tab2').setAttribute("class","");
                 document.getElementById('tab3').setAttribute("class","");
-                document.getElementById('info1').style.display = "";
+                document.getElementById('info1').style.display = "block";
                 document.getElementById('info2').style.display = "none";
                 document.getElementById('info3').style.display = "none";
               }
@@ -133,7 +133,7 @@
               document.getElementById('tab2').setAttribute("class","active");
               document.getElementById('tab3').setAttribute("class","");
               document.getElementById('info1').style.display = "none";
-              document.getElementById('info2').style.display = "";
+              document.getElementById('info2').style.display = "block";
               document.getElementById('info3').style.display = "none";
             }
             function tab3() {
@@ -142,7 +142,7 @@
               document.getElementById('tab3').setAttribute("class","active");
               document.getElementById('info1').style.display = "none";
               document.getElementById('info2').style.display = "none";
-              document.getElementById('info3').style.display = "";
+              document.getElementById('info3').style.display = "block";
             }
             </script>
             <div class="infobox-tab">
@@ -154,7 +154,7 @@
             </div>
             <div id="info1" class="infobox-study">
               <p><b>Studielast: </b><?php echo $row[5]; echo " studiepunten"; ?></p>
-              <p><b>Taal: </b><?php echo $row[6]; ?></p>
+              <p><b>Taal: </b><?php if($row[6]=="en") echo "Engels"; elseif($row[6]=="nl") echo "Nederlands"; else echo "Onbekend"; ?></p>
               <p><b>Studieduur: </b><?php echo $row[8]; echo " maanden"; ?></p>
               <p><b>Studievorm: </b><?php echo $row[7]; ?></p>
               <p><b>Titel: </b><?php echo $row[9]; ?></p>
