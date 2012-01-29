@@ -10,8 +10,13 @@
   <body>
 <?php require("templates/topbar.php"); ?>
 <?php
-
-$result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
+if(isset($_GET["search"])) {
+  $srchquery = $_GET["search"];
+  $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$srchquery%' OR cluster LIKE '%$srchquery%' OR zoekwoorden LIKE '%$srchquery%' ORDER BY naam ASC");
+} else {
+  $srchquery = "";
+  $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
+}
 ?>
 
     <!---container-->
@@ -80,7 +85,7 @@ $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
           <div class="span10">
             <div class="search">
               <form name="srch">
-                <input class="input-xxlarge" name="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" />
+                <input class="input-xxlarge" name="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" value="<?php echo $srchquery; ?>" />
               </form>
             </div>
             <div id="searchResult" class="result">
