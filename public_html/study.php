@@ -155,7 +155,7 @@
             <div id="info1" class="infobox-study">
               <p><b>Studielast: </b><?php echo $row[5]; echo " studiepunten"; ?></p>
               <p><b>Taal: </b><?php if($row[6]=="en") echo "Engels"; elseif($row[6]=="nl") echo "Nederlands"; else echo "Onbekend"; ?></p>
-              <p><b>Studieduur: </b><?php echo $row[8]; echo " maanden"; ?></p>
+              <p><b>Studieduur: </b><?php if(($row[8]%12) == 0) { echo $row[8]/12; echo " jaar";} else { echo $row[8]; echo " maanden";} ?></p>
               <p><b>Studievorm: </b><?php echo $row[7]; ?></p>
               <p><b>Titel: </b><?php echo $row[9]; ?></p>
               <p><b>Faculteit: </b><?php echo $row[11]; ?></p>
