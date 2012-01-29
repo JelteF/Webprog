@@ -40,7 +40,7 @@ else{
   $user = "0";
   $ticket = $_SESSION['ticket'];
   $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
-  
+
   if($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
     $destination_path = "/datastore/webdb1249/Webprog/public_html/";
     $result = "1";

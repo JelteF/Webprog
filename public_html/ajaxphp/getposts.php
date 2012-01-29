@@ -17,7 +17,6 @@ elseif ($order == 'waardering')
 else
   $result2 = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY tijd DESC LIMIT $offset, $nrOfPosts");
 
-
 while($row2 = mysql_fetch_array($result2)){
   $post_id = $row2['ID'];
   $score = $row2['score'];
