@@ -25,6 +25,8 @@ while($row = mysql_fetch_array($result)){
 echo "<div class ='commentblok'>
     <div class ='row'>
     <div class ='span2'>
+    <div class ='studie'>
+    <p><b><a href ='www.uvabook.nl/study.php?id=$study_id'>".$study."</a></b></p>
     <p><b>Gepost op:</b></p>
     <div class ='postdate'>
     <p>".$date."<br />".$time."</p>
@@ -33,6 +35,7 @@ echo "<div class ='commentblok'>
     <div id='likes_$post_id'>
     <p>".$score." points</p>
     </div>
+    
     </div>
     <div class ='span8'>
     <p><b><a href ='#'>".$naam." (".$user_id.")</a></b></p>
