@@ -11,7 +11,7 @@ while($row = mysql_fetch_array($result)){
   	$time = date("h:i:s",strtotime($row['tijd']));
   	$user = $row['auteur'];
 	$study_id = $row['studie'];
-	$study = mysql_fetch_array(mysql_quert("SELECT * FROM studies WHERE id ='$study_id'"));
+	$study = mysql_fetch_array(mysql_query("SELECT * FROM studies WHERE id ='$study_id'"));
   	$auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   	$user_id = $auteur['UvAnetID'];
   	if (!empty($auteur['naam'])){
