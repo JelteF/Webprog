@@ -29,12 +29,11 @@ if ($array  = mysql_fetch_array($result)) {
   echo $newvalue;
 
   mysql_query("UPDATE votes SET vote=vote+'$newvalue' WHERE voter='$user_id' and post='$post'");
+  mysql_query("UPDATE posts SET score=score+$newvalue, score_week=score_week+$newvalue WHERE id='$post'");
 }
 else
   mysql_query("INSERT INTO votes (voter, post, vote) VALUES ('$user_id', '$post', '$newvalue')");
 
-if ($newvalue != 0)
-  mysql_query("UPDATE posts SET score=score+$newvalue, score_week=score_week+$newvalue WHERE id='$post'");
 
 
 ?>
