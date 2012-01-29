@@ -1,9 +1,9 @@
 <?php
-$q = $_GET["q"];
-
 $con = mysql_connect("localhost","webdb1249","uvabookdb");
 if (!$con)
   die('could not connect' . mysql.error());
+
+$q = mysql_real_escape_string($_GET["q"]);
 
 mysql_select_db("webdb1249", $con);
 
