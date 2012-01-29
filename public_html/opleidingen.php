@@ -27,13 +27,13 @@ if(isset($_GET["search"])) {
             <div class="filter">
         <h3>Verfijn op</h3></b>
         <h5>Welke voertaal?</h5>
-        <form name="filterTaal">
+        <form>
           <input type="radio" name="fTaal" checked="yes" onclick="result()" />Beide
           <input type="radio" name="fTaal" onclick="result()" />Nederlands
           <input type="radio" name="fTaal" onclick="result()" />Engels
         </form>
         <h5>Welke titel?</h5>
-        <form name="filterTitel">
+        <form>
           <input type="radio" name="fTitel" checked="yes" onclick="result()" />Alles<br />
           <input type="radio" name="fTitel" onclick="result()" />Bachelor of Arts (BA)<br />
           <input type="radio" name="fTitel" onclick="result()" />Bachelor of Science (BSc)<br />
@@ -46,14 +46,14 @@ if(isset($_GET["search"])) {
           <input type="radio" name="fTitel" onclick="result()" />PhD<br />
         </form>
         <h5>Welke studievorm?</h5>
-        <form name="filterVorm">
+        <form>
           <input type="radio" name="fVorm" checked="yes" onclick="result()" />Alles
           <input type="radio" name="fVorm" onclick="result()" />Voltijd
           <input type="radio" name="fVorm" onclick="result()" />Deeltijd
           <input type="radio" name="fVorm" onclick="result()" />Duaal
         </form>
         <h5>Welk interessegebied?</h5>
-        <form name="filterInt">
+        <form>
           <input type="radio" name="fInt" checked="yes" onclick="result()" />Alles<br />
           <input type="radio" name="fInt" onclick="result()" />Aarde Natuur en Milieu<br />
           <input type="radio" name="fInt" onclick="result()" />Beta<br />
@@ -70,7 +70,7 @@ if(isset($_GET["search"])) {
           <input type="radio" name="fInt" onclick="result()" />Techniek Ontwerp en Innovatie<br />
         </form>
         <h5>Welke faculteit?</h5>
-        <form name="filterFac">
+        <form>
           <input type="radio" name="fFac" checked="yes" onclick="result()" />Alles<br />
           <input type="radio" name="fFac" onclick="result()" />Economie en Bedrijfskunde<br />
           <input type="radio" name="fFac" onclick="result()" />Geesteswetenschappen<br />
@@ -84,9 +84,7 @@ if(isset($_GET["search"])) {
           </div>
           <div class="span10">
             <div class="search">
-              <form name="srch">
-                <input class="input-xxlarge" name="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" value="<?php echo $srchquery; ?>" />
-              </form>
+              <input class="input-xxlarge" name="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" value="<?php echo $srchquery; ?>" />
             </div>
             <div id="searchResult" class="result">
 <?php
