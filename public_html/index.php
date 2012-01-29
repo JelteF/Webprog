@@ -12,6 +12,8 @@
     <!---container-->
     <div class="container">
       <div class="content">
+	<h1>what's new</h1>
+	<?php require("ajaxphp/homepage_posts.php") ?>
         <div class="row">
           <div class="span16">
           </div>
