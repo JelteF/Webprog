@@ -5,7 +5,6 @@ $tt = $_GET["tt"];
 $sv = $_GET["sv"];
 $it = $_GET["it"];
 $fc = $_GET["fc"];
-$q = mysql_real_escape_string($q);
 
 if($tl=="1")
   $taal="AND taal='nl'";
