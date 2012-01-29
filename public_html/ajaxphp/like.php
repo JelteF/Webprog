@@ -13,10 +13,10 @@ $result = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
 $array = mysql_fetch_array($result);
 $user_id = $array['id'];
 
-if ($up) $newvalue = 1;
-else $newvalue = -1;
-
-echo $up . $newvalue
+if ($up == 'true')
+  $newvalue = 1;
+else
+  $newvalue = -1;
 
 $result = mysql_query("SELECT * FROM votes WHERE voter='$user_id', post='$post'");
 if ($result && $array  = mysql_fetch_array($result)) {
