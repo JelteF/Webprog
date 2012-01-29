@@ -1,10 +1,10 @@
 <?php
-$q = mysql_real_escape_string($_GET["q"]);
-$tl = mysql_real_escape_string($_GET["tl"]);
-$tt = mysql_real_escape_string($_GET["tt"]);
-$sv = mysql_real_escape_string($_GET["sv"]);
-$it = mysql_real_escape_string($_GET["it"]);
-$fc = mysql_real_escape_string($_GET["fc"]);
+$q = $_GET["q"];
+$tl = $_GET["tl"];
+$tt = $_GET["tt"];
+$sv = $_GET["sv"];
+$it = $_GET["it"];
+$fc = $_GET["fc"];
 
 if($tl=="1")
   $taal="AND taal='nl'";

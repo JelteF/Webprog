@@ -1,5 +1,5 @@
 <?php
-$q = mysql_real_escape_string($_GET["q"]);
+$q = $_GET["q"];
 
 $con = mysql_connect("localhost","webdb1249","uvabookdb");
 if (!$con)
