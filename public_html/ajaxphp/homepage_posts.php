@@ -4,6 +4,7 @@ $result = mysql_query("SELECT * FROM posts ORDER BY tijd DESC LIMIT 0, 3");
 
 while($row = mysql_fetch_array($result)){
 	$post_id = $row['ID'];
+	$score = $row['score'];
 	$beschrijving = nl2br($row['beschrijving']);
   	$content = nl2br($row['content']);
   	$type = $row['type'];
