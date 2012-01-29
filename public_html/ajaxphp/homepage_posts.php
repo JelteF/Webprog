@@ -13,6 +13,7 @@ while($row = mysql_fetch_array($result)){
   	$user = $row['auteur'];
 	$study_id = $row['studie'];
 	$study = mysql_fetch_array(mysql_query("SELECT * FROM studies WHERE id ='$study_id'"));
+	$study_naam = $study['naam'];
   	$auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   	$user_id = $auteur['UvAnetID'];
   	if (!empty($auteur['naam'])){
