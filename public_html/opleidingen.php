@@ -88,13 +88,17 @@ if(isset($_GET["search"])) {
             </div>
             <div id="searchResult" class="result">
 <?php
-while($row = mysql_fetch_array($result)) {
-  echo "<a href='study.php?id=";
-  echo $row['id'];
-  echo "'>";
-  echo $row['naam'];
-  echo "</a>";
-  echo "<br />";
+if(mysql_num_rows($result)==0) {
+  echo "Geen resultaat";
+} else {
+  while($row = mysql_fetch_array($result)) {
+    echo "<a href='study.php?id=";
+    echo $row['id'];
+    echo "'>";
+    echo $row['naam'];
+    echo "</a>";
+    echo "<br />";
+  }
 }
 ?>
             </div>
