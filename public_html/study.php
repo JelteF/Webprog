@@ -155,8 +155,8 @@
               <p><b>Studielast: </b><?php echo $row[5]; echo " studiepunten"; ?></p>
               <p><b>Taal: </b><?php if($row[6]=="en") echo "Engels"; elseif($row[6]=="nl") echo "Nederlands"; else echo "Onbekend"; ?></p>
               <p><b>Studieduur: </b><?php if(($row[8]%12) == 0) { echo $row[8]/12; echo " jaar";} else { echo $row[8]; echo " maanden";} ?></p>
-              <p><b>Studievorm: </b><?php echo $row[7]; ?></p>
-              <p><b>Titel: </b><?php echo $row[9]; ?></p>
+              <p><b>Studievorm: </b><?php if($row[7]=="full-time") echo "Voltijd"; elseif($row[7]=="part-time") echo "Deeltijd"; elseif($row[7]=="dual") echo "Duaal"; else echo "Onbekend" ?></p>
+              <p><b>Titel: </b><?php if($row[9]=="BA") echo "Bachelor of Arts (BA)"; elseif($row[9]=="BSc") echo "Bachelor of Science (BSc)"; elseif($row[9]=="certificate") echo "Certificaat"; elseif($row[9]=="LLB") echo "Bachelor of Laws (LLB)"; elseif($row[9]=="LLM") echo "Master of Laws (LLM)"; elseif($row[9]=="MA") echo "Master of Arts (MA)"; elseif($row[9]=="MBA") echo "MBA"; elseif($row[9]=="MSc") echo "Master of Science (MSc)"; elseif($row[9]=="PhD") echo "PhD"; else echo "Onbekend"; ?></p>
               <p><b>Faculteit: </b><?php echo $row[11]; ?></p>
               <p><b>CROHO-code: </b><?php echo $row[10]; ?></p>
             </div>
