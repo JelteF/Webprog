@@ -1,6 +1,6 @@
 <?php
 
-$result = mysql_query("SELECT * FROM posts ORDER BY tijd DESC LIMIT 0, 3");
+$result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
 
 while($row = mysql_fetch_array($result)){
 	$post_id = $row['ID'];
