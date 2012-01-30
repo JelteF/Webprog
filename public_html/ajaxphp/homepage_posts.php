@@ -16,6 +16,8 @@ while($row = mysql_fetch_array($result)){
 	$study_naam = $study['naam'];
   	$auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   	$user_id = $auteur['UvAnetID'];
+  	$like = mysql_fetch_array(mysql_query("SELECT * FROM votes WHERE post ='$post_id' AND voter='$logged_in_user'"));
+  	$like = $like['vote'];
   	if (!empty($auteur['naam'])){
     	$naam = $auteur['naam'];
   	}
