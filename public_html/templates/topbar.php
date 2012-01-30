@@ -23,10 +23,8 @@
     xmlhttp.send();
   }
   function clear() {
-    document.getElementById("forclearing").value="";
-    document.getElementById("topbarsearch").innerHTML="";
-    document.getElementById("topbarsearch").style.border="0px";
-    document.getElementById("topbarsearch").style.background="";
+    var x = document.getElementById("forclearing");
+    x.value = "";
   }
 </script>
 <?php $page_name = $_SERVER['PHP_SELF'];
