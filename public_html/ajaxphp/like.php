@@ -4,6 +4,7 @@ session_start();
 $ip = $_SERVER['REMOTE_ADDR'];
 $post = $_GET['post_id'];
 $up = $_GET['up'];
+$score = $_GET['score'];
 
 $con = mysql_connect("localhost","webdb1249","uvabookdb") or die();
 mysql_select_db("webdb1249", $con);
@@ -21,12 +22,13 @@ else
 $result = mysql_query("SELECT * FROM votes WHERE voter='$user_id' and  post='$post'");
 if ($array  = mysql_fetch_array($result)) {
   $value = $array['vote'];
-  echo $value;
 
   if ($value == $newvalue)
     $newvalue *= -1;
   elseif ($value == ($newvalue) * -1)
     $newvalue *= 2;
+
+  echo $newvalue;
 
   mysql_query("UPDATE votes SET vote=vote+'$newvalue' WHERE voter='$user_id' and post='$post'");
 }

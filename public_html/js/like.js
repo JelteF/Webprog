@@ -8,11 +8,6 @@ function like(post_id, up, score) {
     xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
 
-  if (up)
-    document.getElementById("likes_"+post_id).innerHTML = score+1 + " points";
-  else
-    document.getElementById("likes_"+post_id).innerHTML = score-1 + " points";
-
   xmlhttp.onreadystatechange=function()
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
@@ -20,6 +15,6 @@ function like(post_id, up, score) {
       document.getElementById("likes_"+post_id).innerHTML+=xmlhttp.responseText;
     }
   }
-  xmlhttp.open("GET", "ajaxphp/like.php?post_id="+post_id+"&up="+up, true);
+  xmlhttp.open("GET", "ajaxphp/like.php?post_id="+post_id+"&up="+up+"$score="+score, true);
   xmlhttp.send();
 }
