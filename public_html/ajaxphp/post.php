@@ -22,7 +22,7 @@ function upload_post($user){
           VALUES ('$user_id','$type', '$beschrijving', '1', '1')");
       $post_id=mysql_insert_id();
       mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
-      mysql_query("INSERT INTO votes (voter, post, vote) VALUES ('$user_id', '$post', '$newvalue')");
+      mysql_query("INSERT INTO votes (voter, post, vote) VALUES ('$user_id', '$post_id', '1')");
     }
     return $post_id;
 }
