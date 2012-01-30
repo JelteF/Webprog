@@ -12,7 +12,7 @@ function like(post_id, up, score) {
   {
     if (xmlhttp.readyState==4 && xmlhttp.status==200)
     {
-      document.getElementById("likes_"+post_id).innerHTML+=xmlhttp.responseText;
+      document.getElementById("likes_"+post_id).innerHTML=xmlhttp.responseText;
     }
   }
   xmlhttp.open("GET", "ajaxphp/like.php?post_id="+post_id+"&up="+up+"&score="+score, true);
