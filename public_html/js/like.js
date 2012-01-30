@@ -1,8 +1,17 @@
 function like(post_id, up) {
-  if(document.getElementById("likes_"+post_id).getAttribute("class")=="active")
-      document.getElementById("likes_"+post_id).setAttribute("class", "");
-  else
-      document.getElementById("likes_"+post_id).getAttribute("class","active");
+  if(document.getElementById("likebtn_"+post_id).getAttribute("class")=="active" && up){
+      document.getElementById("likebtn_"+post_id).setAttribute("class", "");
+  }
+  else if(up){
+      document.getElementById("likebtn_"+post_id).getAttribute("class", "active");
+      document.getElementById("dislikebtn_"+post_id).getAttribute("class", "");
+  }
+  if(document.getElementById("dislikebtn_"+post_id).getAttribute("class")=="active")
+      document.getElementById("dislikebtn_"+post_id).setAttribute("class", "");
+  else{
+      document.getElementById("dislikebtn_"+post_id).getAttribute("class", "active");
+      document.getElementById("likebtn_"+post_id).getAttribute("class", "");
+  }
   
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari

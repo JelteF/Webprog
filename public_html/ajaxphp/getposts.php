@@ -68,11 +68,11 @@ while($row2 = mysql_fetch_array($result2)){
     echo"<li";
     if ($like == 1)
       echo " class ='active'";
-    echo"><button name='like' onclick='like($post_id, true)'>Like</button></li>
+    echo"><button id= 'likebtn_$post_id' name='like' onclick='like($post_id, true)'>Like</button></li>
     <li";
     if ($like == -1)
       echo " class ='active'";
-    echo "><button name='like' onclick='like($post_id, false)'>Dislike</button></li>";
+    echo "><button id= 'dislikebtn_$post_id' name='like' onclick='like($post_id, false)'>Dislike</button></li>";
   }
   echo "<li><button name='like' type='submit'>Share</button></li>
     </ul>
