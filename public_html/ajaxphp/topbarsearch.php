@@ -14,8 +14,8 @@ mysql_select_db("webdb1249", $con);
 $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$q%' ORDER BY naam ASC LIMIT 0,15");
 
 if(mysql_num_rows($result)==0) {
-  echo "Geen resultaat";
-    echo "<b><a href='opleidingen.php?search=$q'>Naar zoekpagina</a></b>";
+  echo "Geen resultaat<br />";
+    echo "<p><b><a href='opleidingen.php?search=$q'>Naar zoekpagina</a></b></p>";
 } else {
   while($row = mysql_fetch_array($result)) {
     echo "<a href='study.php?id=";
