@@ -1,5 +1,5 @@
 function result() {
-srchblok = document.getElementsById("srchblok");
+srchblok = document.getElementById("srchblok");
   taal = 0;
   for(taal = 0; taal < 3; taal++) {
       if (document.getElementById("taal"+taal).checked)
