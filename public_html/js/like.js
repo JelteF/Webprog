@@ -1,4 +1,5 @@
 function like(post_id, up) {
+  
   if(document.getElementById("likebtn_"+post_id).getAttribute("class")=="active" && up){
       document.getElementById("likebtn_"+post_id).setAttribute("class", "i");
   }
