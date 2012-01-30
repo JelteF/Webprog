@@ -23,6 +23,7 @@ if(isset($_GET["ticket"])) {
       $length = $endUser - $startUser;
       $uvanetid = substr($file,$startUser,$length);
       $result = mysql_query("SELECT * FROM users WHERE UvAnetID = '$uvanetid'");
+      $validated = true;
       if ($result) $rows = mysql_num_rows($result);
 
       if (!isset($rows) || $rows == 0)
@@ -31,7 +32,7 @@ if(isset($_GET["ticket"])) {
         mysql_query("UPDATE users SET ticket='$ticket' WHERE UvAnetID=$uvanetid");
   }
 }
-if (isset($_SESSION['ticket'])&& (!isset($_GET["do"]) || !$_GET["do"]=="logoff")) {
+if ((isset($_SESSION['ticket']) || $validated)&& (!isset($_GET["do"]) || !$_GET["do"]=="logoff")) {
   //user is logged in
   $ticket = $_SESSION['ticket'];
   $result = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
