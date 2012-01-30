@@ -16,7 +16,7 @@ if(isset($_GET["q"])&&isset($_GET["tl"])&&isset($_GET["tt"])&&isset($_GET["sv"])
   $tt = "";
   $sv = "";
   $it = "";
-  $fc = "");
+  $fc = "";
 }
 
 if($tl=="1")
