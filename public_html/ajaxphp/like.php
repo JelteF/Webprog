@@ -37,7 +37,7 @@ else
 
 mysql_query("UPDATE posts SET score=score+$newvalue, score_week=score_week+$newvalue WHERE id='$post'");
 
-$score = $score+$newvalue;
+
 echo $score . " points";
 
 ?>
