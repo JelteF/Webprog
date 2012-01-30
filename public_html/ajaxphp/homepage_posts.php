@@ -12,12 +12,8 @@ while($row = mysql_fetch_array($result)){
   	$time = date("h:i:s",strtotime($row['tijd']));
   	$user = $row['auteur'];
 	$study_id = $row['studie'];
-<<<<<<< HEAD
-	$study = mysql_fetch_array(mysql_quert("SELECT * FROM studies WHERE id ='$study_id'"));
-=======
 	$study = mysql_fetch_array(mysql_query("SELECT * FROM studies WHERE id ='$study_id'"));
 	$study_naam = $study['naam'];
->>>>>>> d3364777557f65aef55079ceab7aaac28118661a
   	$auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   	$user_id = $auteur['UvAnetID'];
   	if (!empty($auteur['naam'])){
@@ -38,7 +34,7 @@ echo "<div class ='commentblok'>
     <div id='likes_$post_id'>
     <p>".$score." points</p>
     </div>
-    
+
     </div>
     <div class ='span8'>
     <div class ='studie'>
@@ -65,4 +61,4 @@ echo "<div class ='commentblok'>
 }
 ?>
 
-	
+

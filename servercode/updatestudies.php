@@ -71,8 +71,18 @@ function update($url) {
     }
 
     $swString = mysql_real_escape_string(array_to_string($searchwords, ", "));
-    $vkString = mysql_real_escape_string(array_to_string($vakken, ", "));
     $pcString = mysql_real_escape_string(array_to_string($programs, ", "));
+    $vkString = "";
+
+    for ($i = 0; $i < count($vakken); $i++) {
+      if (!empty($vakken[$i])) {
+        echo $vkString .= $vakken[$i] . "\n";
+        if ($i < count($vakken) - 1)
+          $vkString .= ", ";
+      }
+    }
+
+    echo $vkString;
 
     if (empty($row["last_edited"])) {
       echo "entry didn't exist yet, creating " . $naam . "\n";

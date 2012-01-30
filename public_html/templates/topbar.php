@@ -40,8 +40,7 @@ require("../servercode/connect.php");
           <ul class="nav">
             <li class="<?php if($page_name=="/index.php") echo "active"; ?>"><a href="index.php">Home</a></li>
             <li class="<?php if($page_name=="/opleidingen.php") echo "active"; ?>"><a href="opleidingen.php">Opleidingen</a></li>
-            <li class="<?php if($page_name=="/contact.php") echo "active"; ?>"><a href="contact.php">Contact</a></li>
-            <li class="<?php if($page_name=="/faq.php") echo "active"; ?>"><a href="faq.php">FAQ</a></li>
+            <li><a href='#contact'>Contact</a></li>
           </ul>
           <form class="pull-left" action="opleidingen.php" method="GET">
             <input class="input-large" type="text" name="search" placeholder="Zoek een opleiding" onkeyup="topresult(this.value)" autocomplete="off">
