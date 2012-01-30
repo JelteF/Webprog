@@ -1,4 +1,5 @@
 function like(post_id, up) {
+  
   if(document.getElementById("likebtn_"+post_id).getAttribute("class")=="active" && up){
       document.getElementById("likebtn_"+post_id).setAttribute("class", "");
   }
@@ -28,6 +29,6 @@ function like(post_id, up) {
       document.getElementById("likes_"+post_id).innerHTML=xmlhttp.responseText;
     }
   }
-  xmlhttp.open("GET", "ajaxphp/like.php?post_id="+post_id+"&up="+up+"&score="+score, true);
+  xmlhttp.open("GET", "ajaxphp/like.php?post_id="+post_id+"&up=", true);
   xmlhttp.send();
 }
