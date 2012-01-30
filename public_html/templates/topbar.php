@@ -24,9 +24,6 @@
   }
   function clearing() {
     document.getElementById("forclearing").value="";
-    document.getElementById("topbarsearch").innerHTML="";
-    document.getElementById("topbarsearch").style.border="0px";
-    document.getElementById("topbarsearch").style.background="";
   }
 </script>
 <?php $page_name = $_SERVER['PHP_SELF'];
@@ -49,8 +46,8 @@ require("../servercode/connect.php");
             <li><a href='#contact'>Contact</a></li>
           </ul>
           <form class="pull-left" action="opleidingen.php" method="GET">
-            <input class="input-large" type="text" id="forclearing" name="search" placeholder="Zoek een opleiding" onkeyup="topresult(this.value)" autocomplete="off" />
-            <div id="topbarsearch" style="z-index:10"  onblur="clearing()"></div>
+            <input class="input-large" type="text" id="forclearing" name="search" placeholder="Zoek een opleiding" onkeyup="topresult(this.value)" autocomplete="off" onblur="clearing()" />
+            <div id="topbarsearch" style="z-index:10"></div>
           </form>
           <?php require("ajaxphp/login.php")?>
           </div>
