@@ -17,12 +17,6 @@
         document.getElementById("topbarsearch").style.padding="5px";
         document.getElementById("topbarsearch").style.width="400px";
         document.getElementById("topbarsearch").style.position="absolute";
-        document.getElementById("topbarsearch").style.-webkit-border-radius="0 0 6px 6px";
-        document.getElementById("topbarsearch").style.moz-border-radius="0 0 6px 6px";
-        document.getElementById("topbarsearch").style.border-radius="0 0 6px 6px";
-        document.getElementById("topbarsearch").style.-webkit-box-shadow="0 1px 2px rgba(0,0,0,.15)";
-        document.getElementById("topbarsearch").style.-moz-box-shadow="0 1px 2px rgba(0,0,0,.15)";
-        document.getElementById("topbarsearch").style.box-shadow="0 1px 2px rgba(0,0,0,.15)";
       }
     }
     xmlhttp.open("GET","ajaxphp/topbarsearch.php?q="+str,true);
