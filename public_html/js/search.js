@@ -1,5 +1,5 @@
 function result() {
-srchblok = document.getElementById("srchblok");
+str = document.getElementById("srchblok").value;
   taal = 0;
   for(taal = 0; taal < 3; taal++) {
       if (document.getElementById("taal"+taal).checked)
@@ -26,7 +26,6 @@ srchblok = document.getElementById("srchblok");
           break;
   }
   
-  str = srchblok.value;
 
   if(window.XMLHttpRequest) {
     xmlhttp = new XMLHttpRequest();
