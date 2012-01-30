@@ -21,19 +21,18 @@ else
 $result = mysql_query("SELECT * FROM votes WHERE voter='$user_id' and  post='$post'");
 if ($array  = mysql_fetch_array($result)) {
   $value = $array['vote'];
+  echo $value;
 
   if ($value == $newvalue)
     $newvalue *= -1;
-
-  echo $value;
-  echo $newvalue;
+  elseif ($value == ($newvalue) * -1)
+    $newvalue *= 2;
 
   mysql_query("UPDATE votes SET vote=vote+'$newvalue' WHERE voter='$user_id' and post='$post'");
-  mysql_query("UPDATE posts SET score=score+$newvalue, score_week=score_week+$newvalue WHERE id='$post'");
 }
 else
   mysql_query("INSERT INTO votes (voter, post, vote) VALUES ('$user_id', '$post', '$newvalue')");
 
-
+mysql_query("UPDATE posts SET score=score+$newvalue, score_week=score_week+$newvalue WHERE id='$post'");
 
 ?>
