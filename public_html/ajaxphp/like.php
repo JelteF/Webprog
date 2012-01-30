@@ -4,7 +4,6 @@ session_start();
 $ip = $_SERVER['REMOTE_ADDR'];
 $post = $_GET['post_id'];
 $up = $_GET['up'];
-$score = $_GET['score'];
 
 $con = mysql_connect("localhost","webdb1249","uvabookdb") or die();
 mysql_select_db("webdb1249", $con);
@@ -35,7 +34,9 @@ else
 
 mysql_query("UPDATE posts SET score=score+$newvalue, score_week=score_week+$newvalue WHERE id='$post'");
 
-$score += $newvalue;
+$result = mysql_query("SELECT * FROM posts WHERE id='$post'");
+$array = mysql_fetch_array($result);
+$score = $array['score'];
 echo $score . " points";
 
 ?>
