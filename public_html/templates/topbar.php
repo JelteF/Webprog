@@ -24,6 +24,9 @@
   }
   function clear() {
     document.getElementById("forclearing").value="";
+    document.getElementById("topbarsearch").innerHTML="";
+    document.getElementById("topbarsearch").style.border="0px";
+    document.getElementById("topbarsearch").style.background="";
   }
 </script>
 <?php $page_name = $_SERVER['PHP_SELF'];
