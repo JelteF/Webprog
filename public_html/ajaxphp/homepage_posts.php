@@ -1,9 +1,5 @@
 <?php
-$logged_in_user = 0;
-if (isset($_SESSION['ticket'])){
-    $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='".$_SESSION['ticket']."'"));
-    $logged_in_user = $logged_in_user['id'];\
-}
+
 
 $result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
 
@@ -21,8 +17,7 @@ while($row = mysql_fetch_array($result)){
 	$study_naam = $study['naam'];
   	$auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   	$user_id = $auteur['UvAnetID'];
-  	$like = mysql_fetch_array(mysql_query("SELECT * FROM votes WHERE post ='$post_id' AND voter='$logged_in_user'"));
-  	$like = $like['vote'];
+  	
   	if (!empty($auteur['naam'])){
     	$naam = $auteur['naam'];
   	}
