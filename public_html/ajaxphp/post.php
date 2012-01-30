@@ -12,13 +12,18 @@ function upload_post($user){
         $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
     else
         $beschrijving = "";
-    $user_id = mysql_fetch_array($user);
-    $user_id = $user_id['id'];
-    $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
-    mysql_query("INSERT INTO posts (auteur, type, beschrijving, score)
-        VALUES ('$user_id','$type', '$beschrijving', '1')");
-    $post_id=mysql_insert_id();
-    mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
+    if ($beschrijving.length > 255)
+      $post_id = "-1";
+    else{
+      $user_id = mysql_fetch_array($user);
+      $user_id = $user_id['id'];
+      $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
+      mysql_query("INSERT INTO posts (auteur, type, beschrijving, score, score_week)
+          VALUES ('$user_id','$type', '$beschrijving', '1', '1')");
+      $post_id=mysql_insert_id();
+      mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
+      mysql_query("INSERT INTO votes (voter, post, vote) VALUES ('$user_id', '$post', '$newvalue')");
+    }
     return $post_id;
 }
 set_include_path("/datastore/webdb1249/htdocs/Youtube");
@@ -40,7 +45,7 @@ else{
   $user = "0";
   $ticket = $_SESSION['ticket'];
   $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
-  
+
   if($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
     $destination_path = "/datastore/webdb1249/Webprog/public_html/";
     $result = "1";
@@ -153,6 +158,8 @@ else{
         $post_id=upload_post($user);
     }
   }
+  if($post_id == "-1")
+      $result = "De beschrijving is te lang. Hij mag niet langer zijn dan 255 karakters.";
   if ($result == "1")
       mysql_query("UPDATE posts SET content='$content' WHERE ID='$post_id'");
 }

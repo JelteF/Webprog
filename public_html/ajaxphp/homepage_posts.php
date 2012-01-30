@@ -1,9 +1,10 @@
 <?php
 
-$result = mysql_query("SELECT * FROM posts ORDER BY tijd DESC LIMIT 0, 3");
+$result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
 
 while($row = mysql_fetch_array($result)){
 	$post_id = $row['ID'];
+	$score = $row['score'];
 	$beschrijving = nl2br($row['beschrijving']);
   	$content = nl2br($row['content']);
   	$type = $row['type'];
@@ -11,7 +12,12 @@ while($row = mysql_fetch_array($result)){
   	$time = date("h:i:s",strtotime($row['tijd']));
   	$user = $row['auteur'];
 	$study_id = $row['studie'];
+<<<<<<< HEAD
 	$study = mysql_fetch_array(mysql_quert("SELECT * FROM studies WHERE id ='$study_id'"));
+=======
+	$study = mysql_fetch_array(mysql_query("SELECT * FROM studies WHERE id ='$study_id'"));
+	$study_naam = $study['naam'];
+>>>>>>> d3364777557f65aef55079ceab7aaac28118661a
   	$auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
   	$user_id = $auteur['UvAnetID'];
   	if (!empty($auteur['naam'])){
@@ -32,8 +38,12 @@ echo "<div class ='commentblok'>
     <div id='likes_$post_id'>
     <p>".$score." points</p>
     </div>
+    
     </div>
     <div class ='span8'>
+    <div class ='studie'>
+    <h4><b><a href ='study.php?id=$study_id'>".$study_naam."</a></b></h4>
+    </div>
     <p><b><a href ='#'>".$naam." (".$user_id.")</a></b></p>
     <p>".$beschrijving;
   if ($type == "txt")

@@ -10,8 +10,13 @@
   <body>
 <?php require("templates/topbar.php"); ?>
 <?php
-
-$result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
+if(isset($_GET["search"])) {
+  $srchquery = mysql_real_escape_string($_GET["search"]);
+  $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$srchquery%' OR cluster LIKE '%$srchquery%' OR zoekwoorden LIKE '%$srchquery%' ORDER BY naam ASC");
+} else {
+  $srchquery = "";
+  $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
+}
 ?>
 
     <!---container-->
@@ -22,13 +27,13 @@ $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
             <div class="filter">
         <h3>Verfijn op</h3></b>
         <h5>Welke voertaal?</h5>
-        <form name="filterTaal">
+        <form>
           <input type="radio" name="fTaal" checked="yes" onclick="result()" />Beide
           <input type="radio" name="fTaal" onclick="result()" />Nederlands
           <input type="radio" name="fTaal" onclick="result()" />Engels
         </form>
         <h5>Welke titel?</h5>
-        <form name="filterTitel">
+        <form>
           <input type="radio" name="fTitel" checked="yes" onclick="result()" />Alles<br />
           <input type="radio" name="fTitel" onclick="result()" />Bachelor of Arts (BA)<br />
           <input type="radio" name="fTitel" onclick="result()" />Bachelor of Science (BSc)<br />
@@ -41,14 +46,14 @@ $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
           <input type="radio" name="fTitel" onclick="result()" />PhD<br />
         </form>
         <h5>Welke studievorm?</h5>
-        <form name="filterVorm">
+        <form>
           <input type="radio" name="fVorm" checked="yes" onclick="result()" />Alles
           <input type="radio" name="fVorm" onclick="result()" />Voltijd
           <input type="radio" name="fVorm" onclick="result()" />Deeltijd
           <input type="radio" name="fVorm" onclick="result()" />Duaal
         </form>
         <h5>Welk interessegebied?</h5>
-        <form name="filterInt">
+        <form>
           <input type="radio" name="fInt" checked="yes" onclick="result()" />Alles<br />
           <input type="radio" name="fInt" onclick="result()" />Aarde Natuur en Milieu<br />
           <input type="radio" name="fInt" onclick="result()" />Beta<br />
@@ -65,7 +70,7 @@ $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
           <input type="radio" name="fInt" onclick="result()" />Techniek Ontwerp en Innovatie<br />
         </form>
         <h5>Welke faculteit?</h5>
-        <form name="filterFac">
+        <form>
           <input type="radio" name="fFac" checked="yes" onclick="result()" />Alles<br />
           <input type="radio" name="fFac" onclick="result()" />Economie en Bedrijfskunde<br />
           <input type="radio" name="fFac" onclick="result()" />Geesteswetenschappen<br />
@@ -79,19 +84,21 @@ $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
           </div>
           <div class="span10">
             <div class="search">
-              <form name="srch">
-                <input class="input-xxlarge" name="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" />
-              </form>
+              <input class="input-xxlarge" name="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" value="<?php echo $srchquery; ?>" />
             </div>
             <div id="searchResult" class="result">
 <?php
-while($row = mysql_fetch_array($result)) {
-  echo "<a href='study.php?id=";
-  echo $row['id'];
-  echo "'>";
-  echo $row['naam'];
-  echo "</a>";
-  echo "<br />";
+if(mysql_num_rows($result)==0) {
+  echo "Geen resultaat";
+} else {
+  while($row = mysql_fetch_array($result)) {
+    echo "<a href='study.php?id=";
+    echo $row['id'];
+    echo "'>";
+    echo $row['naam'];
+    echo "</a>";
+    echo "<br />";
+  }
 }
 ?>
             </div>

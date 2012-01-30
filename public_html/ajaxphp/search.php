@@ -1,10 +1,14 @@
 <?php
-$q = $_GET["q"];
-$tl = $_GET["tl"];
-$tt = $_GET["tt"];
-$sv = $_GET["sv"];
-$it = $_GET["it"];
-$fc = $_GET["fc"];
+$con = mysql_connect("localhost","webdb1249","uvabookdb");
+if(!$con)
+  die('could not connect' . mysql.error());
+
+$q = mysql_real_escape_string($_GET["q"]);
+$tl = mysql_real_escape_string($_GET["tl"]);
+$tt = mysql_real_escape_string($_GET["tt"]);
+$sv = mysql_real_escape_string($_GET["sv"]);
+$it = mysql_real_escape_string($_GET["it"]);
+$fc = mysql_real_escape_string($_GET["fc"]);
 
 if($tl=="1")
   $taal="AND taal='nl'";
@@ -89,16 +93,16 @@ elseif($fc=="7")
 else
   $faculteit="";
 
-$con = mysql_connect("localhost","webdb1249","uvabookdb");
-if(!$con)
-  die('could not connect' . mysql.error());
-  mysql_select_db("webdb1249", $con);
+mysql_select_db("webdb1249", $con);
 
-  if($q=="")
-    $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam");
-  else
-    $result = mysql_query("SELECT id,naam FROM studies WHERE (naam LIKE '%$q%' OR cluster LIKE '%$q%' OR zoekwoorden LIKE '%$q%') $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
+if($q=="")
+  $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam");
+else
+  $result = mysql_query("SELECT id,naam FROM studies WHERE (naam LIKE '%$q%' OR cluster LIKE '%$q%' OR zoekwoorden LIKE '%$q%') $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 
+if(mysql_num_rows($result)==0) {
+  echo "Geen resultaat";
+} else {
   while($row = mysql_fetch_array($result)) {
     echo "<a href='study.php?id=";
     echo $row['id'];
@@ -107,6 +111,7 @@ if(!$con)
     echo "</a>";
     echo "<br />";
   }
+}
 
 mysql_close($con);
 ?>
