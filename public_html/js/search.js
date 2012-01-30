@@ -26,7 +26,7 @@ srchblok = document.getElementsById("srchblok");
           break;
   }
   
-  str = srchblok[0].value;
+  str = srchblok.value;
 
   if(window.XMLHttpRequest) {
     xmlhttp = new XMLHttpRequest();
