@@ -38,7 +38,7 @@ echo "<div class ='commentblok'>
     </div>
     <div class ='span8'>
     <div class ='studie'>
-    <h1><b><a href ='study.php?id=$study_id'>".$study_naam."</a></b></h1>
+    <h4><b><a href ='study.php?id=$study_id'>".$study_naam."</a></b></h4>
     </div>
     <p><b><a href ='#'>".$naam." (".$user_id.")</a></b></p>
     <p>".$beschrijving;
