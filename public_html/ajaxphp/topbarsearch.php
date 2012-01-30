@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if(isset($_GET["q"])) {
   $q = mysql_real_escape_string($_GET["q"]);
 } else {
