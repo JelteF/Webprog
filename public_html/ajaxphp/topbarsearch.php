@@ -1,13 +1,11 @@
 <?php
-session_start();
+require("../servercode/connect.php");
 
 if(isset($_GET["q"])) {
   $q = mysql_real_escape_string($_GET["q"]);
 } else {
   $q = "";
 }
-
-mysql_select_db("webdb1249", $con);
 
 $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$q%' ORDER BY naam ASC LIMIT 0,15");
 
