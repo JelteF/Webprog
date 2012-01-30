@@ -4,16 +4,16 @@ function like(post_id, up) {
       document.getElementById("likebtn_"+post_id).setAttribute("class", "");
   }
   else if(up){
-      document.getElementById("likebtn_"+post_id).getAttribute("class", "active");
-      document.getElementById("dislikebtn_"+post_id).getAttribute("class", "");
+      document.getElementById("likebtn_"+post_id).setAttribute("class", "active");
+      document.getElementById("dislikebtn_"+post_id).setAttribute("class", "");
   }
   if(document.getElementById("dislikebtn_"+post_id).getAttribute("class")=="active")
       document.getElementById("dislikebtn_"+post_id).setAttribute("class", "");
   else{
-      document.getElementById("dislikebtn_"+post_id).getAttribute("class", "active");
-      document.getElementById("likebtn_"+post_id).getAttribute("class", "");
+      document.getElementById("dislikebtn_"+post_id).setAttribute("class", "active");
+      document.getElementById("likebtn_"+post_id).setAttribute("class", "");
   }
-  
+
   if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
     xmlhttp=new XMLHttpRequest();
@@ -29,6 +29,6 @@ function like(post_id, up) {
       document.getElementById("likes_"+post_id).innerHTML=xmlhttp.responseText;
     }
   }
-  xmlhttp.open("GET", "ajaxphp/like.php?post_id="+post_id+"&up=", true);
+  xmlhttp.open("GET", "ajaxphp/like.php?post_id="+post_id+"&up="+up, true);
   xmlhttp.send();
 }
