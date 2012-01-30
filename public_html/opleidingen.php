@@ -83,7 +83,7 @@ if(isset($_GET["search"])) {
           </div>
           <div class="span10">
             <div class="search">
-              <input class="input-xxlarge" name="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" value="<?php echo $srchquery; ?>" />
+              <input id="srchblok" class="input-xxlarge" name="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" value="<?php echo $srchquery; ?>" />
             </div>
             <div id="searchResult" class="result">
 <?php
