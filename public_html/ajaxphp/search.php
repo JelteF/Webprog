@@ -3,12 +3,21 @@ $con = mysql_connect("localhost","webdb1249","uvabookdb");
 if(!$con)
   die('could not connect' . mysql.error());
 
-$q = mysql_real_escape_string($_GET["q"]);
-$tl = mysql_real_escape_string($_GET["tl"]);
-$tt = mysql_real_escape_string($_GET["tt"]);
-$sv = mysql_real_escape_string($_GET["sv"]);
-$it = mysql_real_escape_string($_GET["it"]);
-$fc = mysql_real_escape_string($_GET["fc"]);
+if(isset($_GET["q"])&&isset($_GET["tl"])&&isset($_GET["tt"])&&isset($_GET["sv"])&&isset($_GET["it"])&&isset($_GET["fc"])) {
+  $q = mysql_real_escape_string($_GET["q"]);
+  $tl = mysql_real_escape_string($_GET["tl"]);
+  $tt = mysql_real_escape_string($_GET["tt"]);
+  $sv = mysql_real_escape_string($_GET["sv"]);
+  $it = mysql_real_escape_string($_GET["it"]);
+  $fc = mysql_real_escape_string($_GET["fc"]);
+} else {
+  $q = "";
+  $tl = "";
+  $tt = "";
+  $sv = "";
+  $it = "";
+  $fc = "");
+}
 
 if($tl=="1")
   $taal="AND taal='nl'";
