@@ -3,6 +3,7 @@
   <head>
     <title>UvAbook</title>
 <?php require("templates/head.php") ?>
+    <script type="text/javascript" src="js/indextab.js"></script>
   </head>
 
   <body>
@@ -23,20 +24,6 @@
 		    </div>
             </div>
           <div class="span6">
-            <script type='text/javascript'>
-            function tab1() {
-              document.getElementById('tab1').setAttribute("class","active");
-              document.getElementById('tab2').setAttribute("class","");
-              document.getElementById('info1').style.display = "block";
-              document.getElementById('info2').style.display = "none";
-            }
-            function tab2() {
-              document.getElementById('tab1').setAttribute("class","");
-              document.getElementById('tab2').setAttribute("class","active");
-              document.getElementById('info1').style.display = "none";
-              document.getElementById('info2').style.display = "block";
-            }
-            </script>
             <div class="infobox-tab">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab1()">Top 20</a></li>
