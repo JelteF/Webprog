@@ -165,9 +165,9 @@
             </div>
             <div id="info3" style="display:none" class="infobox-study">
               <p><b>Cultuur & Maatschappij: </b></p><?php if(isset($row[17])) { echo $row[17]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Economie & Maatschappij: </b></p><?php if(isset($row[17])) { echo $row[18]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Natuur & Gezondheid: </b></p><?php if(isset($row[17])) { echo $row[19]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Natuur & Techniek: </b></p><?php if(isset($row[17])) { echo $row[20]; } else { echo "Geen extra vakken nodig";} ?>
+              <p><b>Economie & Maatschappij: </b></p><?php if(isset($row[18])) { echo $row[18]; } else { echo "Geen extra vakken nodig";} ?>
+              <p><b>Natuur & Gezondheid: </b></p><?php if(isset($row[19])) { echo $row[19]; } else { echo "Geen extra vakken nodig";} ?>
+              <p><b>Natuur & Techniek: </b></p><?php if(isset($row[20])) { echo $row[20]; } else { echo "Geen extra vakken nodig";} ?>
             </div>
             <!---Vragenblok-->
             <div class="shoutbox">
