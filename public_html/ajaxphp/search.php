@@ -36,7 +36,7 @@ if(strpos($q," ") == 0) {
   $woord1 = "AND naam LIKE '%$qr[0]%' OR zoekwoorden LIKE '%$qr[0]%'";
   $woord2 = "AND naam LIKE '%$qr[1]%' OR zoekwoorden LIKE '%$qr[1]%'";
   $woord3 = "AND naam LIKE '%$qr[2]%' OR zoekwoorden LIKE '%$qr[2]%'";
-} else {
+} elseif(strpos($q," ") > 2) {
   $qr = explode(" ", $q);
   $woord1 = "AND naam LIKE '%$qr[0]%' OR zoekwoorden LIKE '%$qr[0]%'";
   $woord2 = "AND naam LIKE '%$qr[1]%' OR zoekwoorden LIKE '%$qr[1]%'";
@@ -131,7 +131,7 @@ mysql_select_db("webdb1249", $con);
 if($q=="")
   $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 else
-  $result = mysql_query("SELECT id,naam FROM studies WHERE (1 $woord1 $woord2 $woord3) $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
+  $result = mysql_query("SELECT id,naam FROM studies WHERE (1 ($woord1) ($woord2) ($woord3)) $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 
 if(mysql_num_rows($result)==0) {
   echo "Geen resultaat";
