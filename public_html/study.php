@@ -6,6 +6,8 @@
     <script type="text/javascript" src="js/submit.js"></script>
     <script type="text/javascript" src="js/changeform.js"></script>
     <script type="text/javascript" src="js/like.js"></script>
+    <script type="text/javascript" src="js/showhide.js"></script>
+    <script type="text/javascript" src="js/studytab.js"></script>
   </head>
 
   <body>
@@ -25,18 +27,6 @@
         <div class="hero-unit">
           <h1><?php echo $row[2]; ?></h1>
           <p><br /><?php echo $row[4]; ?></p>
-          <script type='text/javascript'>
-            function showHide(){
-              if(document.getElementById('meer').style.display == 'block'){
-                document.getElementById('meer').style.display = 'none';
-                document.getElementById('minder').style.display = 'block';
-              }
-              else if(document.getElementById('meer').style.display == 'none'){
-                document.getElementById('meer').style.display = 'block';
-                document.getElementById('minder').style.display = 'none';
-              }
-            }
-          </script>
           <div id="meer" style="display:block">
             <input type="button" onclick="showHide()" value="Meer" />
           </div>
@@ -118,32 +108,6 @@
           <!---Rechterblok-->
           <div class="span6">
             <!---Informatieblok-->
-            <script type='text/javascript'>
-              function tab1() {
-                document.getElementById('tab1').setAttribute("class","active");
-                document.getElementById('tab2').setAttribute("class","");
-                document.getElementById('tab3').setAttribute("class","");
-                document.getElementById('info1').style.display = "block";
-                document.getElementById('info2').style.display = "none";
-                document.getElementById('info3').style.display = "none";
-              }
-            function tab2() {
-              document.getElementById('tab1').setAttribute("class","");
-              document.getElementById('tab2').setAttribute("class","active");
-              document.getElementById('tab3').setAttribute("class","");
-              document.getElementById('info1').style.display = "none";
-              document.getElementById('info2').style.display = "block";
-              document.getElementById('info3').style.display = "none";
-            }
-            function tab3() {
-              document.getElementById('tab1').setAttribute("class","");
-              document.getElementById('tab2').setAttribute("class","");
-              document.getElementById('tab3').setAttribute("class","active");
-              document.getElementById('info1').style.display = "none";
-              document.getElementById('info2').style.display = "none";
-              document.getElementById('info3').style.display = "block";
-            }
-            </script>
             <div class="infobox-tab">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab1()">Info</a></li>
