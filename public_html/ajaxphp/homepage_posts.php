@@ -7,6 +7,7 @@ if (isset($_SESSION['ticket'])){
 }
 
 $result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
+$result2 = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY score_week DESC LIMIT 0, 5");
 
 while($row = mysql_fetch_array($result)){
 	$post_id = $row['ID'];
