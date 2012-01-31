@@ -131,7 +131,7 @@ mysql_select_db("webdb1249", $con);
 if($q=="")
   $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 else
-  $result = mysql_query("SELECT id,naam FROM studies WHERE (1 $woord1 $woord2 $woord3) $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
+  $result = mysql_query("SELECT id,naam FROM studies WHERE (1 ($woord1) ($woord2) ($woord3)) $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 
 if(mysql_num_rows($result)==0) {
   echo "Geen resultaat";
