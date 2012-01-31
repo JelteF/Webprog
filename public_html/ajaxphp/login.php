@@ -1,6 +1,7 @@
 <?php
 echo "<div class='pull-right'>";
-
+echo $_GET['ticket'];
+echo $_GET["ticket"];
 $pageURL = 'http://';
 if ($_SERVER["SERVER_PORT"] != "80") {
   $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
@@ -39,7 +40,10 @@ if ((isset($_SESSION['ticket']) || $validated)&& (!isset($_GET["do"]) || !$_GET[
   if ($result) $rows = mysql_num_rows($result);
   if (isset($rows) && $rows != 0){
     $user1 = mysql_fetch_array($result);
-    echo "<a class='brand' href='".$pageURL."&do=logoff'>Log uit (".$user1['UvAnetID'].")</a>";
+    if(strpos($pageURL, "?") !== false)
+        echo "<a class='brand' href='".$pageURL."&do=logoff'>Log uit (".$user1['UvAnetID'].")</a>";
+    else
+        echo "<a class='brand' href='".$pageURL."?do=logoff'>Log uit (".$user1['UvAnetID'].")</a>";
     $validated = true;
   }
 }
