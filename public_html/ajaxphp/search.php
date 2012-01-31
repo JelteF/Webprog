@@ -36,7 +36,7 @@ if(strpos($q," ") == 0) {
   $woord1 = "AND naam LIKE '%$qr[0]%' OR zoekwoorden LIKE '%$qr[0]%'";
   $woord2 = "AND naam LIKE '%$qr[1]%' OR zoekwoorden LIKE '%$qr[1]%'";
   $woord3 = "AND naam LIKE '%$qr[2]%' OR zoekwoorden LIKE '%$qr[2]%'";
-} else {
+} elseif(strpos($q," ") > 2) {
   $qr = explode(" ", $q);
   $woord1 = "AND naam LIKE '%$qr[0]%' OR zoekwoorden LIKE '%$qr[0]%'";
   $woord2 = "AND naam LIKE '%$qr[1]%' OR zoekwoorden LIKE '%$qr[1]%'";
