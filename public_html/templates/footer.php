@@ -1,4 +1,5 @@
-    <div class="footer" style="text-align: center">
+    <div class="container">
+    <div class="footer">
       <a name='contact'></a>
       <div class="row">
         <div class="span8">
@@ -20,6 +21,7 @@
         </div>
       </div>
       <p>&copy; Universiteit van Amsterdam 2012</p>
+    </div>
     </div>
 <?php
 require("closecon.php");
