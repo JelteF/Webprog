@@ -13,10 +13,10 @@
           <div class="contact">
             <h3>Founded by:</h3>
             <ul>
-              <li>Joshua Appelman</li>
-              <li>Jelte Fennema</li>
-              <li>Freddy de Greef</li>
-              <li>Mike Trieu</li>
+              <li><a href="#" target="_blank">Joshua Appelman</a></li>
+              <li><a href="#" target="_blank">Jelte Fennema</a></li>
+              <li><a href="#" target="_blank">Freddy de Greef</a></li>
+              <li><a href="#" target="_blank">Mike Trieu</a></li>
               <li><a href="http://www.facebook.com/profile.php?id=100001876938590" target="_blank">Alper Yerlibucak</a></li>
             </ul>
           </div>
