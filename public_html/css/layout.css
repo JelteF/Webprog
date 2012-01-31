@@ -193,6 +193,11 @@ textarea.xlarge {
   text-decoration: none;
 }
 
+.footer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .contact {
   text-align: left;
   padding: 10px;
