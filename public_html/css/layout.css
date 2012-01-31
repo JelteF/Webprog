@@ -96,6 +96,7 @@ textarea.xlarge {
   color: white;
   background-color: #900000;
   border-color: #eee #eee #ddd;
+  display: block;
 }
 
 .tabs .active > a, .tabs .active > a:hover {
