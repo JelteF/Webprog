@@ -2,6 +2,7 @@
 echo "<div class='pull-right'>";
 echo $_GET['ticket'];
 echo $_GET["ticket"];
+echo isset($_GET['ticket']);
 $pageURL = 'http://';
 if ($_SERVER["SERVER_PORT"] != "80") {
   $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
