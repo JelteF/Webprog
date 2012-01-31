@@ -1,7 +1,6 @@
 <?php
-$con = mysql_connect("localhost","webdb1249","uvabookdb");
-if(!$con)
-  die('could not connect' . mysql.error());
+session_start();
+require("../servercode/connect.php");
 
 if(isset($_GET["q"])) {
   $q = mysql_real_escape_string($_GET["q"]);
