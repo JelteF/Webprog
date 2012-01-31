@@ -8,7 +8,7 @@ if ($_SERVER["SERVER_PORT"] != "80") {
 } else {
   $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 }
-
+echo $pageURL;
 $con = mysql_connect("localhost","webdb1249","uvabookdb") or die(mysql_error());
 mysql_select_db("webdb1249", $con) or die("Database not available");
 
