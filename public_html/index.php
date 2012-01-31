@@ -19,7 +19,6 @@
 		<div class="row">
 		  <div class="span10">
 		    <div class="whatsnew">
-			  <h1>What's new</h1>
 			  <?php require("ajaxphp/homepage_posts.php") ?>
 		    </div>
             </div>
