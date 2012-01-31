@@ -148,7 +148,13 @@
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab1()">Info</a></li>
                 <li id="tab2"><a onclick="tab2()">Vakken</a></li>
-                <li id="tab3"><a onclick="tab3()">Vooropleiding</a></li>
+                <?php
+                  if($row[9]=="BA"||($row[9]=="BSc")||($row[9]=="LLB")) {
+                    echo "<li id="tab3"><a onclick="tab3()">Vooropleiding</a></li>";
+                  } else {
+                    echo "<li id="tab3" style="display:none"><a onclick="tab3()">Vooropleiding</a></li>"
+                  }
+                ?>
               </ul>
             </div>
             <div id="info1" class="infobox-study">
@@ -164,28 +170,10 @@
               test test
             </div>
             <div id="info3" style="display:none" class="infobox-study">
-              <p><b>Cultuur & Maatschappij: </b></p><?php if($row[17]!="") { echo $row[17]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Economie & Maatschappij: </b></p><?php if($row[18]!="") { echo $row[18]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Natuur & Gezondheid: </b></p><?php if($row[19]!="") { echo $row[19]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Natuur & Techniek: </b></p><?php if($row[20]!="") { echo $row[20]; } else { echo "Geen extra vakken nodig";} ?>
-            </div>
-            <!---Vragenblok-->
-            <div class="shoutbox">
-              <h3>Want to leave a question?</h3>
-              <div class="input">
-                <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
-              </div>
-              <dl class="shoutbox">
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-              </dl>
+              <p><b>Cultuur & Maatschappij: </b><?php if($row[17]!="") { echo $row[17]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Economie & Maatschappij: </b><?php if($row[18]!="") { echo $row[18]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Natuur & Gezondheid: </b><?php if($row[19]!="") { echo $row[19]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Natuur & Techniek: </b><?php if($row[20]!="") { echo $row[20]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
             </div>
 
           </div>
