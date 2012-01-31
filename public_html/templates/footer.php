@@ -4,6 +4,7 @@
       <div class="row">
         <div class="span8">
           <div class="contact">
+            <h3>UvAbook:</h3>
             <p>UvAbook is voor het project Webdevelopment en Databases and de Universiteit van Amsterdam.</p>
             <p>Voor contact email admin@uvabook.nl</p>
           </div>
