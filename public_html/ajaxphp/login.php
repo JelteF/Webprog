@@ -1,5 +1,5 @@
 <?php
-
+echo "<div class='pull-right'>";
 $pageURL = 'http://';
 if ($_SERVER["SERVER_PORT"] != "80") {
   $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
@@ -8,6 +8,7 @@ if ($_SERVER["SERVER_PORT"] != "80") {
 }
 $pageURL = explode("?ticket", $pageURL);
 $pageURL = $pageURL[0];
+
 $con = mysql_connect("localhost","webdb1249","uvabookdb") or die(mysql_error());
 mysql_select_db("webdb1249", $con) or die("Database not available");
 
