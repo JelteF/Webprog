@@ -24,9 +24,9 @@
   }
   function clearing() {
     document.getElementById("forclearing").value="";
-    var x=setTimeout(document.getElementById("topbarsearch").innerHTML="",1000);
-    var y=setTimeout(document.getElementById("topbarsearch").style.border="0px",1000);
-    var z=setTimeout(document.getElementById("topbarsearch").style.background="",1000);
+    var x=setTimeout('document.getElementById("topbarsearch").innerHTML=""',1000);
+    var y=setTimeout('document.getElementById("topbarsearch").style.border="0px"',1000);
+    var z=setTimeout('document.getElementById("topbarsearch").style.background=""',1000);
   }
 </script>
 <?php $page_name = $_SERVER['PHP_SELF'];
