@@ -150,9 +150,9 @@
                 <li id="tab2"><a onclick="tab2()">Vakken</a></li>
                 <?php
                   if($row[9]=="BA"||($row[9]=="BSc")||($row[9]=="LLB")) {
-                    echo "<li id="tab3"><a onclick="tab3()">Vooropleiding</a></li>";
+                    echo "<li id='tab3'><a onclick='tab3()'>Vooropleiding</a></li>";
                   } else {
-                    echo "<li id="tab3" style="display:none"><a onclick="tab3()">Vooropleiding</a></li>";
+                    echo "<li id='tab3' style='display:none'><a>Vooropleiding</a></li>";
                   }
                 ?>
               </ul>
