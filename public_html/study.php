@@ -167,13 +167,18 @@
               <p><b>CROHO-code: </b><?php echo $row[10]; ?></p>
             </div>
             <div id="info2" style="display:none" class="infobox-study">
-              test test
+              <p><b>Vakken eerste jaar: </b></p>
+              <?php
+                $vkarray = explode(",",$row[16]);
+                for($j=0; $j<count($vkarray);$j++)
+                  echo "<p>$vkarray[$j]</p>";
+              ?>
             </div>
             <div id="info3" style="display:none" class="infobox-study">
-              <p><b>Cultuur & Maatschappij: </b><?php if($row[17]!="") { echo $row[17]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
-              <p><b>Economie & Maatschappij: </b><?php if($row[18]!="") { echo $row[18]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
-              <p><b>Natuur & Gezondheid: </b><?php if($row[19]!="") { echo $row[19]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
-              <p><b>Natuur & Techniek: </b><?php if($row[20]!="") { echo $row[20]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Cultuur & Maatschappij: </b><br /><?php if($row[17]!="") { echo $row[17]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Economie & Maatschappij: </b><br /><?php if($row[18]!="") { echo $row[18]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Natuur & Gezondheid: </b><br /><?php if($row[19]!="") { echo $row[19]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Natuur & Techniek: </b><br /><?php if($row[20]!="") { echo $row[20]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
             </div>
 
           </div>
