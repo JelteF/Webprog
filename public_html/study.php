@@ -170,15 +170,15 @@
               <p><b>Vakken eerste jaar: </b></p>
               <?php
                 $vkarray = explode(",",$row[16]);
-                for($j=0; $j<count($vkarray);$j++)
+                for($j=0; $j<count($vkarray)-1;$j++)
                   echo "<p>$vkarray[$j]</p>";
               ?>
             </div>
             <div id="info3" style="display:none" class="infobox-study">
-              <p><b>Cultuur & Maatschappij: </b><br /><?php if($row[17]!="") { echo $row[17]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
-              <p><b>Economie & Maatschappij: </b><br /><?php if($row[18]!="") { echo $row[18]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
-              <p><b>Natuur & Gezondheid: </b><br /><?php if($row[19]!="") { echo $row[19]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
-              <p><b>Natuur & Techniek: </b><br /><?php if($row[20]!="") { echo $row[20]; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Cultuur & Maatschappij: </b><br /><?php if($row[17]!="") { $cmarray = explode(",",$row[17]); for($j=0; $j<count($cmarray)-1;$j++) echo "$cmarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Economie & Maatschappij: </b><br /><?php if($row[18]!="") { $emarray = explode(",",$row[18]); for($j=0; $j<count($emarray)-1;$j++) echo "$emarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Natuur & Gezondheid: </b><br /><?php if($row[19]!="") { $ngarray = explode(",",$row[19]); for($j=0; $j<count($ngarray)-1;$j++) echo "$ngarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Natuur & Techniek: </b><br /><?php if($row[20]!="") { $ntarray = explode(",",$row[20]); for($j=0; $j<count($ntarray)-1;$j++) echo "$ntarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
             </div>
 
           </div>
