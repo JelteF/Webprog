@@ -1,7 +1,7 @@
     <div class="container">
       <a name='contact'></a>
+     <div class="contactblok">
       <div class="row">
-      <div class="contactblok">
         <div class="span8">
           <div class="contact">
             <p>UvAbook is voor het project Webdevelopment en Databases and de Universiteit van Amsterdam.</p>
