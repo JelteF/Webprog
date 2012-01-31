@@ -19,6 +19,30 @@ if(isset($_GET["q"])&&isset($_GET["tl"])&&isset($_GET["tt"])&&isset($_GET["sv"])
   $fc = "";
 }
 
+$qr = "";
+$woord1 = "";
+$woord2 = "";
+$woord3 = "";
+
+if(strpos($q," ") == 0) {
+  $qr = $q;
+  $woord1 = "AND naam LIKE '%$qr%' OR zoekwoorden LIKE '%$qr%'";
+} elseif(strpos($q," ") == 1) {
+  $qr = explode(" ", $q);
+  $woord1 = "AND naam LIKE '%$qr[0]%' OR zoekwoorden LIKE '%$qr[0]%'";
+  $woord2 = "AND naam LIKE '%$qr[1]%' OR zoekwoorden LIKE '%$qr[1]%'";
+} elseif(strpos($q," ") == 2) {
+  $qr = explode(" ", $q);
+  $woord1 = "AND naam LIKE '%$qr[0]%' OR zoekwoorden LIKE '%$qr[0]%'";
+  $woord2 = "AND naam LIKE '%$qr[1]%' OR zoekwoorden LIKE '%$qr[1]%'";
+  $woord3 = "AND naam LIKE '%$qr[2]%' OR zoekwoorden LIKE '%$qr[2]%'";
+} else {
+  $qr = explode(" ", $q);
+  $woord1 = "AND naam LIKE '%$qr[0]%' OR zoekwoorden LIKE '%$qr[0]%'";
+  $woord2 = "AND naam LIKE '%$qr[1]%' OR zoekwoorden LIKE '%$qr[1]%'";
+  $woord3 = "AND naam LIKE '%$qr[2]%' OR zoekwoorden LIKE '%$qr[2]%'";
+}
+
 if($tl=="1")
   $taal="AND taal='nl'";
 elseif($tl=="2")
@@ -105,9 +129,9 @@ else
 mysql_select_db("webdb1249", $con);
 
 if($q=="")
-  $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam");
+  $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 else
-  $result = mysql_query("SELECT id,naam FROM studies WHERE (naam LIKE '%$q%' OR cluster LIKE '%$q%' OR zoekwoorden LIKE '%$q%') $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
+  $result = mysql_query("SELECT id,naam FROM studies WHERE (1 $woord1 $woord2 $woord3) $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 
 if(mysql_num_rows($result)==0) {
   echo "Geen resultaat";
