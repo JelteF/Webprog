@@ -1,5 +1,10 @@
 <?php
 $logged_in_user = 0;
+if (isset($_SESSION['ticket'])){
+    $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='".$_SESSION['ticket']."'"));
+    $logged_in_user = $logged_in_user['id'];
+}
+
 function print_query($result){
     while($row = mysql_fetch_array($result)){
             $post_id = $row['ID'];
@@ -73,11 +78,6 @@ function print_query($result){
     </div>
     </div>";
     }
-}
-
-if (isset($_SESSION['ticket'])){
-    $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='".$_SESSION['ticket']."'"));
-    $logged_in_user = $logged_in_user['id'];
 }
 
 $result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
