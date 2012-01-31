@@ -4,6 +4,7 @@ $logged_in_user = 0;
 if (isset($_SESSION['ticket'])){
     $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='".$_SESSION['ticket']."'"));
     $logged_in_user = $logged_in_user['id'];
+}
 
 $result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
 
@@ -66,7 +67,7 @@ echo "<div class ='commentblok'>
       echo " class ='inactive'";
     echo" id='likebtn_$post_id'><button name='like' onclick='like($post_id, true)'>Like</button></li>
 
-<li";
+	<li";
     if ($like == -1)
       echo " class ='active'";
     else
