@@ -4,6 +4,7 @@ $logged_in_user = 0;
 if (isset($_SESSION['ticket'])){
     $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='".$_SESSION['ticket']."'"));
     $logged_in_user = $logged_in_user['id'];
+}
 
 $result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
 
@@ -42,15 +43,14 @@ echo "<div class ='commentblok'>
     <div id='likes_$post_id'>
     <p>".$score." points</p>
     </div>
-
     </div>
     <div class ='span8'>
     <div class ='studie'>
-    <h4><b><a href ='study.php?id=$study_id'>".$study_naam."</a></b></h4>
+    <h3><b><a href ='study.php?id=$study_id'>".$study_naam."</a></b></h3>
     </div>
     <p><b><a href ='#'>".$naam." (".$user_id.")</a></b></p>
     <p>".$beschrijving;
- if ($type == "txt")
+  if ($type == "txt")
     echo $content."</p>";
   elseif ($type == "img")
     echo "</p><a href = ".$content."><img align ='right' width ='460' src ='".$content."' class ='postimg' /></a>";
@@ -58,8 +58,8 @@ echo "<div class ='commentblok'>
     echo "</p><a href = ".$content.">Download pdf</a>";
   else
     echo "<iframe width ='460' height ='260' src ='http://www.youtube.com/embed/".$content."' allowfullscreen></iframe>";
-  echo "<ul class ='pills'>";
-  if($logged_in_user){
+  echo "<ul class ='pills'>" ;
+    if ($logged_in_user){
     echo"<li";
     if ($like == 1)
       echo " class ='active'";
@@ -67,7 +67,7 @@ echo "<div class ='commentblok'>
       echo " class ='inactive'";
     echo" id='likebtn_$post_id'><button name='like' onclick='like($post_id, true)'>Like</button></li>
 
-<li";
+	<li";
     if ($like == -1)
       echo " class ='active'";
     else
@@ -81,3 +81,5 @@ echo "<div class ='commentblok'>
 </div>";
 }
 ?>
+
+
