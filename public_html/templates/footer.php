@@ -1,7 +1,7 @@
     <div class="container">
-    <div class="footer">
       <a name='contact'></a>
       <div class="row">
+      <div class="contactblok">
         <div class="span8">
           <div class="contact">
             <p>UvAbook is voor het project Webdevelopment en Databases and de Universiteit van Amsterdam.</p>
@@ -19,7 +19,9 @@
             </ul>
           </div>
         </div>
+        </div>
       </div>
+    <div class="footer">
       <p>&copy; Universiteit van Amsterdam 2012</p>
     </div>
     </div>
