@@ -10,6 +10,7 @@
         </div>
         <div class="span8">
           <div class="contact">
+            <h3>Founded by:</h3>
             <ul>
               <li>Joshua Appelman</li>
               <li>Jelte Fennema</li>
