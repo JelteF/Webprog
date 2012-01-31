@@ -24,9 +24,9 @@
   }
   function clearing() {
     document.getElementById("forclearing").value="";
-    setTimeout("document.getElementById("topbarsearch").innerHTML=""",100);
-    setTimeout("document.getElementById("topbarsearch").style.border="0px"",100);
-    setTimeout("document.getElementById("topbarsearch").style.background=""",100);
+    setTimeout(document.getElementById("topbarsearch").innerHTML="",100);
+    setTimeout(document.getElementById("topbarsearch").style.border="0px",100);
+    setTimeout(document.getElementById("topbarsearch").style.background="",100);
   }
 </script>
 <?php $page_name = $_SERVER['PHP_SELF'];
