@@ -1,4 +1,5 @@
 <?php
+$logged_in_user = 0;
 function print_query($result){
     while($row = mysql_fetch_array($result)){
             $post_id = $row['ID'];
@@ -73,7 +74,7 @@ function print_query($result){
     </div>";
     }
 }
-$logged_in_user = 0;
+
 if (isset($_SESSION['ticket'])){
     $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='".$_SESSION['ticket']."'"));
     $logged_in_user = $logged_in_user['id'];
