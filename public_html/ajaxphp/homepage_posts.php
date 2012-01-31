@@ -5,7 +5,7 @@ if (isset($_SESSION['ticket'])){
     $logged_in_user = $logged_in_user['id'];
 }
 
-function print_query($result){
+function print_query($result, $logged_in_user){
     while($row = mysql_fetch_array($result)){
             $post_id = $row['ID'];
             $score = $row['score'];
@@ -83,9 +83,9 @@ function print_query($result){
 $result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
 $result2 = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY score_week DESC LIMIT 0, 5");
 echo "<h1>What's new</h1>";
-print_query($result);
+print_query($result, $logged_in_user);
 echo "<h1>Top 5</h1>";
-print_query($result2);
+print_query($result2, $logged_in_user);
 
 ?>
 
