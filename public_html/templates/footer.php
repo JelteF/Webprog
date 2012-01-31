@@ -15,7 +15,7 @@
               <li>Jelte Fennema</li>
               <li>Freddy de Greef</li>
               <li>Mike Trieu</li>
-              <li>Alper Yerlibucak</li>
+              <li><a href="http://www.facebook.com/profile.php?id=100001876938590">Alper Yerlibucak</a></li>
             </ul>
           </div>
         </div>
