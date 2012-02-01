@@ -1,5 +1,8 @@
 function result() {
   var str = document.getElementById("srchblok").value;
+  if(str=="Zoek een opleiding")
+    str="";
+
   var taal = 0;
   for(taal = 0; taal < 3; taal++) {
       if (document.getElementById("taal"+taal).checked)
