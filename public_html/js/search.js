@@ -37,11 +37,3 @@ function result() {
   xmlhttp.open("GET","ajaxphp/search.php?q="+str+"&tl="+taal+"&tt="+titel+"&sv="+studievorm+"&it="+intr+"&fc="+fac,true);
   xmlhttp.send();
 }
-fuction reset() {
-  document.getElementById("taal0").checked = true;
-  document.getElementById("titel0").checked = true;
-  document.getElementById("studievorm0").checked = true;
-  document.getElementById("intr0").checked = true;
-  document.getElementById("fac0").checked = true;
-  result();
-}
