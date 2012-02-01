@@ -18,7 +18,7 @@ require("../servercode/connect.php");
             <li><a href='#contact'>Contact</a></li>
           </ul>
           <form class="pull-left" action="opleidingen.php" method="GET">
-            <input class="input-large" type="text" id="forclearing" name="search" placeholder="Zoek een opleiding" onkeyup="topresult(this.value)" autocomplete="off" onblur="clearing()" />
+            <input class="input-large" type="text" id="forclearing" name="search" value="Zoek een opleiding" onfocus="Afocus()" onkeyup="topresult(this.value)" autocomplete="off" onblur="clearing()" />
             <div id="topbarsearch" style="z-index:10"></div>
           </form>
           <?php require("ajaxphp/login.php")?>
