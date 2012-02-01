@@ -18,6 +18,13 @@
       else
         echo "topbar.php not found!";
 
+      /**
+       * PHP code voor het controleren het waarde van "search" moet gebruiken
+       * "search" wordt gestuurd door de zoekbalk in het menubalk
+       * Wanneer het gebruikt wordt, dan wordt er een query gedaan met die waarde
+       * Anders wordt de waarde "Zoek een opleiding" als placeholder en wordt er 
+       *   een default query gedaan.
+       */
       if(isset($_GET["search"])) {
         $srchquery = mysql_real_escape_string($_GET["search"]);
         $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$srchquery%' OR cluster LIKE '%$srchquery%' OR zoekwoorden LIKE '%$srchquery%' ORDER BY naam ASC");
@@ -29,11 +36,15 @@
     <div class="container">
       <div class="content">
         <div class="row">
-          <!--
-            De lijst met alle opties voor het filteren van zoekresultaten.
-            Elke optie is een radiobutton. Wanneer er op geklikt wordt, een javascript result() aanroept.
-          -->
           <div class="span6">
+            <!--
+              De lijst met alle opties voor het filteren van zoekresultaten
+              Elke optie is een radiobutton. Wanneer er op geklikt wordt, 
+              een javascript result() aanroept (een AJAX script)
+              ID van de radiobuttons wordt gebruikt door result()
+              Er is ook een button die javascript resetFilter() aanroept
+              Voor details over de javascript functies, zie search.js
+            -->
             <div class="filter">
               <h3>Verfijn op</h3>
               <input class="pull-right" type="button" onclick="resetFilter()" value="Reset filter" />
@@ -93,15 +104,26 @@
               </form>
             </div>
           </div>
-          <!--
-            De zoekbalk
-          -->
           <div class="span10">
+            <!--
+              Tekstvak voor het invullen van een zoekwoord
+              Elke input roept javascript result() aan (een AJAX script)
+              ID van het tekstvak wordt gebruikt door result()
+              Als er op het tekstvak wordt geklikt roept het javascript clearTextValue() aan
+              Andersom roept het javascript defaultTextValue() aan
+              Voor details over de javascript functies, zie search.js
+            -->
             <div class="search">
               <input class="input-xxlarge" id="srchblok" type="text" onkeyup="result()" onfocus="clearTextValue()" onblur="defaultTextValue()" value="<?php echo $srchquery; ?>" />
             </div>
+            <!--De div dat wordt gebruikt door het result() script-->
             <div class="result" id="searchResult">
             <?php
+              /**
+               * PHP code voor het printen van de query
+               * Als er niets wordt gevonden, wordt het aangegeven
+               * De geprinte query wordt vervangen door AJAX als er gezocht wordt doormiddel van de tekstvak
+               */
               if(mysql_num_rows($result)==0) {
                 echo "Geen resultaat";
               } else {
