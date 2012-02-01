@@ -30,7 +30,7 @@ echo" <div class='commentblok'>
   <p>".$date."<br />".$time."</p>
   </div>
   <p><b>Waardering:</b></p>
-  <div class='likes_$post_id'>
+  <div id='likes_$post_id'>
   <p>".$score." points</p>
   </div>
   </div>
