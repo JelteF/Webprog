@@ -142,7 +142,7 @@ else{
      }
   }
   else{
-    $content = $_POST['content'];
+    $content = strip_tags($_POST['content']);
     if($type == "txt" && empty($content))
         $result = "Er is geen tekst ingevoerd.";
     elseif(empty($content))
