@@ -30,7 +30,7 @@ echo" <div class='commentblok'>
   <p>".$date."<br />".$time."</p>
   </div>
   <p><b>Waardering:</b></p>
-  <div class=likes>
+  <div class='likes_$post_id'>
   <p>".$score." points</p>
   </div>
   </div>
@@ -47,8 +47,8 @@ elseif ($type=="pdf")
 else
     echo "<iframe width='460' height='260' src='http://www.youtube.com/embed/".$content."' allowfullscreen></iframe>";
 echo "</div><ul class='pills'>
-  <li class='active'><button name='like' onclick='like($post_id, true)'>Like</button></li>
-  <li><button name='like' onclick='like($post_id, false)'>Dislike</button></li>
+  <li id='likebtn_$post_id' class='active'><button name='like' onclick='like($post_id, true)'>Like</button></li>
+  <li id='dislikebtn_$post_id'><button name='like' onclick='like($post_id, false)'>Dislike</button></li>
   <li><a href='#'>Share</a></li>
   </ul>
   </div>
