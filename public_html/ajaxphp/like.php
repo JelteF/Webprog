@@ -8,7 +8,7 @@ $up = $_GET['up'];
 $con = mysql_connect("localhost","webdb1249","uvabookdb") or die();
 mysql_select_db("webdb1249", $con);
 
-$ticket = $_SESSION['ticket'];
+$ticket = mysql_real_escape_string($_SESSION['ticket']);
 $result = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
 $array = mysql_fetch_array($result);
 $user_id = $array['id'];

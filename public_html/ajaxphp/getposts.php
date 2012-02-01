@@ -1,17 +1,18 @@
 <?php
 $logged_in_user = 0;
 if (isset($_SESSION['ticket'])){
-    $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='".$_SESSION['ticket']."'"));
+    $ticket = mysql_real_escape_string($_SESSION['ticket']);
+    $logged_in_user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ticket='$ticket'"));
     $logged_in_user = $logged_in_user['id'];
 }
-$studie_id = $_GET['id'];
+$studie_id = mysql_real_escape_string($_GET['id']);
 $nrOfPosts = 5;
 $page = 1;
 if (isset($_GET['page'])) $page = $_GET['page'];
 $order = 'populair';
 if (isset($_GET['order']))
 $order = $_GET['order'];
-$offset = ($page-1) * $nrOfPosts;
+$offset = mysql_real_escape_string(($page-1) * $nrOfPosts);
 
 if ($order == 'populair')
   $result2 = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY (score/(TIMESTAMPDIFF(MINUTE,TIMESTAMP(tijd),TIMESTAMP(NOW())
