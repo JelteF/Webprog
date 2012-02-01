@@ -22,8 +22,7 @@ function topresult(str) {
   xmlhttp.send();
 }
 function Afocus() {
-
-document.getElementById("forclearing").value=" ";
+document.getElementById("forclearing").value="";
 }
 function clearing() {
   document.getElementById("forclearing").value="Zoek een opleiding";
