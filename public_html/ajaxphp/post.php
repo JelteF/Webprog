@@ -12,7 +12,7 @@ function upload_post($user){
         $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
     else
         $beschrijving = "";
-    if (isset($beschrijving) && $beschrijving.length > 255)
+    if (isset($beschrijving) && $beschrijving.length < 255)
       $post_id = "-1";
     else{
       $user_id = mysql_fetch_array($user);
