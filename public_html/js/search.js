@@ -4,6 +4,7 @@
  * De code bepaalt de positie van de radiobuttons
  * De positie van radiobuttons en waarde van "srchblok" wordt doorgegeven
  *   met AJAX aan search.php, die een query uitvoert
+ * Krijgt lijst met zoekresultaten terug
  */
 function result() {
   var str = document.getElementById("srchblok").value;

@@ -1,17 +1,19 @@
+// Wordt gebruikt in topbar.php
+/** 
+ * Functie met AJAX code
+ * Geeft meegegeven string door aan topbarsearch.php
+ * Krijgt lijst met zoekresultaten terug
+ * De resultaten worden in een div geprint met een absolute positie
+ *   ten opzichte van die div
+ */
 function topresult(str) {
-  if(str.length<=3) {
-    document.getElementById("topbarsearch").innerHTML="";
-    document.getElementById("topbarsearch").style.border="0px";
-    document.getElementById("topbarsearch").style.background="";
-    return;
-  }
   if(window.XMLHttpRequest) {
     xmlhttp = new XMLHttpRequest();
   }
-  else
-  {// code for IE6, IE5
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  else {
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
   }
+
   xmlhttp.onreadystatechange = function() {
     if(xmlhttp.readyState==4 && xmlhttp.status==200) {
       document.getElementById("topbarsearch").innerHTML=xmlhttp.responseText;
@@ -22,14 +24,25 @@ function topresult(str) {
       document.getElementById("topbarsearch").style.position="absolute";
     }
   }
+
   xmlhttp.open("GET","ajaxphp/topbarsearch.php?q="+str,true);
   xmlhttp.send();
 }
-function Afocus() {
-document.getElementById("forclearing").value="";
+
+/** 
+ * Twee functies die "topsearchinput" op placeholder waarde zet of placeholder waarde verwijdert
+ * Placeholder wordt op deze manier gedaan omdat Internet Explorer placeholder attribuut
+ *   in tekstvakken niet ondersteunt
+ * Tweede functie zorgt er ook voor dat zoek resultaten verdwijnen wanneer er op iets anders dan het zoekbalk
+ *   wordt geklikt. Omdat het meteen verdwijnt, is er een delay van 200 milliseconden toegevoegd. Dit zorgt
+ *   ervoor dat er genoeg tijd is om op de links van de zoekresultaten geklikt kan worden
+ */
+function placeholderClear() {
+  document.getElementById("topsearchinput").value="";
 }
-function clearing() {
-  document.getElementById("forclearing").value="Zoek een opleiding";
+
+function placeholderDefault() {
+  document.getElementById("topsearchinput").value="Zoek een opleiding";
   var x=setTimeout('document.getElementById("topbarsearch").innerHTML=""',200);
   var y=setTimeout('document.getElementById("topbarsearch").style.border="0px"',200);
   var z=setTimeout('document.getElementById("topbarsearch").style.background=""',200);

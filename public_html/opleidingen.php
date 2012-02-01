@@ -20,7 +20,8 @@
 
       /**
        * PHP code voor het controleren het waarde van "search" moet gebruiken
-       * "search" wordt gestuurd door de zoekbalk in het menubalk
+       * "search" wordt gestuurd door de zoekbalk in de navigatiebalk. Deze zit in
+       *   topbar.php
        * Wanneer het gebruikt wordt, dan wordt er een query gedaan met die waarde
        * Anders wordt de waarde "Zoek een opleiding" als placeholder en wordt er 
        *   een default query gedaan.
