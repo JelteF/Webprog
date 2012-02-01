@@ -98,7 +98,7 @@
           -->
           <div class="span10">
             <div class="search">
-              <input class="input-xxlarge" id="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" onfocus="clearTextValue()" value="<?php echo $srchquery; ?>" />
+              <input class="input-xxlarge" id="srchblok" type="text" onkeyup="result()" onfocus="clearTextValue()" value="<?php echo $srchquery; ?>" />
             </div>
             <div class="result" id="searchResult">
             <?php
