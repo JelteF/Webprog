@@ -3,12 +3,21 @@ $con = mysql_connect("localhost","webdb1249","uvabookdb");
 if(!$con)
   die('could not connect' . mysql.error());
 
-$q = mysql_real_escape_string($_GET["q"]);
-$tl = mysql_real_escape_string($_GET["tl"]);
-$tt = mysql_real_escape_string($_GET["tt"]);
-$sv = mysql_real_escape_string($_GET["sv"]);
-$it = mysql_real_escape_string($_GET["it"]);
-$fc = mysql_real_escape_string($_GET["fc"]);
+if(isset($_GET["q"])&&isset($_GET["tl"])&&isset($_GET["tt"])&&isset($_GET["sv"])&&isset($_GET["it"])&&isset($_GET["fc"])) {
+  $q = mysql_real_escape_string($_GET["q"]);
+  $tl = mysql_real_escape_string($_GET["tl"]);
+  $tt = mysql_real_escape_string($_GET["tt"]);
+  $sv = mysql_real_escape_string($_GET["sv"]);
+  $it = mysql_real_escape_string($_GET["it"]);
+  $fc = mysql_real_escape_string($_GET["fc"]);
+} else {
+  $q = "";
+  $tl = "";
+  $tt = "";
+  $sv = "";
+  $it = "";
+  $fc = "";
+}
 
 if($tl=="1")
   $taal="AND taal='nl'";
@@ -96,9 +105,9 @@ else
 mysql_select_db("webdb1249", $con);
 
 if($q=="")
-  $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam");
+  $result = mysql_query("SELECT id,naam FROM studies WHERE 1 $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 else
-  $result = mysql_query("SELECT id,naam FROM studies WHERE (naam LIKE '%$q%' OR cluster LIKE '%$q%' OR zoekwoorden LIKE '%$q%') $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
+  $result = mysql_query("SELECT id,naam FROM studies WHERE (naam LIKE '%$q%' OR zoekwoorden LIKE '%$q%') $taal $titel $studievorm $cluster $faculteit ORDER BY naam ASC");
 
 if(mysql_num_rows($result)==0) {
   echo "Geen resultaat";

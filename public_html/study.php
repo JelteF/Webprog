@@ -6,6 +6,8 @@
     <script type="text/javascript" src="js/submit.js"></script>
     <script type="text/javascript" src="js/changeform.js"></script>
     <script type="text/javascript" src="js/like.js"></script>
+    <script type="text/javascript" src="js/showhide.js"></script>
+    <script type="text/javascript" src="js/studytab.js"></script>
   </head>
 
   <body>
@@ -25,18 +27,6 @@
         <div class="hero-unit">
           <h1><?php echo $row[2]; ?></h1>
           <p><br /><?php echo $row[4]; ?></p>
-          <script type='text/javascript'>
-            function showHide(){
-              if(document.getElementById('meer').style.display == 'block'){
-                document.getElementById('meer').style.display = 'none';
-                document.getElementById('minder').style.display = 'block';
-              }
-              else if(document.getElementById('meer').style.display == 'none'){
-                document.getElementById('meer').style.display = 'block';
-                document.getElementById('minder').style.display = 'none';
-              }
-            }
-          </script>
           <div id="meer" style="display:block">
             <input type="button" onclick="showHide()" value="Meer" />
           </div>
@@ -118,37 +108,17 @@
           <!---Rechterblok-->
           <div class="span6">
             <!---Informatieblok-->
-            <script type='text/javascript'>
-              function tab1() {
-                document.getElementById('tab1').setAttribute("class","active");
-                document.getElementById('tab2').setAttribute("class","");
-                document.getElementById('tab3').setAttribute("class","");
-                document.getElementById('info1').style.display = "block";
-                document.getElementById('info2').style.display = "none";
-                document.getElementById('info3').style.display = "none";
-              }
-            function tab2() {
-              document.getElementById('tab1').setAttribute("class","");
-              document.getElementById('tab2').setAttribute("class","active");
-              document.getElementById('tab3').setAttribute("class","");
-              document.getElementById('info1').style.display = "none";
-              document.getElementById('info2').style.display = "block";
-              document.getElementById('info3').style.display = "none";
-            }
-            function tab3() {
-              document.getElementById('tab1').setAttribute("class","");
-              document.getElementById('tab2').setAttribute("class","");
-              document.getElementById('tab3').setAttribute("class","active");
-              document.getElementById('info1').style.display = "none";
-              document.getElementById('info2').style.display = "none";
-              document.getElementById('info3').style.display = "block";
-            }
-            </script>
             <div class="infobox-tab">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab1()">Info</a></li>
                 <li id="tab2"><a onclick="tab2()">Vakken</a></li>
-                <li id="tab3"><a onclick="tab3()">Vooropleiding</a></li>
+                <?php
+                  if($row[9]=="BA"||($row[9]=="BSc")||($row[9]=="LLB")) {
+                    echo "<li id='tab3'><a onclick='tab3()'>Vooropleiding</a></li>";
+                  } else {
+                    echo "<li id='tab3' style='display:none'><a>Vooropleiding</a></li>";
+                  }
+                ?>
               </ul>
             </div>
             <div id="info1" class="infobox-study">
@@ -161,31 +131,18 @@
               <p><b>CROHO-code: </b><?php echo $row[10]; ?></p>
             </div>
             <div id="info2" style="display:none" class="infobox-study">
-              test test
+              <p><b>Vakken eerste jaar: </b></p>
+              <?php
+                $vkarray = explode(",",$row[16]);
+                for($j=0; $j<count($vkarray)-1;$j++)
+                  echo "<p>$vkarray[$j]</p>";
+              ?>
             </div>
             <div id="info3" style="display:none" class="infobox-study">
-              <p><b>Cultuur & Maatschappij: </b></p><?php if(isset($row[17])) { echo $row[17]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Economie & Maatschappij: </b></p><?php if(isset($row[17])) { echo $row[18]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Natuur & Gezondheid: </b></p><?php if(isset($row[17])) { echo $row[19]; } else { echo "Geen extra vakken nodig";} ?>
-              <p><b>Natuur & Techniek: </b></p><?php if(isset($row[17])) { echo $row[20]; } else { echo "Geen extra vakken nodig";} ?>
-            </div>
-            <!---Vragenblok-->
-            <div class="shoutbox">
-              <h3>Want to leave a question?</h3>
-              <div class="input">
-                <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
-              </div>
-              <dl class="shoutbox">
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-                <dt>Sat Jan 14 03:34</dt><dd>Voorbeeld van een berichtje</dd>
-              </dl>
+              <p><b>Cultuur & Maatschappij: </b><br /><?php if($row[17]!="") { $cmarray = explode(",",$row[17]); for($j=0; $j<count($cmarray)-1;$j++) echo "$cmarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Economie & Maatschappij: </b><br /><?php if($row[18]!="") { $emarray = explode(",",$row[18]); for($j=0; $j<count($emarray)-1;$j++) echo "$emarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Natuur & Gezondheid: </b><br /><?php if($row[19]!="") { $ngarray = explode(",",$row[19]); for($j=0; $j<count($ngarray)-1;$j++) echo "$ngarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
+              <p><b>Natuur & Techniek: </b><br /><?php if($row[20]!="") { $ntarray = explode(",",$row[20]); for($j=0; $j<count($ntarray)-1;$j++) echo "$ntarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
             </div>
 
           </div>
