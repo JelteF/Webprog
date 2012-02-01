@@ -160,6 +160,7 @@ if ($result == "1"){
       $result = "De beschrijving is te lang. Hij mag niet langer zijn dan 255 karakters.";
   if ($result == "1")
       mysql_query("UPDATE posts SET content='$content' WHERE ID='$post_id'");
+  mysql_close($con);
 }
 ?>
 <script type="text/javascript">
