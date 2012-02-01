@@ -2,7 +2,6 @@
 require('../../servercode/connect.php');
 $studie = mysql_real_escape_string(strip_tags($_POST['studie']));
 $post_id = mysql_real_escape_string(strip_tags($_POST['post_id']));
-mysql_select_db("webdb1249", $con3);
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
 $row3 = mysql_fetch_array(mysql_query("SELECT * FROM posts WHERE ID=$post_id"));
 $date = date("d-m-Y",strtotime($row3['tijd']));
