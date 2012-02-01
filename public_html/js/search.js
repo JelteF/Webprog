@@ -51,3 +51,7 @@ function clearTextValue() {
   if(document.getElementById("srchblok").value == "Zoek een opleiding")
     document.getElementById("srchblok").value = ""
 }
+function defaultTextValue() {
+  if(document.getElementById("srchblok").value == "")
+    document.getElementById("srchblok").value = "Zoek een opleiding"
+}
