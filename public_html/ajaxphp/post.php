@@ -1,7 +1,8 @@
 <?php
 function file_extension($filename)
 {
-  return "." . end(explode(".", $filename));
+  $file = $filename;
+  return "." . end(explode(".", $file));
 }
 function check_vid_validity(){
 
