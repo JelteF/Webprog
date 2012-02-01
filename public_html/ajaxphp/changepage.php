@@ -6,7 +6,7 @@ while ($row4 =  mysql_fetch_array($query))
   $count = $row4['COUNT(id)'];
 
 $page = 1;
-if (isset($_GET['page'])) $page = $_GET['page'];
+if (isset($_GET['page'])) $page = mysql_real_escape_string($_GET['page']);
 $last_page = ceil($count/$nrOfPosts);
 $self = "http://uvabook.nl/study.php";
 

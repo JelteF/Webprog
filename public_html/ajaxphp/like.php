@@ -26,7 +26,7 @@ if ($array  = mysql_fetch_array($result)) {
     $newvalue *= -1;
   elseif ($value == ($newvalue) * -1)
     $newvalue *= 2;
-
+  $newvalue= mysql_real_escape_string($newvalue);
   mysql_query("UPDATE votes SET vote=vote+'$newvalue' WHERE voter='$user_id' and post='$post'");
 }
 else
