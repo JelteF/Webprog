@@ -32,16 +32,14 @@ $type = $_POST['post-type'];
 $result = "1";
 $content = "0";
 $post_id = "0";
-$con = mysql_connect("localhost","webdb1249","uvabookdb");
+
+require("../../servercode/postconnect.php");
+
 if (!isset($_SESSION['ticket'])){
    $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
 }
-elseif (!$con)
-{
-  $result = "Could not connect to the database:<br />Please try again.";
-}
-else{
-  mysql_select_db("webdb1249", $con);
+
+if ($result == "1"){
   $user = "0";
   $ticket = $_SESSION['ticket'];
   $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");

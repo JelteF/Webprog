@@ -1,9 +1,5 @@
 <?php
-$con3 = mysql_connect("localhost","webdb1249","uvabookdb");
-if (!$con3)
-{
-  die('Could not connect: ' . mysql_error());
-}
+require('../../servercode/connect.php');
 $studie = mysql_real_escape_string(strip_tags($_POST['studie']));
 $post_id = mysql_real_escape_string(strip_tags($_POST['post_id']));
 mysql_select_db("webdb1249", $con3);
