@@ -17,7 +17,6 @@ if(isset($_GET["ticket"])) {
   //user just logged in, validate and store
   $ticket= $_GET["ticket"];
   $file = file_get_contents("https://bt-lap.ic.uva.nl/cas/serviceValidate?ticket=$ticket&service=$pageURL");
-  echo $file;
   if(stripos($file, "<cas:authenticationFailure") === false){
       $_SESSION['ticket'] = $ticket;
       $startUser = stripos($file,"<cas:user>") + 10;
@@ -55,6 +54,7 @@ else {
 
 if(isset($_GET["do"]) && $_GET["do"]=="logoff"){
     unset($_SESSION["ticket"]);
+    $_GET['do'] = '';
     session_unset();
     session_destroy();
 }

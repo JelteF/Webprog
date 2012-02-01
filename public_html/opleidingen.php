@@ -107,6 +107,5 @@ if(mysql_num_rows($result)==0) {
     </div>
 
 <?php require("templates/footer.php"); ?>
-<?php mysql_close($con); ?>
   </body>
 </html>
