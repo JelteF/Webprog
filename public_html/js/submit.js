@@ -3,7 +3,7 @@ function startUpload(){
     return true;
 }
 
-function submit(formname, result, content, post_id)
+function submit(result, content, post_id)
 {
     if(result!="1"){
         document.getElementById('uploading').innerHTML="<p><br />"+result+"</p>";
@@ -27,7 +27,7 @@ function submit(formname, result, content, post_id)
         }
         xmlhttp.open("POST", "ajaxphp/addcomment.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        var query="content="+escape(content)+"&post_id="+escape(post_id)+"&studie="+document.getElementById('studie_id').className;
+        var query ="content="+escape(content)+"&post_id="+escape(post_id)+"&studie="+document.getElementById('studie_id').className;
         xmlhttp.send(query);
     }
 }

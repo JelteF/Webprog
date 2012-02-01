@@ -1,10 +1,20 @@
 <?php
+/*
+ * Deze file wordt aangeroepen om een post up te loaden.
+ */
+
+/*
+ * Deze functie returnt de extensie van een bestandsnaam.
+ */
 function file_extension($filename)
 {
   $filename = explode(".", $filename);
   return "." . end($filename);
 }
 
+/*
+ * Deze functie uploadt de post.
+ */
 function upload_post($user){
     $type = mysql_real_escape_string(strip_tags($_POST['post-type']));
     if (isset($_POST['beschrijving']))
@@ -25,14 +35,14 @@ function upload_post($user){
     }
     return $post_id;
 }
-set_include_path("/datastore/webdb1249/htdocs/Youtube");
+set_include_path("/datastore/webdb1249/htdocs/Youtube");//Include de Youtube API
 session_start();
 $type = $_POST['post-type'];
 $result = "1";
 $content = "0";
 $post_id = "0";
 
-require("../../servercode/post_connect.php");
+require("../../servercode/post_connect.php");//connect met de database
 
 if (!isset($_SESSION['ticket'])){
    $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
@@ -44,9 +54,15 @@ if ($result == "1"){
   $user = mysql_query("SELECT * FROM users WHERE ticket='$ticket'");
 
   if($type == "pdf" || ($type == "img" && $_POST['upload']=="upload")){
+    /*
+     * Er wordt een bestand geupload
+     */
     $destination_path = "/datastore/webdb1249/Webprog/public_html/";
-    $result = "1";
     if ($type == "img"){
+      /*
+       * Check of er iets mis is met het bestand, zo niet maak upload het
+       * en maak de destination URL de content.
+       */
       if($_FILES["file"]["size"] == 0){
           $result = "Er is geen bestand aangegeven.";
       }
@@ -72,6 +88,9 @@ if ($result == "1"){
       }
     }
     else{
+      /*
+       * Hetzelfde maar dan voor pdf
+       */
       if($_FILES["file"]["size"] == 0){
           $result = "Er werd geen bestand upgeload.";
       }
@@ -104,14 +123,20 @@ if ($result == "1"){
         $result = "Er is geen youtube link ingevoerd.";
      else{
          try{
-
+            /*
+             * Test of er een youtube url is ingevoerd. Zo ja, maak dan het ID
+             * daarvan de content.
+             */
             $flag = false;
-            $pos1=strpos($content,"youtube.com/watch?v=");
+            $pos1=strpos($content,"youtube.com/watch?");
             $pos2=strpos($content, "youtube.com/v/");
             $pos3=strpos($content, "youtu.be/");
             if($pos1 !== false){
-                $content=substr($content, $pos1+20, 11);
-                $flag = true;
+                $pos4 = strpos($content, "v=");
+                if($pos4 !== false){
+                    $content=substr($content, $pos4+2, 11);
+                    $flag = true;
+                }
             }
             elseif($pos2 !== false){
                 $content=substr($content, $pos2+14, 11);
@@ -125,6 +150,11 @@ if ($result == "1"){
                 $result= "Dit is geen goede Youtube link.";
             }
             if($flag){
+                /*
+                 * Als er een goede Youtube link, proberen informatie op te
+                 * halen om te kijken of de video ook echt bestaat.
+                 * Als dat zo is dan uploaden.
+                 */
                 require_once 'Zend/Loader.php';
                 Zend_Loader::loadClass('Zend_Gdata_YouTube');
                 $yt = new Zend_Gdata_YouTube();
@@ -166,5 +196,5 @@ if ($result == "1"){
 var result = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($result)); ?>";
 var content = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($content)); ?>";
 var post_id= "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($post_id)); ?>";
-window.top.window.submit("postForm", result ,content, post_id);
+window.top.window.submit(result ,content, post_id);
 </script>

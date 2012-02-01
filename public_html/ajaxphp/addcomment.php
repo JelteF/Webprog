@@ -1,5 +1,9 @@
 <?php
-require('../../servercode/connect.php');
+require('../../servercode/connect.php');//connect met de database
+/*
+ * Haal alle benodigde informatie uit de database en maak daar een post van die
+ * onder de andere posts verschijnt.
+ */
 $studie = mysql_real_escape_string(strip_tags($_POST['studie']));
 $post_id = mysql_real_escape_string(strip_tags($_POST['post_id']));
 mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
