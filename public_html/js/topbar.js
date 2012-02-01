@@ -21,8 +21,12 @@ function topresult(str) {
   xmlhttp.open("GET","ajaxphp/topbarsearch.php?q="+str,true);
   xmlhttp.send();
 }
+function Afocus() {
+
+document.getElementById("forclearing").value=" ";
+}
 function clearing() {
-  document.getElementById("forclearing").value="";
+  document.getElementById("forclearing").value="Zoek een opleiding";
   var x=setTimeout('document.getElementById("topbarsearch").innerHTML=""',200);
   var y=setTimeout('document.getElementById("topbarsearch").style.border="0px"',200);
   var z=setTimeout('document.getElementById("topbarsearch").style.background=""',200);
