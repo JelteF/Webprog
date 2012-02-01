@@ -24,7 +24,7 @@ if(isset($_GET["search"])) {
         <div class="row">
           <div class="span6">
             <div class="filter">
-        <h3>Verfijn op</h3>
+        <h3>Verfijn op</h3><input type="button" value="Reset filter" onclick="reset()" class="pull-right" />
         <h5>Welke voertaal?</h5>
         <form>
           <input id ="taal0" type="radio" name="fTaal" checked onclick="result()" />Beide
