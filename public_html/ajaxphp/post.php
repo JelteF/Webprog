@@ -1,12 +1,10 @@
 <?php
 function file_extension($filename)
 {
-  $file = $filename;
-  return "." . end(explode(".", $file));
+  $filename = explode(".", $filename);
+  return "." . end($filename);
 }
-function check_vid_validity(){
 
-}
 function upload_post($user){
     $type = mysql_real_escape_string(strip_tags($_POST['post-type']));
     if (isset($_POST['beschrijving']))
@@ -127,7 +125,7 @@ if ($result == "1"){
                 $result= "Dit is geen goede Youtube link.";
             }
             if($flag){
-                require_once 'Zend/Loader.php'; // the Zend dir must be in your include_path
+                require_once 'Zend/Loader.php';
                 Zend_Loader::loadClass('Zend_Gdata_YouTube');
                 $yt = new Zend_Gdata_YouTube();
                 $videoEntry = $yt->getVideoEntry($content);
