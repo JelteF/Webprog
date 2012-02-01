@@ -2,26 +2,37 @@
 <html>
   <head>
     <title>UvAbook: Opleidingen</title>
-    <?php require("templates/head.php"); ?>
+    <?php
+      if(file_exists("templates/head.php"))
+        require("templates/head.php");
+      else
+        echo "head.php not found!";
+    ?>
     <script type="text/javascript" src="js/search.js"></script>
   </head>
 
   <body>
     <?php
-      require("templates/topbar.php");
+      if(file_exists("templates/topbar.php"))
+        require("templates/topbar.php");
+      else
+        echo "topbar.php not found!";
 
       if(isset($_GET["search"])) {
         $srchquery = mysql_real_escape_string($_GET["search"]);
         $result = mysql_query("SELECT id,naam FROM studies WHERE naam LIKE '%$srchquery%' OR cluster LIKE '%$srchquery%' OR zoekwoorden LIKE '%$srchquery%' ORDER BY naam ASC");
       } else {
-        $srchquery = "";
+        $srchquery = "Zoek een opleiding";
         $result = mysql_query("SELECT id,naam FROM studies ORDER BY naam ASC");
       }
     ?>
-    <!---container-->
     <div class="container">
       <div class="content">
         <div class="row">
+          <!--
+            De lijst met alle opties voor het filteren van zoekresultaten.
+            Elke optie is een radiobutton. Wanneer er op geklikt wordt, een javascript result() aanroept.
+          -->
           <div class="span6">
             <div class="filter">
               <h3>Verfijn op</h3>
@@ -82,6 +93,9 @@
               </form>
             </div>
           </div>
+          <!--
+            De zoekbalk
+          -->
           <div class="span10">
             <div class="search">
               <input class="input-xxlarge" id="srchblok" type="text" placeholder="Zoek een opleiding" onkeyup="result()" value="<?php echo $srchquery; ?>" />
@@ -106,6 +120,11 @@
         </div>
       </div>
     </div>
-    <?php require("templates/footer.php"); ?>
+    <?php
+      if(file_exists("templates/footer.php"))
+        require("templates/footer.php");
+      else
+        echo "footer.php not found!";
+    ?>
   </body>
 </html>

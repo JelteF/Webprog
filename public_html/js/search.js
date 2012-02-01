@@ -47,3 +47,7 @@ function resetFilter() {
   document.getElementById("fac0").checked = true;
   result();
 }
+function clearTextValue() {
+  if(document.getElementById("srchblok").value == "Zoek een opleiding")
+    document.getElementById("srchblok").value == ""
+}
