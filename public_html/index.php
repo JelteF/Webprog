@@ -37,6 +37,7 @@
               if(file_exists("ajaxphp/homepage_posts.php")){
                 include("ajaxphp/homepage_posts.php");
 				print_query($result, $logged_in_user);
+			 }
               else
                 echo "homepage_posts.php not found!";
             ?>
@@ -46,6 +47,7 @@
               if(file_exists("ajaxphp/homepage_posts.php")){
                 include("ajaxphp/homepage_posts.php");
 				print_query($result2, $logged_in_user);
+			  }
               else
                 echo "homepage_posts.php not found!";
             ?>
