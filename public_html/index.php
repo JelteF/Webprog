@@ -53,7 +53,7 @@
             ?>
             </div>
           </div>
-          <div class="span6">
+          <div class="span5">
             <div class="infobox-tab">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab3()">top5</a></li>
