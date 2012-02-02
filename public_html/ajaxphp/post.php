@@ -43,7 +43,7 @@ $result = "1";
 $content = "0";
 $post_id = "0";
 
-require("../../servercode/post_connect.php");//connect met de database
+require("../../servercode/connect.php");//connect met de database
 
 if (!isset($_SESSION['ticket'])){
    $result = "Je bent niet ingelogd. Het kan gewoon met je UvAnetID.";
