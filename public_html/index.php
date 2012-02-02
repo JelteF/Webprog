@@ -56,7 +56,7 @@
           <div class="span5">
             <div class="infobox-tab">
               <ul class="tabs">
-                <li id="tab1" class="active">Statistieken</li>
+                <li class="active"><a>Statistieken</a></li>
               </ul>
             </div>
             <div class="infobox-study">
