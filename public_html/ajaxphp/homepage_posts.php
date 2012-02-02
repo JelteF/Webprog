@@ -82,10 +82,7 @@ function print_query($result, $logged_in_user){
 
 $result = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY tijd DESC LIMIT 0, 3");
 $result2 = mysql_query("SELECT * FROM posts WHERE type = 'img' OR type = 'vid' ORDER BY score_week DESC LIMIT 0, 5");
-echo "<h1>What's new</h1>";
-print_query($result, $logged_in_user);
-echo "<h1>Top 5</h1>";
-print_query($result2, $logged_in_user);
+
 
 ?>
 
