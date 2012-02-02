@@ -39,16 +39,16 @@
             <div class="infobox-tab">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab1()">Top 5</a></li>
-		<a href='#'>1</a><br />
-		<a href='#'>2</a><br />
-		<a href='#'>3</a><br />
-		<a href='#'>4</a><br />
-		<a href='#'>5</a><br />
+		
                 <li id="tab2"><a onclick="tab2()">Statestieken</a></li>
               </ul>
             </div>
             <div id="info1" class="infobox-study">
-              inhoud
+             	<h2><a href='#'>1</a><br /></h2>
+		<h2><a href='#'>2</a><br /></h2>
+		<h2><a href='#'>3</a><br /></h2>
+		<h2><a href='#'>4</a><br /></h2>
+		<h2><a href='#'>5</a><br /></h2>
             </div>
             <div id="info2" style="display:none" class="infobox-study">
               inhoud2
