@@ -56,14 +56,14 @@
           <div class="span5">
             <div class="infobox-tab">
               <ul class="tabs">
-                <li class="active"><a>Statistieken</a></li>
+                <li class="active"><a>Studies met de meeste Post</a></li>
               </ul>
             </div>
             <div class="infobox-study">
             	<?php
-            	$mostpost = mysql_query("SELECT studie, naam, count(studie) From posts inner join studies ON posts.studie=studies.id GROUP BY studie ORDER BY COUNT(studie) DESC");
+            	$mostpost = mysql_query("SELECT studie, naam, count(studie) From posts inner join studies ON posts.studie=studies.id GROUP BY studie ORDER BY COUNT(studie) DESC Limit 0,15");
                 while($row = mysql_fetch_array($mostpost)) {
-                  echo "<a href='study.php?id=";
+                  echo "<a style='color: white;' href='study.php?id=";
                   echo $row['studie'];
                   echo "'>";
                   echo $row['naam'];
