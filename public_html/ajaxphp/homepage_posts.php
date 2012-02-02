@@ -30,7 +30,7 @@ function print_query($result, $logged_in_user){
             $naam = "Anoniem";
             }
 
-    echo "<div class ='commentblok'>
+    echo "<div class ='commentblok2'>
         <div class ='row'>
         <div class ='span2'>
         <p><b>Gepost op:</b></p>
@@ -44,7 +44,7 @@ function print_query($result, $logged_in_user){
         </div>
         <div class ='span8'>
         <div class ='studie'>
-        <h3><b><a href ='study.php?id=$study_id'>".$study_naam."</a></b></h3>
+        <h3><b><a href ='study.php?id=$study_id' >".$study_naam."</a></b></h3>
         </div>
         <p><b><a href ='#'>".$naam." (".$user_id.")</a></b></p>
         <p>".$beschrijving;

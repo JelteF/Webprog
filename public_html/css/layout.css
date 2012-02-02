@@ -157,6 +157,18 @@ textarea.xlarge {
   margin-bottom: 10px;
 }
 
+.commentblok2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  
+}
+
+.commentblok2 a{
+	color: #000000;
+}
+
+
 /*CSS voor opleidingen.php*/
 .filter {
   background-color: #f5f5f5;
