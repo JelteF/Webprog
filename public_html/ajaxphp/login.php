@@ -21,11 +21,16 @@ if(isset($_GET["ticket"])) {
    */
   $ticket= $_GET["ticket"];
   $file = file_get_contents("https://bt-lap.ic.uva.nl/cas/serviceValidate?ticket=$ticket&service=$pageURL");
+  /*
+   * Er wordt een file opgehaald en als daarin een authenticationfailure voor
+   * komt betekent het dat er de ticket niet gevalideerd is.
+   */
   if(stripos($file, "<cas:authenticationFailure") === false){
       /*
        * Het is een geldig ticket dus de user moet een session krijgen.
        * Als hij nog niet eerder heeft ingelogd moet de user een nieuw account
        * krijgen, zo niet moet het ticket bij het oude account geupdate worden.
+       * Het UvAnetID staat tussen de cas:user tags.
        */
       $_SESSION['ticket'] = $ticket;
       $startUser = stripos($file,"<cas:user>") + 10;
