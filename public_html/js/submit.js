@@ -6,6 +6,7 @@ function startUpload(){
 function submit(result, content, post_id)
 {
     if(result!="1"){
+        //als er een error message is laat die dan zien.
         document.getElementById('uploading').innerHTML="<p><br />"+result+"</p>";
     }
     else{
@@ -27,7 +28,7 @@ function submit(result, content, post_id)
         }
         xmlhttp.open("POST", "ajaxphp/addcomment.php", true);
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        var query ="content="+escape(content)+"&post_id="+escape(post_id)+"&studie="+document.getElementById('studie_id').className;
+        var query ="&post_id="+escape(post_id)+"&studie="+document.getElementById('studie_id').className;
         xmlhttp.send(query);
     }
 }

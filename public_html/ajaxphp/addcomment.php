@@ -4,9 +4,7 @@ require('../../servercode/connect.php');//connect met de database
  * Haal alle benodigde informatie uit de database en maak daar een post van die
  * onder de andere posts verschijnt.
  */
-$studie = mysql_real_escape_string(strip_tags($_POST['studie']));
 $post_id = mysql_real_escape_string(strip_tags($_POST['post_id']));
-mysql_query("UPDATE posts SET studie='$studie' WHERE ID='$post_id'");
 $row3 = mysql_fetch_array(mysql_query("SELECT * FROM posts WHERE ID=$post_id"));
 $date = date("d-m-Y",strtotime($row3['tijd']));
 $time = date("h:i:s",strtotime($row3['tijd']));
@@ -18,7 +16,7 @@ $date = date("d-m-Y",strtotime($row3['tijd']));
 $time = date("h:i:s",strtotime($row3['tijd']));
 $user = $row3['auteur'];
 $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID='$user'"));
-$user_id = $auteur['UvAnetID'];
+$user_id = $auteur['id'];
 if(!empty($auteur['naam'])){
     $naam = $auteur['naam'];
 }

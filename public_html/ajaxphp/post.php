@@ -24,6 +24,7 @@ function upload_post($user){
     if (strlen($beschrijving) > 255)
       $post_id = "-1";
     else{
+      $studie = mysql_real_escape_string(strip_tags($_GET['studie']));
       $user_id = mysql_fetch_array($user);
       $user_id = $user_id['id'];
       $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
@@ -194,7 +195,6 @@ if ($result == "1"){
 ?>
 <script type="text/javascript">
 var result = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($result)); ?>";
-var content = "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($content)); ?>";
 var post_id= "<?php echo preg_replace("/\r?\n/", "\\n", addslashes($post_id)); ?>";
-window.top.window.submit(result ,content, post_id);
+window.top.window.submit(result , post_id);
 </script>
