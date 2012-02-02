@@ -56,13 +56,15 @@
           <div class="span5">
             <div class="infobox-tab">
               <ul class="tabs">
-                <li id="tab1" class="active"><a onclick="tab3()">top5</a></li>
-		
+                <li id="tab1" class="active"><a onclick="tab3()">Statistieken</a></li>
                 <li id="tab2"><a onclick="ta42()">Statestieken</a></li>
               </ul>
             </div>
             <div id="info1" class="infobox-study">
-            	inhoud
+            	<?php
+					$popstudy = mysql_fetch_array(mysql_query("SELECT studie count(studie) from posts GROUP BY studie ORDER BY COUNT(studie) DESC");
+					echo "$popstudy";
+				?>
             </div>
             <div id="info2" style="display:none" class="infobox-study">
               inhoud2
