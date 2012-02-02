@@ -61,8 +61,16 @@
             </div>
             <div class="infobox-study">
             	<?php
-			echo 'mysql_query("SELECT studie, count(studie) from posts GROUP BY studie ORDER BY COUNT(studie) DESC")';
-		?>
+            	$mostpost = mysql_query("SELECT studie, naam, count(studie) From posts inner join studies ON posts.studie=studies.id GROUP BY studie ORDER BY COUNT(studie) DESC");
+                while($row = mysql_fetch_array($mostpost)) {
+                  echo "<a href='study.php?id=";
+                  echo $row['studie'];
+                  echo "'>";
+                  echo $row['naam'];
+                  echo "</a>";
+                  echo "<br />";
+                }
+		          ?>
             </div>
           </div>
         </div>
