@@ -25,8 +25,8 @@
           <p>UvAbook geeft de gelegenheid aan studenten en docenten, info te delen over studies door middel van foto's, video's, pdf en text bestanden. Op deze manier geven wij gebruikers een beeld van hoe het er op een bepaalde studie aan toe gaat. De beleving van opendagen en meeloopdagen komt bij jou thuis op je scherm!</p>
         </div> 
         <div class="row">
-          <div class="span10">
-			<div class="infobox-tab">
+          <div class="span11">
+			<div class="infobox-tab" style="color:white">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab1()">Whats new</a></li>
                 <li id="tab2"><a onclick="tab2()">Week top5</a></li>
@@ -53,7 +53,7 @@
             ?>
             </div>
           </div>
-          <div class="span6">
+          <div class="span5">
             <div class="infobox-tab">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab3()">top5</a></li>
