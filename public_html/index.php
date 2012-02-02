@@ -38,7 +38,12 @@
           <div class="span6">
             <div class="infobox-tab">
               <ul class="tabs">
-                <li id="tab1" class="active"><a onclick="tab1()">Top 20</a></li>
+                <li id="tab1" class="active"><a onclick="tab1()">Top 5</a></li>
+		<a href='#'>1</a><br />
+		<a href='#'>2</a><br />
+		<a href='#'>3</a><br />
+		<a href='#'>4</a><br />
+		<a href='#'>5</a><br />
                 <li id="tab2"><a onclick="tab2()">Statestieken</a></li>
               </ul>
             </div>
