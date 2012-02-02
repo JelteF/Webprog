@@ -1,3 +1,8 @@
+/*
+ * Deze functie verandert het formulier elke keer dat er op een radio button
+ * geklikt wordt voor de content.
+ */
+
 function contentselect(button){
     
     if(button=="pdf"){
@@ -26,6 +31,9 @@ function contentselect(button){
     }
 }
 
+/*
+ * Deze functie verandert de upload vorm bij plaatjes.
+ */
 function uploadselect(button){
     if(button=="upload"){
         document.getElementById("uploadstyle").innerHTML=
