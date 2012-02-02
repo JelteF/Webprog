@@ -2,26 +2,39 @@
 <html>
   <head>
     <title>UvAbook</title>
-<?php require("templates/head.php") ?>
+    <?php
+      if(file_exists("templates/head.php"))
+        require("templates/head.php");
+      else
+        echo "head.php not found!";
+    ?>
     <script type="text/javascript" src="js/indextab.js"></script>
   </head>
 
   <body>
-<?php require("templates/topbar.php") ?>
-
-    <!---container-->
+    <?php 
+      if(file_exists("templates/topbar.php"))
+        require("templates/topbar.php");
+      else
+        echo "topbar.php not found!";
+    ?>
     <div class="container">
       <div class="content">
-		<div class="hero-unit">
+        <div class="hero-unit">
           <h1>Welkom!</h1>
           <p>UvAbook geeft de gelegenheid aan studenten en docenten, info te delen over studies door middel van foto's, video's, pdf en text bestanden. Op deze manier geven wij gebruikers een beeld van hoe het er op een bepaalde studie aan toe gaat. De beleving van opendagen en meeloopdagen komt bij jou thuis op je scherm!</p>
-		</div> 
-		<div class="row">
-		  <div class="span10">
-		    <div class="whatsnew">
-			  <?php require("ajaxphp/homepage_posts.php") ?>
-		    </div>
+        </div> 
+        <div class="row">
+          <div class="span10">
+            <div class="whatsnew">
+            <?php
+              if(file_exists("ajaxphp/homepage_posts.php"))
+                require("ajaxphp/homepage_posts.php");
+              else
+                echo "homepage_posts.php not found!";
+            ?>
             </div>
+          </div>
           <div class="span6">
             <div class="infobox-tab">
               <ul class="tabs">
@@ -39,7 +52,11 @@
         </div>
       </div>
     </div>
-
-<?php require("templates/footer.php") ?>
+    <?php
+      if(file_exists("templates/footer.php"))
+        require("templates/footer.php");
+      else
+        echo "footer.php not found!";
+    ?>
   </body>
 </html>
