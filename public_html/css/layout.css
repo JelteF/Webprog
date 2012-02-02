@@ -157,7 +157,7 @@ textarea.xlarge {
   margin-bottom: 10px;
 }
 
-/*opleidingen.html*/
+/*CSS voor opleidingen.php*/
 .filter {
   background-color: #f5f5f5;
   padding: 10px;
@@ -193,6 +193,7 @@ textarea.xlarge {
   text-decoration: none;
 }
 
+/*CSS voor footer.php*/
 .footer {
   margin-left: auto;
   margin-right: auto;
