@@ -1,4 +1,6 @@
 <?php
+//this script allows you to change the display order of posts
+//it highlights the option that is currently set
 $current = 'populair';
 if (isset($_GET['order']))
   $current = $_GET['order'];

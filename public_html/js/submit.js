@@ -1,3 +1,4 @@
+//the js code that submits what page you're on
 function startUpload(){
     document.getElementById('uploading').innerHTML="<p><br />Uploading...</p>";
     return true;

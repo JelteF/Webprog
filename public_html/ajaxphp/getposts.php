@@ -1,4 +1,5 @@
 <?php
+//see if the current user is logged in or not
 $logged_in_user = 0;
 if (isset($_SESSION['ticket'])){
     $ticket = mysql_real_escape_string($_SESSION['ticket']);
@@ -8,10 +9,12 @@ if (isset($_SESSION['ticket'])){
 $studie_id = mysql_real_escape_string($_GET['id']);
 $nrOfPosts = 5;
 $page = 1;
+//find the selected order in the url
 if (isset($_GET['page'])) $page = $_GET['page'];
 $order = 'populair';
 if (isset($_GET['order']))
 $order = $_GET['order'];
+//what page are we on
 $offset = mysql_real_escape_string(($page-1) * $nrOfPosts);
 
 if ($order == 'populair')
@@ -22,6 +25,7 @@ elseif ($order == 'waardering')
 else
   $result2 = mysql_query("SELECT * FROM posts WHERE studie = '$studie_id' ORDER BY tijd DESC LIMIT $offset, $nrOfPosts");
 
+//get the info
 while($row2 = mysql_fetch_array($result2)){
   $post_id = $row2['ID'];
   $score = $row2['score'];
@@ -41,6 +45,7 @@ while($row2 = mysql_fetch_array($result2)){
   else {
     $naam = "Anoniem";
   }
+  //the actual html
   echo "<div class ='commentblok'>
     <div class ='row'>
     <div class ='span2'>
