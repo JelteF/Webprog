@@ -29,7 +29,7 @@ function upload_post($user){
       $user_id = $user_id['id'];
       $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
       mysql_query("INSERT INTO posts (studie, auteur, type, beschrijving, score, score_week)
-          VALUES ('$studie', '$user_id','$type', '$beschrijving', '1', '1')");
+          VALUES ('$studie', '$user_id', '$type', '$beschrijving', '1', '1')");
       $post_id=mysql_insert_id();
       mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
       mysql_query("INSERT INTO votes (voter, post, vote) VALUES ('$user_id', '$post_id', '1')");
