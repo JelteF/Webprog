@@ -26,7 +26,7 @@
         </div> 
         <div class="row">
           <div class="span11">
-			<div class="infobox-tab" style="background-color:white">
+			<div class="infobox-tab" style="color:white">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab1()">Whats new</a></li>
                 <li id="tab2"><a onclick="tab2()">Week top5</a></li>
