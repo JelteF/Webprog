@@ -21,7 +21,7 @@ function print_query($result, $logged_in_user){
             $study = mysql_fetch_array(mysql_query("SELECT * FROM studies WHERE id ='$study_id'"));
             $study_naam = $study['naam'];
             $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID ='$user'"));
-            $user_id = $auteur['UvAnetID'];
+            $user_id = $auteur['id'];
 
             if (!empty($auteur['naam'])){
             $naam = $auteur['naam'];

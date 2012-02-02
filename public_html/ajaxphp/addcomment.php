@@ -18,7 +18,7 @@ $date = date("d-m-Y",strtotime($row3['tijd']));
 $time = date("h:i:s",strtotime($row3['tijd']));
 $user = $row3['auteur'];
 $auteur = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE ID='$user'"));
-$user_id = $auteur['UvAnetID'];
+$user_id = $auteur['id'];
 if(!empty($auteur['naam'])){
     $naam = $auteur['naam'];
 }

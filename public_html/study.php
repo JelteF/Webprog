@@ -87,7 +87,7 @@
                     <input id="pdf" type="radio" value="pdf" name="post-type" <?php if(!$validated) echo "disabled";?> onclick="contentselect('pdf');"/>PDF
                     <input id="txt" type="radio" value="txt" name="post-type" <?php if(!$validated) echo "disabled";?> onclick="contentselect('txt');"/>Tekst
                     <p></p>
-                    <textarea id="textarea" <?php if(!$validated) echo "disabled";?> name="beschrijving" class="span8" rows="4" placeholder="No need to register! Just log in with your UvAnetID" ></textarea>
+                    <textarea id="textarea" <?php if(!$validated) echo "disabled value='Om te kunnen posten moet je inloggen. Dat kan gewoon met je UvAnetID.'";?> name="beschrijving" class="span8" rows="4"  ></textarea>
                     <div id="uploadcontent">
                       <br />Upload een foto of link naar een foto:<br />
                       Link   <input id="link" type="radio" value="link" <?php if(!$validated) echo "disabled";?> name="upload" checked onclick="uploadselect('link');" />
