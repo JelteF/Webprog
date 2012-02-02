@@ -2,7 +2,12 @@
 <html>
   <head>
     <title>UvAbook</title>
-    <?php require("templates/head.php") ?>
+    <?php
+      if(file_exists("templates/head.php"))
+        require("templates/head.php");
+      else
+        echo "head.php not found!";
+    ?>
     <script type="text/javascript" src="js/submit.js"></script>
     <script type="text/javascript" src="js/changeform.js"></script>
     <script type="text/javascript" src="js/like.js"></script>
@@ -11,18 +16,22 @@
   </head>
 
   <body>
-    <?php require("templates/topbar.php") ?>
     <?php
-    $studie_id = $_GET["id"];
+     if(file_exists("templates/topbar.php"))
+        require("templates/topbar.php");
+      else
+        echo "topbar.php not found!";
 
-    $result = mysql_query("SELECT * FROM studies WHERE id='$studie_id'");
-    $row = mysql_fetch_row($result);
+      $studie_id = $_GET["id"];
+
+      $result = mysql_query("SELECT * FROM studies WHERE id='$studie_id'");
+      $row = mysql_fetch_row($result);
     ?>
-
-    <!---container-->
     <div class="container">
       <div class="content">
-        <!---Beschrijvingblok-->
+        <!--
+          Stukje html met de beschrijving van de studie. Wordt met SQL en php uit database gehaald.
+        -->
         <div class="hero-unit">
           <h1><?php echo $row[2]; ?></h1>
           <p><br /><?php echo $row[4]; ?></p>
@@ -31,14 +40,14 @@
           </div>
           <div id="minder" style="display:none;">
             <?php
-            $paragraphs = explode("\n", $row[3]);
-            $isList = false;
-            foreach ($paragraphs as $paragraph) {
-            if (empty($paragraph)) continue;
-            //else if ($paragraph[0] == "*" || $paragraph[0] == "■" ) {
-            else if (!preg_match("/^[a-z]$/i", $paragraph[0])) {
-            if (!$isList) {
-            echo "<ul>";
+              $paragraphs = explode("\n", $row[3]);
+              $isList = false;
+              foreach ($paragraphs as $paragraph) {
+              if (empty($paragraph)) continue;
+              //else if ($paragraph[0] == "*" || $paragraph[0] == "■" ) {
+              else if (!preg_match("/^[a-z]$/i", $paragraph[0])) {
+              if (!$isList) {
+              echo "<ul>";
               $isList = true;
               }
               while (!preg_match("/^[a-z]$/i", $paragraph[0]))
@@ -48,11 +57,11 @@
               else if ($isList) {
               $isList = false;
               echo "</ul>";
-            echo "<p>" . $paragraph . "</p>";
-            }
-            else
-            echo "<p>" . $paragraph . "</p>";
-            }
+              echo "<p>" . $paragraph . "</p>";
+              }
+              else
+              echo "<p>" . $paragraph . "</p>";
+              }
             ?>
             <input type="button" onclick="showHide()" value="Minder" />
           </div>
@@ -104,9 +113,12 @@
               </div>
             </div>
           </div>
-          <!---Rechterblok-->
           <div class="span6">
-            <!---Informatieblok-->
+            <!--
+              Stukje html met detail informatie van de studie
+              Informatie wordt met php en sql opgehaald uit de database
+              Als het geen bachelor studie is, dan wordt 1 tab met inhoud vooropleiding niet weergeven
+            -->
             <div class="infobox-tab">
               <ul class="tabs">
                 <li id="tab1" class="active"><a onclick="tab1()">Info</a></li>
@@ -143,14 +155,15 @@
               <p><b>Natuur & Gezondheid: </b><br /><?php if($row[19]!="") { $ngarray = explode(",",$row[19]); for($j=0; $j<count($ngarray)-1;$j++) echo "$ngarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
               <p><b>Natuur & Techniek: </b><br /><?php if($row[20]!="") { $ntarray = explode(",",$row[20]); for($j=0; $j<count($ntarray)-1;$j++) echo "$ntarray[$j]<br />"; } else { echo "Geen extra vakken nodig of Profiel niet toegelaten";} ?></p>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
-
-    <?php require("templates/footer.php"); ?>
+    <?php
+      if(file_exists("templates/footer.php"))
+        require("templates/footer.php");
+      else
+        echo "footer.php not found!";
+    ?>
   </body>
 </html>
