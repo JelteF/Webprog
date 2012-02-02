@@ -26,19 +26,28 @@
         </div> 
         <div class="row">
           <div class="span10">
-            <div class="whatsnew">
-            <?php
+			<div class="infobox-tab">
+              <ul class="tabs">
+                <li id="tab1" class="active"><a onclick="tab1()">Whats new</a></li>
+                <li id="tab2"><a onclick="tab2()">Week top5</a></li>
+              </ul>
+            </div>
+            <div id="info1" class="infobox-study">
+             <?php
               if(file_exists("ajaxphp/homepage_posts.php"))
                 require("ajaxphp/homepage_posts.php");
               else
                 echo "homepage_posts.php not found!";
             ?>
             </div>
+            <div id="info2" style="display:none" class="infobox-study">
+              top5
+            </div>
           </div>
           <div class="span6">
             <div class="infobox-tab">
               <ul class="tabs">
-                <li id="tab1" class="active"><a onclick="tab1()">Top 5</a></li>
+                <li id="tab1" class="active"><a onclick="tab1()">top5</a></li>
 		
                 <li id="tab2"><a onclick="tab2()">Statestieken</a></li>
               </ul>
