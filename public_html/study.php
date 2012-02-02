@@ -17,7 +17,6 @@
 
     $result = mysql_query("SELECT * FROM studies WHERE id='$studie_id'");
     $row = mysql_fetch_row($result);
-    echo "<div id='studie_id' class=".$studie_id."></div>";
     ?>
 
     <!---container-->
@@ -78,7 +77,7 @@
               <div class="span8 offset2">
                 <h3>Reageer op deze opleiding!</h3>
                 <div class="input">
-                  <form name="postForm"  action="ajaxphp/post.php" method="post" enctype="multipart/form-data" target="post_target" class="pull-left" onsubmit="startUpload();">
+                  <form name="postForm"  action=<?php echo "ajaxphp/post.php?studie=$studie_id"; ?> method="post" enctype="multipart/form-data" target="post_target" class="pull-left" onsubmit="startUpload();">
                     <input name="naam" class="medium" type="text" placeholder="Naam" <?php if(!$validated) echo "disabled"; else echo "value='".$user1['naam']."'";?> />
                     <p></p>
                     Post:

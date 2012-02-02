@@ -15,7 +15,7 @@ function file_extension($filename)
 /*
  * Deze functie uploadt de post.
  */
-function upload_post($content, $user){
+function upload_post($user){
     $type = mysql_real_escape_string(strip_tags($_POST['post-type']));
     if (isset($_POST['beschrijving']))
         $beschrijving = mysql_real_escape_string(strip_tags($_POST['beschrijving']));
@@ -24,11 +24,12 @@ function upload_post($content, $user){
     if (strlen($beschrijving) > 255)
       $post_id = "-1";
     else{
+      $studie = mysql_real_escape_string(strip_tags($_GET['studie']));
       $user_id = mysql_fetch_array($user);
       $user_id = $user_id['id'];
       $naam = mysql_real_escape_string(strip_tags($_POST['naam']));
-      mysql_query("INSERT INTO posts (auteur, type, beschrijving, content, score, score_week)
-          VALUES ('$user_id','$type', '$beschrijving', $content, '1', '1')");
+      mysql_query("INSERT INTO posts (auteur, type, beschrijving, score, score_week)
+          VALUES ('$user_id','$type', '$beschrijving', '1', '1')");
       $post_id=mysql_insert_id();
       mysql_query("UPDATE users SET naam='$naam' WHERE id='$user_id'");
       mysql_query("INSERT INTO votes (voter, post, vote) VALUES ('$user_id', '$post_id', '1')");
@@ -82,7 +83,7 @@ if ($result == "1"){
       }
       else{
         $extension = file_extension($_FILES['file']['name']);
-        $post_id=upload_post($content, $user);
+        $post_id=upload_post($user);
         $content="uploads/".$post_id.$extension;
         move_uploaded_file($_FILES["file"]["tmp_name"], $destination_path.$content);
       }
@@ -111,7 +112,7 @@ if ($result == "1"){
       }
       else{
         $extension = file_extension($_FILES['file']['name']);
-        $post_id=upload_post($content, $user);
+        $post_id=upload_post($user);
         $content="uploads/".$post_id.$extension;
         move_uploaded_file($_FILES['file']['tmp_name'], $destination_path.$content);
       }
@@ -159,7 +160,8 @@ if ($result == "1"){
                 Zend_Loader::loadClass('Zend_Gdata_YouTube');
                 $yt = new Zend_Gdata_YouTube();
                 $videoEntry = $yt->getVideoEntry($content);
-                $post_id = upload_post($content, $user);
+                $post_id = upload_post($user);
+                $result = "1";
             }
          }
          catch(Exception $e){
@@ -181,11 +183,13 @@ if ($result == "1"){
         }
     }
     if ($result == "1"){
-        $post_id=upload_post($content, $user);
+        $post_id=upload_post($user);
     }
   }
   if($post_id == "-1")
       $result = "De beschrijving is te lang. Hij mag niet langer zijn dan 255 karakters.";
+  if ($result == "1")
+      mysql_query("UPDATE posts SET content='$content' WHERE ID='$post_id'");
   mysql_close($con);
 }
 ?>
