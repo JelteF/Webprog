@@ -1,5 +1,8 @@
 function like(post_id, up) {
-  
+  /**
+   * Checked of like en unlike active is. Als 1 van de 2 active is en er wordt op de ander gedrukt
+   *   dan worden ze omgewisseld.
+   */
   if(document.getElementById("likebtn_"+post_id).getAttribute("class")=="active" && up){
       document.getElementById("likebtn_"+post_id).setAttribute("class", "i");
   }
