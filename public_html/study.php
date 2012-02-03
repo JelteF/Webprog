@@ -30,7 +30,8 @@
     <div class="container">
       <div class="content">
         <!--
-          Stukje html met de beschrijving van de studie. Wordt met SQL en php uit database gehaald.
+          Stukje html met de beschrijving van de studie. Wordt met SQL en php uit database gehaald
+          Er is informatie verborgen die je met javascript kan laten zien of laten verdwijnen
         -->
         <div class="hero-unit">
           <h1><?php echo $row[2]; ?></h1>
@@ -43,45 +44,49 @@
               $paragraphs = explode("\n", $row[3]);
               $isList = false;
               foreach ($paragraphs as $paragraph) {
-              if (empty($paragraph)) continue;
-              //else if ($paragraph[0] == "*" || $paragraph[0] == "■" ) {
-              else if (!preg_match("/^[a-z]$/i", $paragraph[0])) {
-              if (!$isList) {
-              echo "<ul>";
-              $isList = true;
-              }
-              while (!preg_match("/^[a-z]$/i", $paragraph[0]))
-              $paragraph = substr($paragraph, 1);
-              echo "<li>" . $paragraph . "</li>";
-              }
-              else if ($isList) {
-              $isList = false;
-              echo "</ul>";
-              echo "<p>" . $paragraph . "</p>";
-              }
-              else
-              echo "<p>" . $paragraph . "</p>";
+                if (empty($paragraph))
+                  continue;
+                else if (!preg_match("/^[a-z]$/i", $paragraph[0])) {
+                  if (!$isList) {
+                    echo "<ul>";
+                    $isList = true;
+                  }
+                  while (!preg_match("/^[a-z]$/i", $paragraph[0]))
+                    $paragraph = substr($paragraph, 1);
+                  echo "<li>" . $paragraph . "</li>";
+                  }
+                  else if ($isList) {
+                    $isList = false;
+                    echo "</ul>";
+                    echo "<p>" . $paragraph . "</p>";
+                  }
+                 else
+                   echo "<p>" . $paragraph . "</p>";
               }
             ?>
             <input type="button" onclick="showHide()" value="Minder" />
           </div>
         </div>
-        <!---Heleblok-->
+        <!--Heleblok-->
         <div class="row">
-          <!---Linkerblok-->
+          <!--Linkerblok-->
           <div class="span10">
-            <!---Sorteerblok-->
+            <!--Sorteerblok-->
             <?php require("ajaxphp/changeorder.php") ?>
             <!--Comments-->
             <?php require("ajaxphp/getposts.php") ?>
             <!--Nieuw Commentblok-->
             <div class="newcomment" id="newcomment" >
             </div>
-            <!--Commentblok-->
-            <!--Navblok-->
+            <!--
+              Navigatie voor post, meer informatie in changepage.php
+            -->
             <?php require("ajaxphp/changepage.php") ?>
-            <!---/Navblok-->
-            <!---Interactieblok-->
+            <!--
+              Stukje code waar de gebruiker post kan posten. Is standaard disabled.
+              En wordt active als er ingelogd is, maar checked ook voor de CAS ticket voor het geval
+                mensen de html editen met software om er toch bij te komen
+            -->
             <div class="row">
               <div class="span8 offset2">
                 <h3>Reageer op deze opleiding!</h3>
