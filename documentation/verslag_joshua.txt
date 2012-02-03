@@ -1,0 +1,131 @@
+vormgeving:
+
+- db
+
+De database bestaat uit vier tabellen: studies, posts, users en votes. Studies
+bevat de opleidingen, posts bevat de posts per opleiding, users de gebruikers
+die door middel van hun UvAnetID in kunnen loggen en votes legt het verband
+tussen de users en de posts waarop ze gestemd hebben.
+
+We hebben de database op deze manier vormgegeven omdat de relaties dan het
+natuurlijkst zijn, met votes als tussentabel op de meer-op-meer relatie tussen
+posts en users.
+
+- hodex
+
+De hodex is een open xml format waarin alle universiteiten van Nederland
+informatie over hun curriculum aanbieden. Door hier gebruik van de maken
+konden we de gebruikers niet alleen community driven informatie over de
+opleiding geven, maar ook de statische opleidingsinformatie zoals de duur en
+graad.
+
+- cas
+
+Door gebruik de maken van CAS (central authentication system) van de UvA,
+waarmee studenten en medewerkers in kunnen loggen op de site, konden we het
+participeren zo laagdrempelig mogelijk maken. Het doel was namelijk mensen
+te motiveren informatie toe te voegen, en centraal hierbij staat dat het
+eenvoudig is.
+
+- sorting
+
+De posts worden standaard gesorteerd op score/tijd^2. We hebben hiervoor
+gekozen omdat de populairste posts dan altijd bovenaan staan, maar de
+nieuwere posts ook een kans hebben gezien te worden. Indien de gebruiker het
+wil kan hij de volgorde ook veranderen naar tijd danwel score.
+
+- paging
+
+Voor het navigeren door 'pagina's' met posts hebben we het standaard model
+gebruikt, waarbij de gebruiker kan klikken op de links 'first', 'previous',
+'next', 'last' alsmede de nummers van een aantal voorgaande en komende
+pagina's. Hierdoor is het voor de gebruiker intuïtief duidelijk wat de knoppen
+doen.
+
+- liken
+
+Indien de gebruiker niet in is gelogd kan hij enkel de score zien. Is hij dit
+wel dan ziet hij onder de post de knoppen 'like' en 'dislike'. Heeft de
+gebruiker al eerder gestemd dan wordt de eerder gekozen optie als geselecteerd
+getoonde. De gebruiker kan er vervolgens nogmaals op klikken om het ongedaan te
+maken, of op de andere optie om hem te veranderen.
+
+Hiermee is voor de gebruiker duidelijk wat hij stemt, wat hij heeft gestemd en
+hoe hij het aan kan passen.
+
+technisch:
+
+- db
+
+De database bevat centraal posts, met een foreign key naar de opleiding
+waar hij bij hoort en de auteur die hem geschreven heeft. Votes bevat een
+foreign key van de post waar hij naar refereert en van de user die de stem uit
+heeft gebracht.
+
+De tabel posts bevat ook een kolom score_weekly, wat het aantal gekregen
+punten van die week reflecteert. Deze moet een maal per week gereset worden,
+wat gebeurt door /servercode/reset_weekly.php als cronjob in te stellen.
+
+- hodex
+
+De tabel studies is gevuld met informatie die dynamisch uit de hodex wordt
+gehaald. Hiervoor wordt iedere opleiding in de hodex geparsed, en wordt naar
+het opleidingsnummer en de laatste wijziging gekeken. Vervolgens wordt dit
+nummer opgezocht in de database, komt het er niet in voor dan is de opleiding
+nieuw en moet hij in een nieuwe rij in studies gezet worden. Komt hij er wel
+in voor maar is hij eerder in de database gezet dan de laatste wijziging, dan
+worden de veranderde velden geupdate.
+
+Om dit alles automatisch te laten gebeuren moet /servercode/updatestudies.php
+als periodieke cronjob gezet worden. Op websec had het script minder dan 4
+seconden nodig om 1000+ xml bestanden te parsen en up te loaden, dus een keer
+per dag zou geen merkbare overhead moeten geven.
+
+- cas
+
+De gebruikers authenticatie loopt via CAS. Op het moment dat de pagina geladen
+wordt kijken we of er een ticket in een cookie staat. Is dit het geval dan
+zoeken we dit ticket op in de database en kijken naar de corresponderende
+gebruiker, kunnen we deze niet vinden of is het cookie niet gezet dan tonen we
+een log in knop. Deze link stuurt de gebruiker naar CAS, waar hij door middel
+van zijn UvAnetID en wachtwoord in kan loggen en geredirect wordt naar onze
+site met een geldig ticket in zijn url. Dit ticket wordt door ons
+geverifieerd, en indien geldig voor de duur van de sessie in de database bij
+de gebruiker gezet.
+
+- sorting
+
+De volgorde van de posts op de opleidingspagina wordt bepaalt door een
+eenvoudige query. De default orde is 'populair', wat score/tijd^2 inhoud, en
+waardoor de meest recente en hoogst scorende posts altijd bovenaan komen te
+staan. Andere opties zijn 'score' en 'tijd', waarbij de query een simpele
+select is gesorteerd op die waarden.
+
+- paging
+
+Door gebruik te maken van de LIMIT parameter van mySQL wordt slechts een deel
+van de door de sorting uitgevoerde query behaalde resultaten getoond. Dit
+hangt af van de 'pagina' waarop de gebruiker zich bevindt.
+
+- liken
+
+Bij het plaatsen van een post liked een gebruiker deze automatisch. Hierdoor
+is het resultaat van score/tijd^2 praktisch altijd hoog genoeg om (bijna)
+bovenaan getoond te worden, waardoor de post vervolgens afhankelijk van zijn
+populariteit daar blijft of naar beneden zakt.
+
+Liken kan alleen door ingelogde users. Op het moment dat iemand liked/disliked
+wordt er gekeken of deze gebruiker al eerder op deze post heeft gestemd, door
+te zoeken op de gebruiker en de post in 'votes'. Is dit het geval dan heffen
+twee de zelfde stemmen elkaar op, en een omgekeerde stem vervangt de oude
+Hierdoor kan een gebruiker dus zijn like anuleren, zonder te hoeven disliken,
+en vice versa.
+
+Het veld in votes wordt gezet door middel van 'INSERT ... ON DUPLICATE KEY
+UPDATE'. Vervolgens worden ook de waardes posts.score en posts.score_weeky
+WHERE id=<de betreffende post> gezet.
+
+
+
+
+

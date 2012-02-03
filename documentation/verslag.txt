@@ -1,0 +1,238 @@
+vormgeving:
+
+- db
+
+De database bestaat uit vier tabellen: studies, posts, users en votes. Studies
+bevat de opleidingen, posts bevat de posts per opleiding, users de gebruikers
+die door middel van hun UvAnetID in kunnen loggen en votes legt het verband
+tussen de users en de posts waarop ze gestemd hebben.
+
+We hebben de database op deze manier vormgegeven omdat de relaties dan het
+natuurlijkst zijn, met votes als tussentabel op de meer-op-meer relatie tussen
+posts en users.
+
+- hodex
+
+De hodex is een open xml format waarin alle universiteiten van Nederland
+informatie over hun curriculum aanbieden. Door hier gebruik van de maken
+konden we de gebruikers niet alleen community driven informatie over de
+opleiding geven, maar ook de statische opleidingsinformatie zoals de duur en
+graad.
+
+- cas
+
+Door gebruik de maken van CAS (central authentication system) van de UvA,
+waarmee studenten en medewerkers in kunnen loggen op de site, konden we het
+participeren zo laagdrempelig mogelijk maken. Het doel was namelijk mensen
+te motiveren informatie toe te voegen, en centraal hierbij staat dat het
+eenvoudig is.
+
+- sorting
+
+De posts worden standaard gesorteerd op score/tijd^2. We hebben hiervoor
+gekozen omdat de populairste posts dan altijd bovenaan staan, maar de
+nieuwere posts ook een kans hebben gezien te worden. Indien de gebruiker het
+wil kan hij de volgorde ook veranderen naar tijd danwel score.
+
+- paging
+
+Voor het navigeren door 'pagina's' met posts hebben we het standaard model
+gebruikt, waarbij de gebruiker kan klikken op de links 'first', 'previous',
+'next', 'last' alsmede de nummers van een aantal voorgaande en komende
+pagina's. Hierdoor is het voor de gebruiker intuïtief duidelijk wat de knoppen
+doen.
+
+- liken
+
+Indien de gebruiker niet in is gelogd kan hij enkel de score zien. Is hij dit
+wel dan ziet hij onder de post de knoppen 'like' en 'dislike'. Heeft de
+gebruiker al eerder gestemd dan wordt de eerder gekozen optie als geselecteerd
+getoonde. De gebruiker kan er vervolgens nogmaals op klikken om het ongedaan te
+maken, of op de andere optie om hem te veranderen.
+
+Hiermee is voor de gebruiker duidelijk wat hij stemt, wat hij heeft gestemd en
+hoe hij het aan kan passen.
+
+technisch:
+
+- db
+
+De database bevat centraal posts, met een foreign key naar de opleiding
+waar hij bij hoort en de auteur die hem geschreven heeft. Votes bevat een
+foreign key van de post waar hij naar refereert en van de user die de stem uit
+heeft gebracht.
+
+De tabel posts bevat ook een kolom score_weekly, wat het aantal gekregen
+punten van die week reflecteert. Deze moet een maal per week gereset worden,
+wat gebeurt door /servercode/reset_weekly.php als cronjob in te stellen.
+
+- hodex
+
+De tabel studies is gevuld met informatie die dynamisch uit de hodex wordt
+gehaald. Hiervoor wordt iedere opleiding in de hodex geparsed, en wordt naar
+het opleidingsnummer en de laatste wijziging gekeken. Vervolgens wordt dit
+nummer opgezocht in de database, komt het er niet in voor dan is de opleiding
+nieuw en moet hij in een nieuwe rij in studies gezet worden. Komt hij er wel
+in voor maar is hij eerder in de database gezet dan de laatste wijziging, dan
+worden de veranderde velden geupdate.
+
+Om dit alles automatisch te laten gebeuren moet /servercode/updatestudies.php
+als periodieke cronjob gezet worden. Op websec had het script minder dan 4
+seconden nodig om 1000+ xml bestanden te parsen en up te loaden, dus een keer
+per dag zou geen merkbare overhead moeten geven.
+
+- cas
+
+De gebruikers authenticatie loopt via CAS. Op het moment dat de pagina geladen
+wordt kijken we of er een ticket in een cookie staat. Is dit het geval dan
+zoeken we dit ticket op in de database en kijken naar de corresponderende
+gebruiker, kunnen we deze niet vinden of is het cookie niet gezet dan tonen we
+een log in knop. Deze link stuurt de gebruiker naar CAS, waar hij door middel
+van zijn UvAnetID en wachtwoord in kan loggen en geredirect wordt naar onze
+site met een geldig ticket in zijn url. Dit ticket wordt door ons
+geverifieerd, en indien geldig voor de duur van de sessie in de database bij
+de gebruiker gezet.
+
+- sorting
+
+De volgorde van de posts op de opleidingspagina wordt bepaalt door een
+eenvoudige query. De default orde is 'populair', wat score/tijd^2 inhoud, en
+waardoor de meest recente en hoogst scorende posts altijd bovenaan komen te
+staan. Andere opties zijn 'score' en 'tijd', waarbij de query een simpele
+select is gesorteerd op die waarden.
+
+- paging
+
+Door gebruik te maken van de LIMIT parameter van mySQL wordt slechts een deel
+van de door de sorting uitgevoerde query behaalde resultaten getoond. Dit
+hangt af van de 'pagina' waarop de gebruiker zich bevindt.
+
+- liken
+
+Bij het plaatsen van een post liked een gebruiker deze automatisch. Hierdoor
+is het resultaat van score/tijd^2 praktisch altijd hoog genoeg om (bijna)
+bovenaan getoond te worden, waardoor de post vervolgens afhankelijk van zijn
+populariteit daar blijft of naar beneden zakt.
+
+Liken kan alleen door ingelogde users. Op het moment dat iemand liked/disliked
+wordt er gekeken of deze gebruiker al eerder op deze post heeft gestemd, door
+te zoeken op de gebruiker en de post in 'votes'. Is dit het geval dan heffen
+twee de zelfde stemmen elkaar op, en een omgekeerde stem vervangt de oude
+Hierdoor kan een gebruiker dus zijn like anuleren, zonder te hoeven disliken,
+en vice versa.
+
+Het veld in votes wordt gezet door middel van 'INSERT ... ON DUPLICATE KEY
+UPDATE'. Vervolgens worden ook de waardes posts.score en posts.score_weeky
+WHERE id=<de betreffende post> gezet.
+
+
+
+
+
+Verkooppraatje
+
+
+Posten:
+Het posten van content is een belangrijk onderdeel van de site. Het is de bedoeling dat dit zo makkelijk mogelijk te doen is. Zodat mensen zich niet vanwege de moeite onthouden van het posten. Het enige wat nodig is om te kunnen posten is inloggen via CAS. Wat dus gewoon met het UvAnetID kan. Het enige wat verplicht is bij het posten is de daadwerkelijke content. Het is mogelijk om een naam in te vullen zodat er herkend kan worden door lezers dat de poster meerdere dingen post. De naam wordt dan in de database aan het account gekoppeld, zodat de poster bij elke post dezelfde naam heeft. Als de poster een nieuwe post gaat maken wordt die naam dan gelijk ingevuld in het invulvak voor de naam. Als de naam echter leeg wordt gelaten wordt als de post geladen wordt Anoniem als naam ingevuld. Bij een pdf is de beschrijving verplicht, omdat het anders niet te zien is waar de pdf over gaat. Bij de andere soorten content is het niet verplicht een beschrijving te geven.
+Het is de bedoeling dat de gebruiker niet steeds hoeft te wachten op het herladen van de pagina als er iets veranderd. Om die reden wordt het formulier waarin de content wordt ingevuld gelijk veranderd aan de hand van de keuzes die je maakt. Om die zelfde reden wordt de post, nadat hij is geüpload, gelijk ingeladen op de website. Hij komt onderaan de lijst met posts te staan, zodat hij gelijk te zien is door de poster. De post krijgt daarbij een groene achtergrond zodat het extra duidelijk is dat het de post is die de poster net gepost heeft en dat alles goed is gegaan. Omdat er vanuit gegaan wordt dat de poster zijn eigen post leuk vind, wordt die direct voor hem geliked. 
+Technisch ding
+
+Posten:
+Bij het laden van de pagina wordt gecheckt of de gebruiker is ingelogd. Als dit niet het geval is wordt het formulier onbruikbaar gemaakt. Doormiddel van een onclick event bij de radio buttons wordt het formulier aangepast met javascript. Doormiddel van een onsubmit event wordt er een uploading message onder het formulier geplaatst. Daarna wordt het formulier doormiddel van een POST method naar een onzichtbaar iframe onder het formulier verstuurd. Dit heeft als reden dat het uploaden van files alleen mogelijk is als het form direct naar een php script wordt gestuurd en niet eerst door AJAX heen. Er wordt op het formulier na ook nog het studie id meegegeven via een GET method, zodat de post aan de studie gekoppeld kan worden. Als er iets mis gaat tijdens het posten, dan wordt er een error message doorgegeven aan javascript die het dan weergeeft onder het formulier. Er wordt eerst gekeken welk type upload het is en dan wordt aan de hand daarvan de content gevalideerd. 
+Er wordt gecheckt op deze punten:
+		Er wordt gecheckt of er iets is ingevuld in het content vak.
+		Er wordt gecheckt de tekst in het beschrijvingsvak niet langer is dan 255 karakters. 
+		Heeft een bestand de goede extensie.
+		Is een bestand wat geüpload wordt niet te groot.
+		Bij een Youtube link wordt gecheckt of de het een videolink is van Youtube.
+		Er wordt gecheckt of de video bestaat.
+Als aan deze punten voldaan wordt, worden alle delen van de post in de database geplaatst, met uitzondering van de daadwerkelijke content. Bij het uploaden van een bestand krijgt het bestand namelijk de post id als naam. Dit wordt gedaan om uniekheid te garanderen. Het id is echter nog niet bekend tot na het plaatsen in de database. Om die reden wordt de content dus pas in de database geplaatst na de rest van de post. De score en de weekscore worden gelijk op 1 gezet, en de poster wordt in de datase gezet als liker van de post. 
+Nadat de post in de database is gezet, wordt er een AJAX script aangeroepen. Dit script krijgt de post id van het vorige script mee en geeft dat door aan een php script. Dat script laadt de post uit de database aan de hand van het post id. Deze wordt opdezelfde manier in de pagina geladen als de posts die bij het laden van de pagina zijn ingeladen. Het enige verschil is dat er in het css bestand is aangegeven dat nieuwe posts een groene achtergrond krijgen. Dit wordt gedaan doordat de nieuwe posts in een andere div worden geplaatst.
+
+Opleidingen zoekpagina
+Om makkelijk bij de opleidingen te komen is er een zoekpagina geimplementeerd. In de zoekbalk van
+deze pagina kan een woord worden getypd. Deze zoekt opbasis van de zoekwoorden en naam van de
+opleidingen geven door de Hodex. Het resultaat komt eronder te staan. Dit wordt gedaan zonder de
+pagina te refreshen. Hiervoor is gekozen, omdat je meteen de resulaten kan zien. En potetentiele typ
+fouten kan meteen verbeterd worden. De resultaten linken naar de pagina met dezelfde naam als de
+studie. Natuurlijk wordt er aangegeven wanneer er geen resulaten zijn.
+Naast de zoek functionaliteit is er ook een filter functionaliteit. Deze bevindt zich links van de zoekbalk en
+resultaten. De bedoeling is dat je zoek resultaten kan filteren om bepaalde dingen zoals taal of titel die
+je krijgt voor het afronden van de studie. Dit maakt het zoeken specifieker en wordt het makkelijker om
+een studie te vinden. De lijst met filter optie is gekozen op basis van de informatie die uit de Hodex komt
+van elke studie. Hierop worden elke studie gecatagoriseerd. De filter kan je ook resetten naar standaart
+waarde. Dit maakt het makkelijker voor wanneer je andere filter combinaties wil gebruiken of helemaal
+geen filter meer wilt gebruiken.
+
+Navigatiebalk zoekbalk
+De zoekbalk in de navigatiemenu werkt bijna hetzelfde als die van de zoekpagina. Het verschil erin is dat
+deze alleen op naam van de opleiding zoekt. Hiervoor is gekozen omdat mensen die al weten hoe de
+studie heet er naar toe kunnen gaan zonder de opleidingen zoeker te bezoeken. De resultaten worden
+dynamisch weergeven op elke pagina. De resulaten zijn hierdoor ook gelimiteerd tot 15 resultaten, omdat
+anders de lijst te lang werd. De bedoeling is dat het compact blijft. Maar de zoekbalk in de navigatiemenu
+kan ook gebruikt worden om te zoeken zoals de normale zoekpagina. In dat geval wordt er verwezen
+naar de zoekpagina zelf en zoekt het meteen wat je ingetypd hebt in de navigatie zoekbalk. Dit is zo
+gedaan omdat het niet duidelijk was dat je met op enter drukken ook zo werkt. Dus is ervoor gekozen om
+het duidelijker aan te geven.
+Als je op ergens anders klikt dan de navigatie zoekbalk verdwijnen de resultaten. Hiervoor is gekozen
+omdat anders de resultaten de pagina belemmeren wanneer de gebruiker tog niet de navigatie zoekbalk
+wilt gebruiken.
+
+Infoblok
+Rechts van alle studiepaginas is er een blokje met details info over de studie, zoals hoelang de studie
+duurt en bij welke faculteit het zit. Er is gekozen voor een compacte blokje met een opvallende kleurtje,
+omdat het moet opvallen dat daar wat informatie staat. Maar toch kort genoeg moet zijn om de gebruiker
+die het leest niet te vervelen.
+
+Technische Versie
+
+Opleidingen zoekpagina
+Na elke letter dat ingetypd word in de zoekbalk wordt er een query gedaan. De resultaten worden behulp
+van een AJAX javascript onder de zoekbalk geladen zonder de pagina de refreshen. Standaard wordt
+er een query gedaan die alle studies weergeeft als er niet gezocht is. Of als er gezocht is vanuit de
+navigatie zoekbalk, doet het een query met die string. De filters werken hetzelfde, elke keer als er op een
+radiobutton wordt gedrukt, wordt er een query gedaan afhankelijk van de zoekwoord en positie van de
+radiobuttons van de filters. De radiobuttons en zoekbalk gebruiken dezelfde AJAX javascript, omdat het
+altijd de positie van de radiobuttons en de value van de zoekbalk moet controleren. De reset knop is een
+simpele javascript die de positie van de radiobuttons op de eerste zet, en daarna wordt dezelfde functie
+gebruikt door de radiobuttons en zoekbalk aangeroepen, omdat een query met de nieuwe posities van de
+radiobuttons gedaan moet worden.
+Wanneer er vanuit de navigatie zoekbalk naar deze pagina wordt gegaan, dan wordt de zoekbalk waarde
+gevuld met de waarde die ingevuld is in de navigatie zoekbalk. Dit wordt gedaan door een get methode in
+php. De query die uitgevoerd moet worden gebruikt dan deze waarde zoals eerder gezegd.
+In de zoekbalk wordt een placeholder weergeven: Zoek een opleiding. Deze is gedaan met javascript
+en niet met de event placeholder, omdat dat event niet werkt in internet explorer. Dus onblur en onfocus
+events die javascript aanroept die dan de values naar “Zoek en opleiding” zet of leeg maakt.
+
+Navigatiebalk zoekbalk
+Deze zoekbalk is ook gedaan met AJAX javascript en SQL queries. Ze worden dynamisch geladen in
+een onzichtbare div en wordt altijd boven alles in de pagina geladen. Ook bij deze functionaliteit wordt
+na elke letter dat ingetyped wordt een query gedaan op basis van de ingevoerde string. Als er geen
+resultaten zijn wordt dit aangegeven. De lijst met queries is gelimiteerd op 15. Voor de duidelijkheid is er
+een link onder de resultaten die de waarde in de zoekbalk die gebruikers door stuurt naar de opleidingen
+zoekpagina. De query hier verschilt met de opleidingen zoekpagina in dat het alleen de naam van de
+studie gebruikt, waar de andere ook met zoekwoorden werkt. Wanneer er op iets anders geklikt wordt
+dan de zoekbalk of een link in de resultaten verdwijnen de resultaten door een javascript dat uitgevoerd
+wordt onblur. Hier wordt ook de placeholder met javascript gedaan. Dit is gedaan om dezelfde reden als
+de opleidingen zoekpagina.
+
+Infoblok
+Het verwisselen van blokje informatie wordt gedaan met javascript die de blokken zichtbaar of
+onzichtbaar maken. De informatie wordt met een query uit de database gehaald en geprint.
+
+Presentatie gedeelte
+
+Een site kan natuurlijk altijd uitgebreid worden. Dat geldt ook voor onze site. Dit zijn een paar ideeën hoe de site uitgebreid had kunnen worden. Een idee was het om niet alleen opleidingen van de UvA op onze pagina te zetten, maar ook die van andere universiteiten. Als je dus op een opleidingspagina komt zal je dus de opleidingsinformatie zien van bijvoorbeeld niet alleen de uva maar ook die van de vu. Als je die twee naast elkaar hebt kan je ze natuurlijk heel makkelijk vergelijken. En je kan naast de algemene dingen ook de comments van beide lezen, hierdoor krijg je niet alleen een goed algemeen beeld van wat de studie bij die universiteit is maar ook hoe het in de beleving van de student is. De student comment namelijk niet alleen hoe de opleiding is maar hij zal natuurlijk ook zeggen hoe het bij de universiteit is. De aankomende student zal dus niet alleen opleidingen goed kunnen vergelijken, hij zal ook de universiteiten goed kunnen vergelijken.
+
+Ook zijn er natuurlijk studenten die zich afvragen hoe een studie is. En dat heb ik niet over een studie in dit land, maar eentje in het buitenland. Een idee voor onze site zou kunnen zijn dat we ook een pagina erbij doen die comments bevat van mensen die in het buitenland gestudeerd hebben. Zo krijg je idee of studeren in het buitenland misschien wel iets voor jou is.
+
+Tenslotte als je onze site bezoekt als niet-student krijg je heel veel informatie over je heen en dat roept natuurlijk vragen op. Daarvoor zou het nog een idee zijn om nog een kleine shout box toe te voegen, los van comments. Waarin mensen hun vragen kwijt kunnen en bijvoorbeeld kunnen vragen of ze een keer een dagje mee kunnen lopen. Al met al maken deze toevoegingen de site complexer en daardoor zal misschien de drempel om ook daadwerkelijk de studie informatie te lezen groter worden, en die willen wij natuurlijk zo laag mogelijk houden.
+Dank u wel dit was onze presentatie :)
+
+
+Verslag deel
+
+Inlog-systeem Uvabook
+
+Inloggen bij onze site gebeurd via het CAS-protocol. Wij hebben de inlog knop gemaakt op de topbar zodat het niet uit maakt op welke pagina je zit. Je kan altijd inloggen en als je ingelogd bent wordt de knop inloggen natuurlijk vervangen door de uitlog knop.
+Als je op de knop inloggen drukt wordt je naar de CAS-site gestuurd. Daar kan je met een UvAnetID inloggen. Als je dan succesvol hebt ingelogd wordt je teruggestuurd naar de pagina waar je vandaan komt en krijg een ticket mee. Om te voorkomen dat je zelf een ticket maakt wordt dit ticket vervolgens weer naar CAS gestuurd en het wordt er gechecked of het een geldig ticket is. Als het een geldig ticket is stuurt de CAS site ons het studentennummer terug in een xtml file en als het niet geldig is laat de site dat ook weten. Zodra onze site dit ontvangen heeft, ben je ook daadwerkelijk ingelogd. En dan worden er ook variabelen van je opgeslagen in een session zoals bijvoorbeeld de ticket en het UvAnetID.  Als je dan weer uitlogt wordt je sessie beëindigd en je ticket wordt verwijderd. De session werd al begonnen toen je de site had opgestart maar er wordt pas daadwerkelijk iets in opgeslagen als je bent ingelogd.
