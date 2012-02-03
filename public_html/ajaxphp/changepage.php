@@ -12,7 +12,7 @@
   $page = 1;
   if (isset($_GET['page'])){ 
       $page = mysql_real_escape_string($_GET['page']);
-      if($page == 0)
+      if($page < 1)
         $page = 1;
   }
     $last_page = ceil($count/$nrOfPosts);
