@@ -1,60 +1,49 @@
-uvabook.nl is nu onze domain name.
+Copyright (C) 2012 University of Amsterdam
 
-om de site te updaten:
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
 
-$ cd /path/to/Webprog && git add * && git commit -m 'message' && git push origin master
-$ ssh <scienceaccount>@websec.science.uva.nl
-$ cd /datastore/webdb1249/htdocs && git pull
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-de eerste keer dat je op websec komt moet je een nieuwe pubkey aanmaken + deze in het systeem zetten, doe hiervoor:
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-$ ssh-keygen [enter] [enter] [enter]
-$ cd ~/.ssh/
-$ ln -s id_rsa.pub id_rsa2.pub
-$ ln -s id_rsa id_rsa2
-$ cat ~/.ssh/id_rsa.pub
 
-Dit is niet de oplossing van Luuk, maar dit is beter. Als je doet wat Luuk mailde moet je dat namelijk elke sessie herhalen.
 
-maak ook even een symlink naar de folder (req by Mike) door:
-
-$ ln /datastore/webdb1249/htdocs/ ~/
-
-Laten we allemaal ons emailadres, telnr en studentennr hier ook neerzetten.
+Originally developed by:
 
 Naam:       Joshua Appelman
 ScienceUN:  jappelma
 StudieNR:   6329276
-TelNR:      0651982996
 Email:      joshua@jbna.nl
 
 Naam:       Jelte Fennema
 ScienceUN:  fennema
 StudieNR:   10183159
-TelNR:      0652015497
 Email:      jelte12345@gmail.com
 
 Naam:       Alper Yerlibucak
 ScienceUN:  alpery
 StudieNR:   10219358
-TelNR:      0646752543
 Email:      alper.yerlibucak@gmail.com
 
 Naam:       Freddy de Greef
 ScienceUN:  degreef
 StudieNR:   10287302
-TelNR:      0653628474
 Email:      fdgchess@hotmail.com
 
 Naam:       Mike Trieu
 ScienceUN:  trieu
 StudieNR:   6366295 / 10105093
 
-Verder heb ik nu voor iedereen forwarding opgezet, dus:
-
-jelta@uvabook.nl
-joshua@uvabook.nl
-freddy@uvabook.nl
-alper@uvabook.nl
-mike@uvabook.nl
-admin@uvabook.nl voor iedereen.
+contact: admin@uvabook.nl
