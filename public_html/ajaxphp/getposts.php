@@ -85,8 +85,7 @@ while($row2 = mysql_fetch_array($result2)){
       echo " class = 'inactive'";
     echo " id= 'dislikebtn_$post_id'><button name='like' onclick='like($post_id, false)'>Dislike</button></li>";
   }
-  echo "<li><button name='like' type='submit'>Share</button></li>
-    </ul>
+  echo "</ul>
     </div>
     </div>
     </div>";

@@ -51,7 +51,6 @@ else
 echo "</div><ul class='pills'>
   <li id='likebtn_$post_id' class='active'><button name='like' onclick='like($post_id, true)'>Like</button></li>
   <li id='dislikebtn_$post_id'><button name='like' onclick='like($post_id, false)'>Dislike</button></li>
-  <li><a href='#'>Share</a></li>
   </ul>
   </div>
   </div>
