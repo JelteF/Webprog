@@ -9,6 +9,7 @@
         echo "head.php not found!";
     ?>
     <script type="text/javascript" src="js/indextab.js"></script>
+    <script type="text/javascript" src="js/like.js"></script>
   </head>
 
   <body>
