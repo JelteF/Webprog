@@ -34,6 +34,9 @@
               </ul>
             </div>
             <div id="info1" class="infobox-study">
+            /*
+            Hieronder wordt de php file aangeroepen die de populairste, meest recente en best gewardeerde posts bevat.
+            */
              <?php
               if(file_exists("ajaxphp/homepage_posts.php")){
                 include("ajaxphp/homepage_posts.php");
@@ -61,6 +64,9 @@
               </ul>
             </div>
             <div class="infobox-study">
+            /*
+            Hier worden de studies met de meeste posts uit de database gehaald en geprint. 
+            */
             	<?php
             	$mostpost = mysql_query("SELECT studie, naam, count(studie) From posts inner join studies ON posts.studie=studies.id GROUP BY studie ORDER BY COUNT(studie) DESC Limit 0,15");
                 while($row = mysql_fetch_array($mostpost)) {
