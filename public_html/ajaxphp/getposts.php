@@ -11,6 +11,8 @@ $nrOfPosts = 5;
 $page = 1;
 //find the selected order in the url
 if (isset($_GET['page'])) $page = $_GET['page'];
+if($page == 0)
+  $page = 1;
 $order = 'populair';
 if (isset($_GET['order']))
 $order = $_GET['order'];
